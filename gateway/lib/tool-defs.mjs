@@ -233,7 +233,7 @@ export const TOOLS = [
     name: 'camofox_extract',
     readOnly: true,
     description:
-      "Read named values from snapshot refs into JSON. Take a snapshot first. schema is {type:'object', properties:{price:{type:'number','x-ref':'e12'}}, required:['price']}. Each property reads the text of one ref, typed as string, number, integer or boolean.",
+      "Read named values from snapshot refs into JSON. Take a snapshot first. schema is {type:'object', properties:{price:{type:'number','x-ref':'e12'}}, required:['price']}. Each property reads the accessible name of one interactive ref (link, button, field), typed as string, number, integer or boolean. For other text use camofox_snapshot or camofox_evaluate.",
     inputSchema: schema(
       {
         tabId,

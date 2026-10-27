@@ -31,11 +31,6 @@ export function bearerAuth(token) {
   };
 }
 
-function pick(headerValue, queryValue) {
-  const value = headerValue ?? queryValue;
-  return value === undefined ? undefined : value;
-}
-
 /**
  * Work out which camofox identity an MCP session uses. The header wins over the
  * query string, so a client can set it either way.
@@ -46,11 +41,11 @@ function pick(headerValue, queryValue) {
  * @returns {{userId: string, sessionKey: string, explicitSessionKey: boolean} | {error: string}}
  */
 export function resolveIdentity(req, config, newSessionKey) {
-  const userId = pick(req.headers['x-camofox-user'], req.query?.user) ?? config.defaultUserId;
+  const userId = (req.headers['x-camofox-user'] ?? req.query?.user) ?? config.defaultUserId;
   if (typeof userId !== 'string' || !IDENTITY_PATTERN.test(userId)) {
     return { error: 'Invalid user id. Use 1-64 characters from A-Z a-z 0-9 _ . -' };
   }
-  const requestedKey = pick(req.headers['x-camofox-session'], req.query?.session);
+  const requestedKey = (req.headers['x-camofox-session'] ?? req.query?.session);
   if (requestedKey !== undefined && (typeof requestedKey !== 'string' || !IDENTITY_PATTERN.test(requestedKey))) {
     return { error: 'Invalid session key. Use 1-64 characters from A-Z a-z 0-9 _ . -' };
   }

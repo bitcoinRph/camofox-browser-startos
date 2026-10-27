@@ -127,6 +127,7 @@ export const main = sdk.setupMain(async ({ effects }) => {
           CAMOFOX_ACCESS_KEY: apiKey,
           CAMOFOX_API_KEY: apiKey,
           MCP_AUTH_TOKEN: apiKey,
+          CAMOFOX_COOKIES_DIR: '/data/cookies',
           CAMOFOX_SKILLS_DIR: '/opt/camofox/skills',
           CAMOFOX_DEFAULT_USER_ID: 'agent',
           CAMOFOX_NOVNC_ENABLED: vncEnabled ? '1' : '0',
