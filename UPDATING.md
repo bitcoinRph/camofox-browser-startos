@@ -32,7 +32,7 @@ Copy the top-level `Digest` line. The `Manifests` list below it must show `linux
 1. Edit the `FROM` line in `Dockerfile`. Set the new tag and the new index digest. Keep both.
 2. Edit `startos/versions/current.ts`. Set `version` to `<upstream version>:0`. Update `releaseNotes` in all five languages. Do not add a new version file unless the old version carries a migration.
 3. Check the items in the next list against the new upstream source.
-4. Run `npm run check`. Then build the `.s9pk` in CI and test it on a StartOS server.
+4. Run `make javascript/index.js` to check the code. Then build the `.s9pk` in CI and test it on a StartOS server.
 
 If only the package changes, keep the upstream version. Raise only the revision after the colon.
 
