@@ -1,6 +1,7 @@
 import { storeJson } from '../fileModels/store.json'
 import { i18n } from '../i18n'
 import { sdk } from '../sdk'
+import { idleTimeoutPrefill, idleTimeoutSettings } from '../timeoutSettings'
 
 const { InputSpec, Value } = sdk
 
@@ -55,9 +56,9 @@ const inputSpec = InputSpec.of({
     integer: true,
   }),
   sessionTimeoutMinutes: Value.number({
-    name: i18n('Session Timeout'),
+    name: i18n('Browser Session Timeout'),
     description: i18n(
-      'Close a session after this time. Saved cookies stay on disk.',
+      'Close the browser session after API inactivity. Saved cookies stay on disk. This does not set tab or MCP expiry.',
     ),
     required: true,
     default: 10,
@@ -73,6 +74,30 @@ const inputSpec = InputSpec.of({
     ),
     required: true,
     default: 5,
+    min: 1,
+    max: 1440,
+    integer: true,
+    units: i18n('minutes'),
+  }),
+  tabInactivityMinutes: Value.number({
+    name: i18n('Tab Inactivity Timeout'),
+    description: i18n(
+      'Close a tab without tab tool activity. Other tabs and noVNC input do not keep it alive.',
+    ),
+    required: true,
+    default: 5,
+    min: 1,
+    max: 1440,
+    integer: true,
+    units: i18n('minutes'),
+  }),
+  mcpSessionIdleMinutes: Value.number({
+    name: i18n('MCP Session Idle Timeout'),
+    description: i18n(
+      'Expire an idle stateful MCP connection. Gateway-owned tab groups close. Explicit tab groups remain. Stateless calls have no MCP session.',
+    ),
+    required: true,
+    default: 30,
     min: 1,
     max: 1440,
     integer: true,
@@ -121,9 +146,13 @@ export const browserSettings = sdk.Action.withInput(
 
   inputSpec,
 
-  async () => storeJson.read((s) => s.browser).once(),
+  async () => {
+    const browser = await storeJson.read((s) => s.browser).once()
+    return browser ? { ...browser, ...idleTimeoutPrefill(browser) } : null
+  },
 
   async ({ effects, input }) => {
+    const idle = idleTimeoutSettings(input)
     const locale = input.locale?.trim() || null
     const timezone = input.timezone?.trim() || null
 
@@ -145,6 +174,8 @@ export const browserSettings = sdk.Action.withInput(
       )
     }
 
-    await storeJson.merge(effects, { browser: { ...input, locale, timezone } })
+    await storeJson.merge(effects, {
+      browser: { ...input, ...idle, locale, timezone },
+    })
   },
 )

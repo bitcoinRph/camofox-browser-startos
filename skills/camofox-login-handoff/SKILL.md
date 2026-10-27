@@ -47,7 +47,7 @@ Interactive Login is off by default. The user turns it on in StartOS.
 3. Open the login page with your tool. Use the chosen `userId`. The page opens in the browser that the user will see.
 4. Ask the user to open the noVNC URL in a web browser and enter the password. The user then sees the Camoufox window and your tab.
 5. Tell the user what to do. Example: "Sign in to GitHub in the open tab. Complete the MFA step. Tell me when you see your dashboard."
-6. Wait for the user. Keep the session alive. Call `camofox_snapshot` or `camofox_wait` every few minutes. A session closes after the session timeout (default 10 minutes) when no API call arrives. If the user needs more time, ask the user to raise the session timeout in the `Browser Settings` action.
+6. Wait for the user. Call `camofox_snapshot` or `camofox_wait` on the login tab periodically. Browser Session Timeout defaults to 10 minutes. Tab Inactivity Timeout defaults to 5 minutes. MCP Session Idle Timeout defaults to 30 minutes for stateful connections. These timers are independent. noVNC input does not refresh them. Raise browser-session and tab timers before a long login. Settings changes restart the service and close tabs.
 7. When the user says it is done, verify the login. Read the next section.
 8. Save the profile. Read the section on saving.
 9. Tell the user to run the `Disable Interactive Login` action when no more logins are needed. The service restarts again. Saved cookies stay on disk.

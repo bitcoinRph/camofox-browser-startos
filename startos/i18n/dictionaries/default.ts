@@ -54,8 +54,6 @@ const dict = {
   'The most tabs that one session can have open.': 45,
   'Maximum Tabs in Total': 46,
   'The most tabs that all sessions can have open together.': 47,
-  'Session Timeout': 48,
-  'Close a session after this time. Saved cookies stay on disk.': 49,
   minutes: 50,
   'Browser Idle Timeout': 51,
   'Stop the browser process after this time with no sessions. This frees memory.': 52,
@@ -99,6 +97,12 @@ const dict = {
   'All saved cookies and browser profiles are deleted.': 87,
   // init/watchBrowserSettings.ts
   "Match the browser locale and timezone to this server's IP location": 88,
+  'Browser Session Timeout': 89,
+  'Close the browser session after API inactivity. Saved cookies stay on disk. This does not set tab or MCP expiry.': 90,
+  'Tab Inactivity Timeout': 91,
+  'Close a tab without tab tool activity. Other tabs and noVNC input do not keep it alive.': 92,
+  'MCP Session Idle Timeout': 93,
+  'Expire an idle stateful MCP connection. Gateway-owned tab groups close. Explicit tab groups remain. Stateless calls have no MCP session.': 94,
 } as const
 
 /**

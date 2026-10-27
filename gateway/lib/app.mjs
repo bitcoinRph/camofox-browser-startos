@@ -1,7 +1,7 @@
 import { randomBytes, randomUUID } from 'node:crypto';
 import express from 'express';
 import { StreamableHTTPServerTransport } from '@modelcontextprotocol/sdk/server/streamableHttp.js';
-import { isInitializeRequest } from '@modelcontextprotocol/sdk/types.js';
+import { DEFAULT_NEGOTIATED_PROTOCOL_VERSION, isInitializeRequest } from '@modelcontextprotocol/sdk/types.js';
 
 import { bearerAuth, resolveIdentity } from './auth.mjs';
 import { createMcpServer } from './mcp.mjs';
@@ -9,11 +9,12 @@ import { SessionRegistry } from './sessions.mjs';
 import { fetchSpec } from './contracts.mjs';
 import { buildInstructions } from './instructions.mjs';
 import { createToolRunner } from './tools.mjs';
+import { preflight, requestId, isNotification, negotiatedProtocolVersion } from './preflight.mjs';
 
 const STATELESS_SESSION_KEY = 'mcp-stateless';
 
-function rpcError(res, status, code, message) {
-  res.status(status).json({ jsonrpc: '2.0', error: { code, message }, id: null });
+function rpcError(res, status, code, message, id = null) {
+  res.status(status).json({ jsonrpc: '2.0', error: { code, message }, id });
 }
 
 /**
@@ -87,17 +88,24 @@ export function createApp({ config, skills, version, log }) {
 
   app.use('/mcp', bearerAuth(config.authToken));
 
-  app.post('/mcp', express.json({ limit: '4mb' }), async (req, res) => {
+  app.post('/mcp', express.json({ limit: '4mb', strict: false }), async (req, res) => {
+    const reject = (status, code, message) => isNotification(req.body)
+      ? res.status(status).end()
+      : rpcError(res, status, code, message, requestId(req.body));
     const sid = req.get('mcp-session-id');
+    const session = sid ? registry.get(sid) : undefined;
+    // A session's negotiated version wins, so a forged header cannot reopen batching.
+    const protocolVersion = session?.protocolVersion || req.get('mcp-protocol-version') || DEFAULT_NEGOTIATED_PROTOCOL_VERSION;
+    const invalid = preflight(req.body, protocolVersion);
+    if (invalid) return reject(400, invalid.code, invalid.message);
     if (sid) {
-      const entry = registry.get(sid);
-      if (!entry) return rpcError(res, 404, -32001, 'Session not found');
-      res.on('close', registry.begin(entry));
-      return entry.transport.handleRequest(req, res, req.body);
+      if (!session) return reject(404, -32001, 'Session not found');
+      res.on('close', registry.begin(session));
+      return session.transport.handleRequest(req, res, req.body);
     }
 
     const identity = resolveIdentity(req, config, newSessionKey);
-    if ('error' in identity) return rpcError(res, 400, -32602, identity.error);
+    if ('error' in identity) return reject(400, -32602, identity.error);
 
     const body = req.body;
     const isInit = Array.isArray(body) ? body.some(isInitializeRequest) : isInitializeRequest(body);
@@ -116,8 +124,9 @@ export function createApp({ config, skills, version, log }) {
     }
 
     if (registry.size >= config.maxSessions) {
-      return rpcError(res, 503, -32000, 'Too many MCP sessions. Close one or wait for idle sessions to expire.');
+      return reject(503, -32000, 'Too many MCP sessions. Close one or wait for idle sessions to expire.');
     }
+    const init = Array.isArray(body) ? body.find(isInitializeRequest) : body;
     /** @type {import('./sessions.mjs').SessionEntry} */
     const entry = {
       id: '',
@@ -126,6 +135,7 @@ export function createApp({ config, skills, version, log }) {
       userId: identity.userId,
       sessionKey: identity.sessionKey,
       ownsSessionKey: !identity.explicitSessionKey,
+      protocolVersion: negotiatedProtocolVersion(init.params.protocolVersion),
       lastSeen: Date.now(),
       inflight: 0,
     };

@@ -10,6 +10,9 @@ const browserSchema = z.looseObject({
   maxTabsGlobal: z.number().catch(50),
   sessionTimeoutMinutes: z.number().catch(10),
   browserIdleTimeoutMinutes: z.number().catch(5),
+  // Preserve raw new settings so action/runtime validation cannot silently reset them.
+  tabInactivityMinutes: z.unknown().optional(),
+  mcpSessionIdleMinutes: z.unknown().optional(),
   crashReports: z.boolean().catch(false),
 })
 

@@ -2,38 +2,27 @@
  * Check tool arguments against a tool's JSON Schema (the small subset these
  * tools use) and return a clean copy. MCP's low-level server does not validate,
  * and the upstream request builders spread arguments into URLs and bodies.
- * Unknown properties are dropped. Numeric and boolean strings are coerced,
- * because some clients send every value as a string.
+ * Unknown properties are dropped. Values must have their advertised JSON types.
  *
  * @param {{properties: Record<string, any>, required?: string[]}} schema
  * @param {unknown} rawArgs
  * @returns {{args: Record<string, any>} | {error: string}}
  */
 export function validateArgs(schema, rawArgs) {
-  if (rawArgs == null) rawArgs = {};
-  if (typeof rawArgs !== 'object' || Array.isArray(rawArgs)) return { error: 'Arguments must be an object.' };
+  if (rawArgs === undefined) rawArgs = {};
+  if (rawArgs === null || typeof rawArgs !== 'object' || Array.isArray(rawArgs)) return { error: 'Arguments must be an object.' };
   const input = /** @type {Record<string, unknown>} */ (rawArgs);
   const args = {};
   for (const [key, prop] of Object.entries(schema.properties)) {
-    let value = input[key];
-    if (value === undefined || value === null) continue;
+    const value = input[key];
+    if (value === undefined) continue;
     if (prop.type === 'number') {
-      if (typeof value === 'string' && value.trim() !== '' && Number.isFinite(Number(value))) value = Number(value);
       if (typeof value !== 'number' || !Number.isFinite(value)) return { error: `"${key}" must be a number.` };
     } else if (prop.type === 'boolean') {
-      if (value === 'true') value = true;
-      else if (value === 'false') value = false;
       if (typeof value !== 'boolean') return { error: `"${key}" must be true or false.` };
     } else if (prop.type === 'string') {
       if (typeof value !== 'string') return { error: `"${key}" must be a string.` };
     } else if (prop.type === 'object') {
-      if (typeof value === 'string') {
-        try {
-          value = JSON.parse(value);
-        } catch {
-          // Reported below.
-        }
-      }
       if (typeof value !== 'object' || value === null || Array.isArray(value)) {
         return { error: `"${key}" must be an object.` };
       }

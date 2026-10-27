@@ -1,5 +1,9 @@
 {
   "name": "camofox-browser-startos",
+  "scripts": {
+    "test": "node --test tests/*.test.mjs",
+    "check": "node node_modules/typescript/bin/tsc --noEmit && node node_modules/@start9labs/start-sdk/lint.mjs"
+  },
   "dependencies": {
     "@start9labs/start-sdk": "3.1.1"
   },
