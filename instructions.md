@@ -20,11 +20,14 @@ Camofox Browser gives your AI agents a stealth web browser that runs on your ser
 ## Getting set up
 
 1. Start the service.
-2. Run the **Connection Info** action. It shows the REST and MCP addresses and your API key. It also shows setup text for Claude Code, Codex, Hermes Agent, and OpenClaw.
-3. Copy the setup text for your agent client. Paste it into your client. Put the API key in an environment variable, not in a chat.
-4. Ask your agent to open a web page and describe it. If it answers, the connection works.
-5. Optional but recommended. Run **Browser Settings** and set the locale and the time zone. Choose values that match the place of your internet address. Sites then see a consistent browser. StartOS shows a prompt for this until you do it.
-6. Optional. Run **Proxy Settings** if the browser must use a proxy. Most home servers do not need one.
+2. Run **Regenerate API Key**. Copy the proposed key from the masked form before you submit it. The completed action does not show the key again.
+3. Run **Connection Info**. It shows the REST and MCP addresses and setup text for Claude Code, Codex, Hermes Agent, and OpenClaw. The setup text contains a placeholder, not the key.
+4. Copy the setup text for your agent client. Replace the placeholder with the API key you copied. Put the key in an environment variable, not in a chat.
+5. Ask your agent to open a web page and describe it. If it answers, the connection works.
+6. Optional but recommended. Run **Browser Settings** and set the locale and the time zone. Choose values that match the place of your internet address. Sites then see a consistent browser. StartOS shows a prompt for this until you do it.
+7. Optional. Run **Proxy Settings** if the browser must use a proxy. Most home servers do not need one.
+
+If you lose the API key, run **Regenerate API Key** again, copy the proposed key before submitting, and update every client.
 
 ## Using Camofox Browser
 
@@ -32,9 +35,9 @@ Camofox Browser gives your AI agents a stealth web browser that runs on your ser
 
 Use this for sites that need a password, MFA, or a CAPTCHA. Your agent never sees your password.
 
-1. Run **Enable Interactive Login**. The service restarts. The action shows an address and a password.
+1. Run **Enable Interactive Login**. Copy the proposed VNC password from the masked form before you submit it. The service restarts, and the completed action shows the noVNC address but not the password.
 2. Ask your agent to open the login page of the site.
-3. Open the address in your web browser. Enter the password. You see the browser of your agent.
+3. Open the address in your web browser. Enter the password you copied. You see the browser of your agent.
 4. Sign in to the site in that window. Complete MFA or the CAPTCHA.
 5. Tell your agent that you are done. Ask it to check that the login worked.
 6. Run **Disable Interactive Login**. The saved login stays.
@@ -50,7 +53,7 @@ Anyone who has the address and the password can control the browser. Keep Intera
 
 ### Keys and saved data
 
-- **Regenerate API Key.** Run it if the key is no longer secret. The old key stops working. Update every client with the new key.
+- **Regenerate API Key.** Run it if the key is no longer secret or you lost your copy. Copy the proposed key before submitting. The old key stops working, and the completed action does not show the new key. Update every client with the key you copied.
 - **Reset Browser Profiles.** StartOS offers this action only while the service is stopped. It deletes all saved logins and cookie files. You cannot undo it.
 
 ### Use the skills

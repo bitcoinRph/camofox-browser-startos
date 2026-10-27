@@ -36,20 +36,20 @@ This package wraps the pinned upstream image without a code change. It adds an M
 
 The package builds one image on top of the upstream image. The upstream image is pinned by tag and index digest in `Dockerfile`. The package adds two folders and changes nothing else in the image.
 
-| What | Value |
-|---|---|
-| Image source | Upstream image plus `COPY gateway/ /app/gateway/` and `COPY skills/ /opt/camofox/skills/` |
-| Architectures | x86_64, aarch64 |
-| Entrypoint | Custom. The daemons below replace the upstream `CMD`. |
-| User | root, as in the upstream image |
+| What          | Value                                                                                     |
+| ------------- | ----------------------------------------------------------------------------------------- |
+| Image source  | Upstream image plus `COPY gateway/ /app/gateway/` and `COPY skills/ /opt/camofox/skills/` |
+| Architectures | x86_64, aarch64                                                                           |
+| Entrypoint    | Custom. The daemons below replace the upstream `CMD`.                                     |
+| User          | root, as in the upstream image                                                            |
 
 The package runs one subcontainer, named `camofox-sub`. All processes below run in it.
 
-| Process | Kind | What it runs |
-|---|---|---|
-| `data-dirs` | oneshot | `mkdir -p` for the four data folders on every start |
-| `camofox` | daemon | `node --max-old-space-size=256 server.js` in `/app`. Node runs as the main process, so a stop signal reaches it. Camofox then saves open profiles. |
-| `mcp-gateway` | daemon | `node /app/gateway/server.mjs`. It starts after `camofox`. |
+| Process       | Kind    | What it runs                                                                                                                                       |
+| ------------- | ------- | -------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `data-dirs`   | oneshot | `mkdir -p` for the four data folders on every start                                                                                                |
+| `camofox`     | daemon  | `node --max-old-space-size=256 server.js` in `/app`. Node runs as the main process, so a stop signal reaches it. Camofox then saves open profiles. |
+| `mcp-gateway` | daemon  | `node /app/gateway/server.mjs`. It starts after `camofox`.                                                                                         |
 
 To look inside, run `start-cli package attach camofox-browser -n camofox-sub`.
 
@@ -61,19 +61,19 @@ The skills folder is part of the image. It is read-only and is not on the volume
 
 The package uses two volumes. Only `main` is mounted in the subcontainer.
 
-| Volume | Mount point | Content |
-|---|---|---|
-| `main` | `/data` | All Camofox data |
-| `startos` | none | `store.json`, the StartOS settings |
+| Volume    | Mount point | Content                            |
+| --------- | ----------- | ---------------------------------- |
+| `main`    | `/data`     | All Camofox data                   |
+| `startos` | none        | `store.json`, the StartOS settings |
 
 Folders in `/data`:
 
-| Folder | Content |
-|---|---|
+| Folder      | Content                                                                                                                        |
+| ----------- | ------------------------------------------------------------------------------------------------------------------------------ |
 | `profiles/` | One folder for each `userId`, named by a hash of the `userId`. Each holds `storage_state.json` with cookies and local storage. |
-| `cookies/` | Bootstrap cookie files. `camofox_import_cookies` with `cookiesPath` reads files here. |
-| `uploads/` | The only folder from which the upload route accepts files. |
-| `traces/` | Optional Playwright trace files. Camofox deletes old traces. |
+| `cookies/`  | Bootstrap cookie files. `camofox_import_cookies` with `cookiesPath` reads files here.                                          |
+| `uploads/`  | The only folder from which the upload route accepts files.                                                                     |
+| `traces/`   | Optional Playwright trace files. Camofox deletes old traces.                                                                   |
 
 Camofox saves a profile when a session closes, when a session times out, when cookies are imported, and when the service stops. A login in an open session is not on disk until one of these events happens.
 
@@ -83,12 +83,12 @@ The database is not used. There is no SQL service.
 
 The package owns one file, `store.json` on the `startos` volume. It holds StartOS state, not upstream configuration. The package writes no other configuration file.
 
-| Key | Seeded by | Written by | Hand edit |
-|---|---|---|---|
-| `apiKey` | Install. A random 48-character key. | `Regenerate API Key` | Survives. The service restarts and uses the new value. |
-| `browser` | Defaults at install | `Browser Settings` | Survives. The service restarts. |
-| `proxy` | Defaults at install. The proxy is off. | `Proxy Settings` | Survives. The proxy applies only when `enabled` is true and `host` is set. |
-| `interactive` | Defaults at install. It is off. | `Enable Interactive Login` and `Disable Interactive Login` | Survives. No action sets `resolution`. It stays at its default. |
+| Key           | Seeded by                              | Written by                                                 | Hand edit                                                                  |
+| ------------- | -------------------------------------- | ---------------------------------------------------------- | -------------------------------------------------------------------------- |
+| `apiKey`      | Install. A random 48-character key.    | `Regenerate API Key`                                       | Survives. The service restarts and uses the new value.                     |
+| `browser`     | Defaults at install                    | `Browser Settings`                                         | Survives. The service restarts.                                            |
+| `proxy`       | Defaults at install. The proxy is off. | `Proxy Settings`                                           | Survives. The proxy applies only when `enabled` is true and `host` is set. |
+| `interactive` | Defaults at install. It is off.        | `Enable Interactive Login` and `Disable Interactive Login` | Survives. No action sets `resolution`. It stays at its default.            |
 
 Use the actions. A hand edit works, but an action overwrites the same keys. Unknown keys in the file stay.
 
@@ -110,11 +110,11 @@ None.
 
 The package exposes two API interfaces. A third interface, for noVNC, exists only while Interactive Login is on.
 
-| Interface id | Type | Port | Protocol | Purpose |
-|---|---|---|---|---|
-| `api` | api | 9377 | HTTP | The Camofox REST API |
-| `mcp` | api | 9378 | HTTP | The MCP server. The path is `/mcp` (Streamable HTTP). |
-| `vnc` | ui | 6080 | HTTP | The noVNC page. The path is `/vnc.html`. |
+| Interface id | Type | Port | Protocol | Purpose                                               |
+| ------------ | ---- | ---- | -------- | ----------------------------------------------------- |
+| `api`        | api  | 9377 | HTTP     | The Camofox REST API                                  |
+| `mcp`        | api  | 9378 | HTTP     | The MCP server. The path is `/mcp` (Streamable HTTP). |
+| `vnc`        | ui   | 6080 | HTTP     | The noVNC page. The path is `/vnc.html`.              |
 
 The preferred external port of each interface equals its internal port. Services on the same server usually reach the API at `http://10.0.3.1:9377` and MCP at `http://10.0.3.1:9378/mcp`. The assigned port can differ.
 
@@ -138,29 +138,29 @@ Setup differs from upstream in these points. Nothing here blocks the first start
 - The browser itself starts at the first request and stops after the browser idle timeout. The first request after an idle period is slower.
 - Interactive Login is off. Telemetry is off. The proxy is off.
 - Install raises one optional task for the browser locale and time zone.
-- A client needs the API key and the URL. Run `Connection Info` to get them. The action also gives ready setup text for each supported client.
+- A client needs the API key and the URL. Run `Regenerate API Key`, copy the proposed key before submitting, and then run `Connection Info` for addresses and credential-free setup text.
 
 Order to respect: turn on Interactive Login before an agent opens the tabs that the user must see. The change restarts the service and closes open tabs.
 
 ## Actions
 
-All six actions are user-facing. The package has no hidden action. The OS shows the name, description, and warning of each action. This section gives what they do not show.
+All seven actions are user-facing. The package has no hidden action. The OS shows the name, description, and warning of each action. This section gives what they do not show.
 
 ### Connection Info
 
-- **When to run it:** Before you connect a client, and when you forget the key or an address.
+- **When to run it:** Before you connect a client or when you need an address.
 - **What it changes:** Nothing.
 - **Cost:** Instant. It does not interrupt the service.
 - **Repeat safety:** Safe.
-- **Outputs:** Every non-local REST and MCP address. The same-server addresses (`http://10.0.3.1:<port>`). The API key, masked and copyable. The noVNC address and VNC password while Interactive Login is on. Setup text for Claude Code, Codex, Hermes Agent, and OpenClaw. The setup text is masked and holds the real key.
+- **Outputs:** Every non-local REST and MCP address. The same-server addresses (`http://10.0.3.1:<port>`). The noVNC address while Interactive Login is on. Credential-free setup text for Claude Code, Codex, Hermes Agent, and OpenClaw. Insert the key copied from `Regenerate API Key` where the placeholder appears.
 
 ### Regenerate API Key
 
-- **When to run it:** When the key leaks, or when a person who knew the key must lose access.
+- **When to run it:** Before first client setup, when the key leaks, when you lose your copy, or when a person who knew the key must lose access.
 - **What it changes:** `apiKey` in `store.json`.
 - **Cost:** The service restarts. Open tabs close. Camofox saves the profiles when it stops.
-- **Repeat safety:** Each run replaces the key again. Every client must then use the newest key.
-- **Outputs:** The new key.
+- **Repeat safety:** Each run replaces the key again. Copy the proposed key from the masked form before submitting. Every client must then use the newest key.
+- **Outputs:** A non-secret confirmation only. The action result never returns the key.
 
 ### Browser Settings
 
@@ -180,13 +180,13 @@ All six actions are user-facing. The package has no hidden action. The OS shows 
 
 ### Enable Interactive Login and Disable Interactive Login
 
-These two names belong to one action. It shows the name that applies to the current state.
+These are separate actions. StartOS shows only the action that applies to the current state.
 
 - **When to run it:** Enable it when a person must sign in, pass MFA, or solve a CAPTCHA. Disable it when that work is done.
-- **What it changes:** `interactive` in `store.json`. Enable creates a new 8-character VNC password. Disable removes it. The `vnc` interface exists only while the feature is on.
+- **What it changes:** `interactive` in `store.json`. Enable saves the 8-character VNC password entered in the masked form. Disable removes it. The `vnc` interface exists only while the feature is on.
 - **Cost:** The service restarts each time. Open tabs close. Saved cookies stay on disk.
-- **Repeat safety:** The action toggles. Each Enable run makes a new password.
-- **Outputs:** On Enable, the noVNC address and the VNC password.
+- **Repeat safety:** Enable is available only while the feature is off. Disable is available only while it is on. Copy the proposed password before submitting Enable.
+- **Outputs:** Enable returns the noVNC address and a non-secret confirmation. It never returns the VNC password.
 
 ### Reset Browser Profiles
 
@@ -199,8 +199,8 @@ These two names belong to one action. It shows the name that applies to the curr
 
 The package creates one task.
 
-| Task | Action | Severity |
-|---|---|---|
+| Task                                                          | Action             | Severity |
+| ------------------------------------------------------------- | ------------------ | -------- |
 | Match the browser locale and time zone to the server location | `browser-settings` | optional |
 
 - **What raises it:** Every init finds the locale or the time zone unset in `store.json`.
@@ -213,11 +213,11 @@ The package creates no dependency task.
 
 The package has three checks. The first two are daemon checks.
 
-| Id | Display name | What it probes | Grace period |
-|---|---|---|---|
-| `camofox` | REST API | `GET http://127.0.0.1:9377/health` returns HTTP 200 | 60 seconds |
-| `mcp-gateway` | MCP Server | `GET http://127.0.0.1:9378/healthz` returns HTTP 200 | 30 seconds |
-| `novnc` | Interactive Login | Port 6080 accepts connections. It exists only while Interactive Login is on. | 60 seconds |
+| Id            | Display name      | What it probes                                                               | Grace period |
+| ------------- | ----------------- | ---------------------------------------------------------------------------- | ------------ |
+| `camofox`     | REST API          | `GET http://127.0.0.1:9377/health` returns HTTP 200                          | 60 seconds   |
+| `mcp-gateway` | MCP Server        | `GET http://127.0.0.1:9378/healthz` returns HTTP 200                         | 30 seconds   |
+| `novnc`       | Interactive Login | Port 6080 accepts connections. It exists only while Interactive Login is on. | 60 seconds   |
 
 What a failure means:
 
@@ -317,7 +317,8 @@ actions:
   - regenerate-api-key
   - browser-settings
   - proxy-settings
-  - interactive-login
+  - enable-interactive-login
+  - disable-interactive-login
   - reset-browser-profiles
 tasks:
   - { action: browser-settings, severity: optional }
