@@ -13,7 +13,6 @@ import {
   imagesResult,
   downloadsResult,
   errorResult,
-  text,
 } from './results.mjs';
 
 const MAX_COOKIE_FILE_BYTES = 5 * 1024 * 1024;
@@ -75,7 +74,6 @@ function buildSpec(name, a, ctx) {
     case 'camofox_press':
       return post(`${tab}/press`, { key: a.key });
     case 'camofox_select': {
-      if (!a.ref && !a.selector) throw new Error('Give "ref" or "selector".');
       return post(`${tab}/select`, { ref: a.ref, selector: a.selector, option: a.option });
     }
     case 'camofox_back':
@@ -214,13 +212,16 @@ export function createToolRunner(config) {
     if (!def) throw new McpError(ErrorCode.InvalidParams, `Unknown tool: ${name}`);
     const checked = validateArgs(def.inputSchema, rawArgs);
     if ('error' in checked) throw new McpError(ErrorCode.InvalidParams, `Invalid arguments: ${checked.error}`);
+    const a = checked.args;
+    if (name === 'camofox_navigate' && !a.url && !a.macro) {
+      throw new McpError(ErrorCode.InvalidParams, 'Invalid arguments: give "url" or "macro".');
+    }
+    if (name === 'camofox_select' && !a.ref && !a.selector) {
+      throw new McpError(ErrorCode.InvalidParams, 'Invalid arguments: give "ref" or "selector".');
+    }
     try {
-      const a = checked.args;
       if (name === 'camofox_import_cookies') return await importCookies(a, ctx);
       if (name === 'camofox_status') return await status(ctx);
-      if (name === 'camofox_navigate' && !a.url && !a.macro) {
-        return { isError: true, content: [text('Invalid arguments: give "url" or "macro".')] };
-      }
 
       const spec = buildSpec(name, a, ctx);
       const payload = await fetchSpec(config.baseUrl, spec, config);

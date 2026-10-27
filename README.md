@@ -273,6 +273,8 @@ This section lists what differs from upstream, and then what does not work or is
 
 Differences from upstream:
 
+The P1 gateway no longer converts schema-invalid argument values. String numbers, string booleans, and invalid explicit `null` values return `-32602` without REST requests.
+
 1. Telemetry is off by default. Upstream turns crash and hang reports on. Turn them on in `Browser Settings`.
 2. MCP uses HTTP. Upstream ships a standard-input MCP adapter that each client starts. This package serves one HTTP endpoint with a Bearer key.
 3. Interactive Login is a switch. Upstream has the VNC plugin off unless you set environment variables. Here the action sets them, creates a password, and adds the `vnc` interface.

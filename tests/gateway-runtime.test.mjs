@@ -42,8 +42,11 @@ async function harness(t, stateful, ownsSessionKey = false, protocolVersion = '2
   async function post(body, raw = false) {
     const res = await fetch(url, { method: 'POST', headers, body: raw ? body : JSON.stringify(body) });
     const text = await res.text();
-    const data = text.startsWith('event:') || text.startsWith('data:')
-      ? JSON.parse(text.split('\n').find((line) => line.startsWith('data:')).slice(5))
+    const events = text.startsWith('event:') || text.startsWith('data:')
+      ? text.split('\n').filter((line) => line.startsWith('data:')).map((line) => JSON.parse(line.slice(5)))
+      : undefined;
+    const data = events
+      ? events.length === 1 ? events[0] : events
       : text ? JSON.parse(text) : undefined;
     return { status: res.status, data, text, headers: res.headers };
   }
@@ -90,6 +93,26 @@ for (const stateful of [false, true]) {
     assert.equal(result.id, 'legacy');
     assert.equal(h.calls.length, 0);
     assert.equal(h.dispatches(), 1);
+  });
+  test(`${mode}: legacy batches reject unknown tools and schema-invalid arguments without REST dispatch`, async (t) => {
+    const h = await harness(t, stateful, false, '2025-03-26');
+    if (!stateful) delete h.headers['mcp-protocol-version'];
+    const reply = await h.post([
+      { jsonrpc: '2.0', id: 'unknown', method: 'tools/call', params: { name: 'no_such_tool' } },
+      { jsonrpc: '2.0', id: 'invalid', method: 'tools/call', params: {
+        name: 'camofox_snapshot', arguments: { tabId: 'tab-1', offset: '12' },
+      } },
+    ]);
+    assert.equal(reply.status, 200);
+    assert.ok(Array.isArray(reply.data), JSON.stringify(reply.data));
+    assert.equal(reply.data.length, 2);
+    const replies = new Map(reply.data.map((item) => [item.id, item]));
+    for (const id of ['unknown', 'invalid']) {
+      assert.equal(replies.get(id)?.error?.code, -32602, id);
+      assert.equal(replies.get(id)?.result, undefined);
+    }
+    assert.equal(h.calls.length, 0);
+    assert.equal(h.dispatches(), 1, 'legacy batches remain SDK-owned');
   });
   if (stateful) test('negotiated MCP 2025-06-18 does not allow a forged legacy batch header', async (t) => {
     const h = await harness(t, true);
@@ -171,14 +194,43 @@ for (const stateful of [false, true]) {
       assert.equal(h.calls.length, 0);
     }
   });
+  test(`${mode}: navigate without URL or macro is InvalidParams without REST dispatch`, async (t) => {
+    const h = await harness(t, stateful);
+    const reply = await h.post({ jsonrpc: '2.0', id: 'navigate-target', method: 'tools/call', params: {
+      name: 'camofox_navigate', arguments: { tabId: 'tab-1' },
+    } });
+    assert.equal(reply.data?.error?.code, -32602);
+    assert.equal(reply.data.id, 'navigate-target');
+    assert.equal(reply.data.result, undefined);
+    assert.equal(h.calls.length, 0);
+  });
+  test(`${mode}: select without ref or selector is InvalidParams without REST dispatch`, async (t) => {
+    const h = await harness(t, stateful);
+    const reply = await h.post({ jsonrpc: '2.0', id: 'select-target', method: 'tools/call', params: {
+      name: 'camofox_select', arguments: { tabId: 'tab-1', option: 'value' },
+    } });
+    assert.equal(reply.data?.error?.code, -32602);
+    assert.equal(reply.data.id, 'select-target');
+    assert.equal(reply.data.result, undefined);
+    assert.equal(h.calls.length, 0);
+  });
   test(`${mode}: execution failures remain result.isError after real REST dispatch`, async (t) => {
     const h = await harness(t, stateful);
-    const reply = await h.post({ jsonrpc: '2.0', id: 'execution', method: 'tools/call', params: { name: 'camofox_create_tab', arguments: { url: 'https://example.com' } } });
-    assert.equal(reply.data.error, undefined);
-    assert.equal(reply.data.result.isError, true);
-    assert.equal(reply.data.id, 'execution');
-    assert.equal(h.calls.length, 1);
-    assert.equal(h.calls[0].url, '/tabs');
+    for (const [name, args, path] of [
+      ['camofox_create_tab', { url: 'https://example.com' }, '/tabs'],
+      ['camofox_navigate', { tabId: 'tab-1', url: 'https://example.com' }, '/tabs/tab-1/navigate'],
+      ['camofox_navigate', { tabId: 'tab-1', macro: '@google_search', query: 'test' }, '/tabs/tab-1/navigate'],
+      ['camofox_select', { tabId: 'tab-1', ref: 'e1', option: 'value' }, '/tabs/tab-1/select'],
+      ['camofox_select', { tabId: 'tab-1', selector: 'select', option: 'value' }, '/tabs/tab-1/select'],
+    ]) {
+      const before = h.calls.length;
+      const reply = await h.post({ jsonrpc: '2.0', id: 'execution', method: 'tools/call', params: { name, arguments: args } });
+      assert.equal(reply.data.error, undefined);
+      assert.equal(reply.data.result.isError, true);
+      assert.equal(reply.data.id, 'execution');
+      assert.equal(h.calls.length, before + 1);
+      assert.equal(h.calls[before].url, path);
+    }
   });
   test(`${mode}: malformed tools/call params never reach the SDK or REST`, async (t) => {
     const h = await harness(t, stateful);
