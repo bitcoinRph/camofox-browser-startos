@@ -54,8 +54,6 @@ const dict = {
   'The most tabs that one session can have open.': 45,
   'Maximum Tabs in Total': 46,
   'The most tabs that all sessions can have open together.': 47,
-  'Session Timeout': 48,
-  'Close a session after this time. Saved cookies stay on disk.': 49,
   minutes: 50,
   'Browser Idle Timeout': 51,
   'Stop the browser process after this time with no sessions. This frees memory.': 52,
