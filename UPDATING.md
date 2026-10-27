@@ -27,6 +27,14 @@ docker buildx imagetools inspect ghcr.io/jo-inc/camofox-browser:<tag>
 
 Copy the top-level `Digest` line. The `Manifests` list below it must show `linux/amd64` and `linux/arm64`. If the tag lacks one of them, do not bump. The manifest builds both architectures.
 
+## Wrapper P1 preparation
+
+Read `PATCHES.md` before any image change. Revision `1.18.1:2` contains wrapper-only gateway and timeout changes. The Docker digest remains unchanged. It does not include upstream engine fixes.
+
+Preserve `startos/versions/previous.ts` and its version-graph entry. The prepared revision supports no-write upgrade and downgrade to `1.18.1:1`. Additive timeout settings do not require store migration. The older wrapper ignores them and restores its previous timeout defaults.
+
+Run `npm test` and `npm run check` before packaging. See `tests/README.md` for dependencies. Builds, image publication, installation, and live probes require separate approval.
+
 ## Applying the bump
 
 1. Edit the `FROM` line in `Dockerfile`. Set the new tag and the new index digest. Keep both.
@@ -45,4 +53,4 @@ What to re-check on every bump:
 - **Auth.** Check `lib/auth.js`. The package relies on one key that works on every route. Check that `POST /stop` still needs an admin key.
 - **Search macros.** Compare `lib/macros.js` with the macro list in `skills/camofox-stealth-browsing/SKILL.md`. The gateway adds `@reddit_subreddit` by hand when the upstream enum lacks it.
 - **Skills.** Read the five skills in `skills/` against the new README and routes. Fix any tool name, route, limit, or default that changed.
-- **Image contents.** Check that the image still holds `express` and `@modelcontextprotocol/sdk` in `/app/node_modules`. The gateway needs both.
+- **Image contents.** Check that the image still holds `express` and `@modelcontextprotocol/sdk` in `/app/node_modules`. The gateway needs both. Verify SDK exports `CallToolRequestParamsSchema`, `JSONRPCMessageSchema`, `McpError`, `ErrorCode`, `DEFAULT_NEGOTIATED_PROTOCOL_VERSION`, `SUPPORTED_PROTOCOL_VERSIONS`, and `LATEST_PROTOCOL_VERSION`. A missing export prevents gateway startup. Recheck protocol negotiation against the SDK initialize handler.

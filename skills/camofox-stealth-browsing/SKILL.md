@@ -99,7 +99,7 @@ Each cut keeps the last 5000 characters of the page. These characters hold the p
 
 - Close each tab when you finish with it.
 - Keep few tabs open. The server has a limit for each identity and a global limit. At the limit, the server closes the oldest tab to make room. The old `tabId` then returns 404.
-- A tab that is idle for a long time closes by itself. A session with no calls closes after the session timeout. The default is 10 minutes.
+- Tab inactivity defaults to 5 minutes without tab tool activity. Browser-session API inactivity defaults to 10 minutes. Stateful MCP inactivity defaults to 30 minutes. These timers are independent. Activity on other tabs does not protect an idle tab.
 - After `404 Tab not found`, `410`, or `503` with `retryable: true`, open a new tab. Do not reuse the old `tabId`.
 - Do not run many parallel requests for one identity. The server limits requests for each identity.
 - Call `camofox_close_session` when a task ends and you do not need the browser state. This also saves the profile of that identity. Other clients with the same `userId` lose their tabs.

@@ -1,5 +1,6 @@
 import { TOOLS, TOOL_BY_NAME } from './tool-defs.mjs';
 import { validateArgs } from './args.mjs';
+import { McpError, ErrorCode } from '@modelcontextprotocol/sdk/types.js';
 import {
   buildRequest,
   buildCookieRequest,
@@ -203,17 +204,17 @@ export function createToolRunner(config) {
   }
 
   /**
-   * Run one tool call and return an MCP tool result. Never throws.
+   * Reject protocol mistakes before execution. Execution errors are tool results.
    * @param {string} name
    * @param {unknown} rawArgs
    * @param {CallContext} ctx
    */
   async function callTool(name, rawArgs, ctx) {
     const def = TOOL_BY_NAME.get(name);
-    if (!def) return { isError: true, content: [text(`Unknown tool: ${name}`)] };
+    if (!def) throw new McpError(ErrorCode.InvalidParams, `Unknown tool: ${name}`);
+    const checked = validateArgs(def.inputSchema, rawArgs);
+    if ('error' in checked) throw new McpError(ErrorCode.InvalidParams, `Invalid arguments: ${checked.error}`);
     try {
-      const checked = validateArgs(def.inputSchema, rawArgs);
-      if ('error' in checked) return { isError: true, content: [text(`Invalid arguments: ${checked.error}`)] };
       const a = checked.args;
       if (name === 'camofox_import_cookies') return await importCookies(a, ctx);
       if (name === 'camofox_status') return await status(ctx);

@@ -8,6 +8,7 @@
  * @property {string} userId
  * @property {string} sessionKey
  * @property {boolean} ownsSessionKey - True when the gateway made the key, so no one else can reach its tabs.
+ * @property {string} protocolVersion - MCP version the initialize handler negotiated for this session.
  * @property {number} lastSeen
  * @property {number} inflight - POST requests being handled now.
  */

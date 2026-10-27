@@ -94,11 +94,11 @@ Use the actions. A hand edit works, but an action overwrites the same keys. Unkn
 
 Camofox reads its settings from environment variables on every start. The package sets these variables from `store.json`. A change to a setting therefore restarts the service. Do not set these variables by hand.
 
-- Camofox: `NODE_ENV`, `CAMOFOX_PORT`, `HOME`, `CAMOFOX_ACCESS_KEY`, `CAMOFOX_API_KEY`, `CAMOFOX_PROFILE_DIR`, `CAMOFOX_COOKIES_DIR`, `CAMOFOX_UPLOADS_DIR`, `CAMOFOX_TRACES_DIR`, `CAMOFOX_CRASH_REPORT_ENABLED`, `MAX_SESSIONS`, `MAX_TABS_PER_SESSION`, `MAX_TABS_GLOBAL`, `SESSION_TIMEOUT_MS`, `BROWSER_IDLE_TIMEOUT_MS`
+- Camofox: `NODE_ENV`, `CAMOFOX_PORT`, `HOME`, `CAMOFOX_ACCESS_KEY`, `CAMOFOX_API_KEY`, `CAMOFOX_PROFILE_DIR`, `CAMOFOX_COOKIES_DIR`, `CAMOFOX_UPLOADS_DIR`, `CAMOFOX_TRACES_DIR`, `CAMOFOX_CRASH_REPORT_ENABLED`, `MAX_SESSIONS`, `MAX_TABS_PER_SESSION`, `MAX_TABS_GLOBAL`, `SESSION_TIMEOUT_MS`, `TAB_INACTIVITY_MS`, `BROWSER_IDLE_TIMEOUT_MS`
 - Only when both locale and time zone are set: `CAMOFOX_LOCALE`, `CAMOFOX_TIMEZONE`
 - Only when the proxy is on: `PROXY_PROTOCOL`, `PROXY_HOST`, `PROXY_PORT`, `PROXY_USERNAME`, `PROXY_PASSWORD`
 - Only when Interactive Login is on: `ENABLE_VNC`, `VNC_PASSWORD`, `VNC_BIND`, `NOVNC_PORT`, `VNC_RESOLUTION`
-- Gateway: `MCP_PORT`, `MCP_BIND`, `CAMOFOX_BASE_URL`, `CAMOFOX_ACCESS_KEY`, `CAMOFOX_API_KEY`, `MCP_AUTH_TOKEN`, `CAMOFOX_SKILLS_DIR`, `CAMOFOX_DEFAULT_USER_ID`, `CAMOFOX_NOVNC_ENABLED`
+- Gateway: `MCP_PORT`, `MCP_BIND`, `MCP_SESSION_IDLE_MS`, `CAMOFOX_BASE_URL`, `CAMOFOX_ACCESS_KEY`, `CAMOFOX_API_KEY`, `MCP_AUTH_TOKEN`, `CAMOFOX_SKILLS_DIR`, `CAMOFOX_DEFAULT_USER_ID`, `CAMOFOX_NOVNC_ENABLED`
 
 Upstream also has `camofox.config.json` inside the image. The package does not change it.
 
@@ -170,6 +170,37 @@ All seven actions are user-facing. The package has no hidden action. The OS show
 - **Repeat safety:** Safe. The same input gives the same result.
 - **What happens next:** The optional task for the locale and time zone clears when both values are set.
 
+### Timeout Scopes
+
+Each timer has a separate scope. Increasing one timer does not increase the others.
+
+| Browser Settings field | Environment variable | Default | Scope |
+| --- | --- | --- | --- |
+| Browser Session Timeout | `SESSION_TIMEOUT_MS` | 10 minutes | API inactivity for one browser identity. Closes its context and tabs. Saved profiles remain. |
+| Tab Inactivity Timeout | `TAB_INACTIVITY_MS` | 5 minutes | No tool activity on that tab. Other tabs do not refresh it. |
+| Browser Idle Timeout | `BROWSER_IDLE_TIMEOUT_MS` | 5 minutes | Stops the browser process after all browser sessions close. |
+| MCP Session Idle Timeout | `MCP_SESSION_IDLE_MS` | 30 minutes | Expires an idle stateful MCP transport, not the browser identity. Active POST requests prevent expiry. |
+
+Tab expiry follows upstream tool-call activity, checked approximately once each minute. The tab reaper can also close an empty browser session.
+
+MCP discovery calls keep only the MCP connection active. They do not keep browser sessions or tabs active.
+
+Stateless requests create no MCP transport session. Their tab group remains subject to browser-session and tab expiry.
+
+Gateway-owned tab groups close when their MCP session expires. Explicit `X-Camofox-Session` groups remain subject to upstream cleanup.
+
+noVNC input does not count as API or tab-tool activity. A longer browser-session timer alone does not protect an inactive tab.
+
+Set both idle fields with whole minutes from 1 to 1440. The action validates them before saving.
+
+Runtime validation rejects malformed new settings before daemon creation. Old stores retain all previous defaults.
+
+Browser Settings can repair malformed stored idle values. Its form suggests defaults without saving anything until submission.
+
+The direct upstream daemon reads `TAB_INACTIVITY_MS`. Only the gateway receives `MCP_SESSION_IDLE_MS`.
+
+The gateway validates direct environment values as whole milliseconds from 1 to 86400000. Only an absent value selects its default.
+
 ### Proxy Settings
 
 - **When to run it:** When the browser must use a proxy, for example to get a different location.
@@ -236,6 +267,8 @@ The backup copies whole volumes. It copies `main` without `traces/`, and it copi
 
 ## Limitations and Differences
 
+Read `PATCHES.md` for wrapper patches, rollback preparation, and separate image-verification requirements.
+
 This section lists what differs from upstream, and then what does not work or is not verified.
 
 Differences from upstream:
@@ -251,10 +284,10 @@ Differences from upstream:
 
 Limitations:
 
-1. A StartOS server has not run this package yet. The package builds in CI. Behavior on a real server is not verified.
+1. This P1 wrapper revision has no live verification. Local boundary tests do not verify browser-engine fixes.
 2. The StartOS packages for Hermes Agent and OpenClaw do not set up this service yet. The user must add the URL and key to the agent by hand.
 3. The community plugin `hermes-camofox-human-auth` does not work with this package. It sends no authorization header.
-4. The session timer counts REST and MCP calls. Work in noVNC does not count. A session can time out while a person signs in. Keep it alive with calls, or raise `Session Timeout`.
+4. Browser-session, tab, and MCP timers are independent. noVNC does not refresh them. Read Timeout Scopes before a long login.
 5. With the Hermes native plugin, the end of a Hermes session does not close the Camofox session. Camofox saves the login when the session times out or the service stops.
 6. Raw VNC is not available. Only noVNC is.
 7. The browser may need to download its default ad-blocking add-on at the first start. This needs internet access and has not been verified here.
@@ -288,6 +321,7 @@ startos_managed_env_vars:
   - MAX_TABS_PER_SESSION
   - MAX_TABS_GLOBAL
   - SESSION_TIMEOUT_MS
+  - TAB_INACTIVITY_MS
   - BROWSER_IDLE_TIMEOUT_MS
   - CAMOFOX_LOCALE
   - CAMOFOX_TIMEZONE
@@ -303,6 +337,7 @@ startos_managed_env_vars:
   - VNC_RESOLUTION
   - MCP_PORT
   - MCP_BIND
+  - MCP_SESSION_IDLE_MS
   - CAMOFOX_BASE_URL
   - CAMOFOX_SKILLS_DIR
   - CAMOFOX_DEFAULT_USER_ID

@@ -32,7 +32,8 @@ export function loadGatewayConfig(env = process.env) {
     defaultUserId: env.CAMOFOX_DEFAULT_USER_ID || 'agent',
     skillsDir: env.CAMOFOX_SKILLS_DIR || '',
     novncEnabled: env.CAMOFOX_NOVNC_ENABLED === '1' || env.CAMOFOX_NOVNC_ENABLED === 'true',
-    idleTimeoutMs: intFrom(env.MCP_SESSION_IDLE_MS, 30 * 60 * 1000),
+    idleTimeoutMs: env.MCP_SESSION_IDLE_MS === undefined ? 30 * 60 * 1000 :
+      /^\d+$/.test(env.MCP_SESSION_IDLE_MS) ? Number(env.MCP_SESSION_IDLE_MS) : NaN,
     maxSessions: intFrom(env.MCP_MAX_SESSIONS, 100),
   };
 }
@@ -44,6 +45,9 @@ export function loadGatewayConfig(env = process.env) {
  */
 export function validateGatewayConfig(config) {
   const problems = [];
+  if (!Number.isSafeInteger(config.idleTimeoutMs) || config.idleTimeoutMs < 1 || config.idleTimeoutMs > 86_400_000) {
+    problems.push('MCP_SESSION_IDLE_MS must be a whole number from 1 to 86400000 milliseconds.');
+  }
   if (!config.authToken && !config.allowNoAuth) {
     problems.push('MCP_AUTH_TOKEN is not set. Set it, or set MCP_ALLOW_NO_AUTH=1 to run without inbound auth.');
   }

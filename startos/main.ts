@@ -1,6 +1,7 @@
 import { storeJson } from './fileModels/store.json'
 import { i18n } from './i18n'
 import { sdk } from './sdk'
+import { idleTimeoutSettings } from './timeoutSettings'
 import { apiPort, checkHttpOk, mcpPort, novncPort } from './utils'
 
 const minutesToMs = (minutes: number) => String(Math.round(minutes * 60_000))
@@ -11,6 +12,7 @@ export const main = sdk.setupMain(async ({ effects }) => {
   const apiKey = await storeJson.read((s) => s.apiKey).const(effects)
   if (!apiKey) throw new Error('store.json holds no API key')
   const browser = await storeJson.read((s) => s.browser).const(effects)
+  const idle = idleTimeoutSettings(browser ?? {})
   const proxy = await storeJson.read((s) => s.proxy).const(effects)
   const interactive = await storeJson.read((s) => s.interactive).const(effects)
 
@@ -95,6 +97,7 @@ export const main = sdk.setupMain(async ({ effects }) => {
           MAX_TABS_PER_SESSION: String(browser?.maxTabsPerSession ?? 10),
           MAX_TABS_GLOBAL: String(browser?.maxTabsGlobal ?? 50),
           SESSION_TIMEOUT_MS: minutesToMs(browser?.sessionTimeoutMinutes ?? 10),
+          TAB_INACTIVITY_MS: minutesToMs(idle.tabInactivityMinutes),
           BROWSER_IDLE_TIMEOUT_MS: minutesToMs(
             browser?.browserIdleTimeoutMinutes ?? 5,
           ),
@@ -123,6 +126,7 @@ export const main = sdk.setupMain(async ({ effects }) => {
           NODE_ENV: 'production',
           MCP_PORT: String(mcpPort),
           MCP_BIND: '0.0.0.0',
+          MCP_SESSION_IDLE_MS: minutesToMs(idle.mcpSessionIdleMinutes),
           CAMOFOX_BASE_URL: `http://127.0.0.1:${apiPort}`,
           CAMOFOX_ACCESS_KEY: apiKey,
           CAMOFOX_API_KEY: apiKey,

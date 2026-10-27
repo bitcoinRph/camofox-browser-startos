@@ -2,6 +2,12 @@ import { LangDict } from './default'
 
 export default {
   es_ES: {
+    89: 'Tiempo de inactividad de la sesión del navegador',
+    90: 'Cierra la sesión del navegador tras inactividad de la API. Las cookies guardadas permanecen. No controla pestañas ni MCP.',
+    91: 'Tiempo de inactividad de la pestaña',
+    92: 'Cierra pestañas sin actividad de herramientas. Otras pestañas y noVNC no las mantienen activas.',
+    93: 'Tiempo de inactividad de la sesión MCP',
+    94: 'Caduca conexiones MCP inactivas con estado. Cierra grupos propios del gateway. Conserva grupos explícitos. Las llamadas sin estado no crean sesiones MCP.',
     0: '¡Iniciando Camofox Browser!',
     1: 'API REST',
     2: 'La API REST está lista',
@@ -93,6 +99,12 @@ export default {
     88: 'Ajuste el idioma regional y la zona horaria del navegador a la ubicación IP de este servidor',
   },
   de_DE: {
+    89: 'Leerlaufzeit der Browsersitzung',
+    90: 'Schließt die Browsersitzung nach API-Inaktivität. Gespeicherte Cookies bleiben erhalten. Steuert nicht die Tab- oder MCP-Ablaufzeit.',
+    91: 'Tab-Inaktivitätszeit',
+    92: 'Schließt Tabs ohne Tab-Werkzeugaktivität. Andere Tabs und noVNC-Eingaben halten sie nicht aktiv.',
+    93: 'MCP-Sitzungsleerlaufzeit',
+    94: 'Beendet inaktive zustandsbehaftete MCP-Verbindungen. Gateway-eigene Tab-Gruppen schließen. Explizite Gruppen bleiben. Zustandslose Aufrufe haben keine MCP-Sitzung.',
     0: 'Camofox Browser wird gestartet!',
     1: 'REST-API',
     2: 'Die REST-API ist bereit',
@@ -184,6 +196,12 @@ export default {
     88: 'Passen Sie Gebietsschema und Zeitzone des Browsers an den IP-Standort dieses Servers an',
   },
   pl_PL: {
+    89: 'Limit bezczynności sesji przeglądarki',
+    90: 'Zamyka sesję przeglądarki po braku aktywności API. Zapisane ciasteczka pozostają. Nie ustawia limitów kart ani MCP.',
+    91: 'Limit bezczynności karty',
+    92: 'Zamyka kartę bez aktywności narzędzi karty. Inne karty i noVNC nie podtrzymują jej aktywności.',
+    93: 'Limit bezczynności sesji MCP',
+    94: 'Wygasza bezczynne stanowe połączenia MCP. Zamyka grupy kart należące do bramy. Jawne grupy pozostają. Wywołania bezstanowe nie mają sesji MCP.',
     0: 'Uruchamianie Camofox Browser!',
     1: 'API REST',
     2: 'API REST jest gotowe',
@@ -275,6 +293,12 @@ export default {
     88: 'Dopasuj ustawienia regionalne i strefę czasową przeglądarki do lokalizacji IP tego serwera',
   },
   fr_FR: {
+    89: 'Délai d’inactivité de la session du navigateur',
+    90: 'Ferme la session du navigateur après inactivité de l’API. Les cookies enregistrés restent. Ne règle pas les délais des onglets ou MCP.',
+    91: 'Délai d’inactivité des onglets',
+    92: 'Ferme les onglets sans activité des outils d’onglet. Les autres onglets et noVNC ne les maintiennent pas actifs.',
+    93: 'Délai d’inactivité de la session MCP',
+    94: 'Expire les connexions MCP avec état inactives. Ferme les groupes créés par la passerelle. Conserve les groupes explicites. Les appels sans état n’ont pas de session MCP.',
     0: 'Démarrage de Camofox Browser !',
     1: 'API REST',
     2: "L'API REST est prête",

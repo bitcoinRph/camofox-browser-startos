@@ -42,7 +42,18 @@ Use this for sites that need a password, MFA, or a CAPTCHA. Your agent never see
 5. Tell your agent that you are done. Ask it to check that the login worked.
 6. Run **Disable Interactive Login**. The saved login stays.
 
-Do this within a few minutes of step 2. A session that gets no calls from your agent closes after the session timeout. Ask your agent to keep the page open while you sign in, or raise **Session Timeout** in **Browser Settings**.
+Ask your agent to call a tab tool periodically while you sign in. noVNC activity does not refresh expiry timers.
+
+**Browser Settings** has independent timers:
+
+- **Browser Session Timeout** defaults to 10 minutes without API activity for that identity.
+- **Tab Inactivity Timeout** defaults to 5 minutes without tool activity on that tab.
+- **MCP Session Idle Timeout** defaults to 30 minutes without stateful MCP activity.
+- **Browser Idle Timeout** defaults to 5 minutes with no browser sessions.
+
+Raising only Browser Session Timeout does not protect an inactive tab. Set both browser-session and tab timers before a long login.
+
+Settings changes restart the service. Make changes before opening the login tab. Stateless calls have no MCP transport expiry timer.
 
 Anyone who has the address and the password can control the browser. Keep Interactive Login off when you do not need it.
 

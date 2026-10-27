@@ -99,6 +99,12 @@ const dict = {
   'All saved cookies and browser profiles are deleted.': 87,
   // init/watchBrowserSettings.ts
   "Match the browser locale and timezone to this server's IP location": 88,
+  'Browser Session Timeout': 89,
+  'Close the browser session after API inactivity. Saved cookies stay on disk. This does not set tab or MCP expiry.': 90,
+  'Tab Inactivity Timeout': 91,
+  'Close a tab without tab tool activity. Other tabs and noVNC input do not keep it alive.': 92,
+  'MCP Session Idle Timeout': 93,
+  'Expire an idle stateful MCP connection. Gateway-owned tab groups close. Explicit tab groups remain. Stateless calls have no MCP session.': 94,
 } as const
 
 /**
