@@ -8,5 +8,5 @@ bare clone with no workspace, the full guide is at <https://docs.start9.com/pack
 
 - `gateway/` imports `/app/mcp/lib/tool-contracts.mjs` and `cookies.mjs` from the upstream image. Re-check those exports on every image bump, because a missing export stops the MCP server at start (`UPDATING.md` lists the checks).
 - The gateway serves `skills/<name>/SKILL.md` verbatim as MCP prompts and resources. Keep `name` equal to the folder name and `metadata` on one line, because the gateway's frontmatter reader takes top-level scalar keys only.
-- The package has no test suite. `npm run check` is the local check. Docker images cannot be pulled in the workspace, so CI builds the `.s9pk`.
+- The package has no test suite. `make javascript/index.js` is the local check: it runs `tsc`, the SDK lint runner, and prettier. Docker images cannot be pulled in the workspace, so CI builds the `.s9pk`.
 - Write `README.md`, `instructions.md`, and `skills/` in ASD-STE100 Simplified Technical English: at most 20 words for each instruction, no semicolons, no phrasal verbs.
