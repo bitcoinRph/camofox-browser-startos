@@ -1,5 +1,4 @@
 import { T } from '@start9labs/start-sdk'
-import { storeJson } from '../fileModels/store.json'
 import { i18n } from '../i18n'
 import { sdk } from '../sdk'
 import {
@@ -42,7 +41,7 @@ const snippet = (
   name,
   description,
   value,
-  masked: true,
+  masked: false,
   copyable: true,
   qr: false,
   filename,
@@ -54,7 +53,7 @@ export const connectionInfo = sdk.Action.withoutInput(
   async () => ({
     name: i18n('Connection Info'),
     description: i18n(
-      'Show the API addresses, the API key, and setup snippets for AI agent clients.',
+      'Show API addresses and credential-free setup snippets for AI agent clients.',
     ),
     warning: null,
     allowedStatuses: 'any',
@@ -63,9 +62,6 @@ export const connectionInfo = sdk.Action.withoutInput(
   }),
 
   async ({ effects }) => {
-    const apiKey = (await storeJson.read((s) => s.apiKey).once()) ?? ''
-    const interactive = await storeJson.read((s) => s.interactive).once()
-
     const apiUrls = await getAddresses(
       effects,
       apiHostId,
@@ -88,18 +84,6 @@ export const connectionInfo = sdk.Action.withoutInput(
     const mcpUrl = preferredAddress(mcpUrls)?.url ?? mcpBridge ?? ''
 
     const members: T.ActionResultMember[] = [
-      {
-        type: 'single',
-        name: i18n('API Key'),
-        description: i18n(
-          'Send this key as a Bearer token in the Authorization header.',
-        ),
-        value: apiKey,
-        masked: true,
-        copyable: true,
-        qr: false,
-        launchable: false,
-      },
       {
         type: 'group',
         name: i18n('REST API URLs'),
@@ -150,32 +134,20 @@ export const connectionInfo = sdk.Action.withoutInput(
       })
     }
 
-    if (interactive?.enabled) {
-      const vncUrls = await getAddresses(
-        effects,
-        vncHostId,
-        novncPort,
-        vncInterfaceId,
-      )
+    const vncUrls = await getAddresses(
+      effects,
+      vncHostId,
+      novncPort,
+      vncInterfaceId,
+    )
+    if (vncUrls.length > 0) {
       members.push({
         type: 'group',
         name: i18n('Interactive Login'),
         description: i18n(
-          'Open the noVNC page and enter the VNC password to see the browser.',
+          'Open the noVNC page and use the password you copied before enabling Interactive Login.',
         ),
-        value: [
-          ...urlMembers(vncUrls, false),
-          {
-            type: 'single',
-            name: i18n('VNC Password'),
-            description: null,
-            value: interactive.password ?? '',
-            masked: true,
-            copyable: true,
-            qr: false,
-            launchable: false,
-          },
-        ],
+        value: urlMembers(vncUrls, false),
       })
     }
 
@@ -183,13 +155,13 @@ export const connectionInfo = sdk.Action.withoutInput(
       type: 'group',
       name: i18n('Client Setup'),
       description: i18n(
-        'Copy the snippet for your client. Each snippet contains the API key.',
+        'Copy the snippet, then insert the API key you chose in Regenerate API Key.',
       ),
       value: [
         snippet(
           'Claude Code',
           i18n('Run this command in a shell.'),
-          `claude mcp add --transport http camofox ${mcpUrl} --header "Authorization: Bearer ${apiKey}"`,
+          `claude mcp add --transport http camofox ${mcpUrl} --header "Authorization: Bearer <copy-from-rotate-api-key>"`,
           null,
         ),
         snippet(
@@ -203,16 +175,19 @@ export const connectionInfo = sdk.Action.withoutInput(
             'bearer_token_env_var = "CAMOFOX_API_KEY"',
             '# http_headers = { "X-Camofox-User" = "codex" }',
             '',
-            `export CAMOFOX_API_KEY=${apiKey}`,
+            'export CAMOFOX_API_KEY=<copy-from-rotate-api-key>',
           ].join('\n'),
           null,
         ),
         snippet(
           'Hermes Agent (plugin)',
           i18n(
-            'Run "hermes plugins install camofox". Add these lines to the Hermes .env file.',
+            'Add these lines to the Hermes .env file. Current Hermes releases include the Camofox client.',
           ),
-          [`CAMOFOX_URL=${apiUrl}`, `CAMOFOX_API_KEY=${apiKey}`].join('\n'),
+          [
+            `CAMOFOX_URL=${apiUrl}`,
+            'CAMOFOX_API_KEY=<copy-from-rotate-api-key>',
+          ].join('\n'),
           null,
         ),
         snippet(
@@ -227,7 +202,7 @@ export const connectionInfo = sdk.Action.withoutInput(
             '    headers:',
             '      Authorization: "Bearer ${CAMOFOX_API_KEY}"',
             '',
-            `CAMOFOX_API_KEY=${apiKey}`,
+            'CAMOFOX_API_KEY=<copy-from-rotate-api-key>',
           ].join('\n'),
           null,
         ),
@@ -242,8 +217,8 @@ export const connectionInfo = sdk.Action.withoutInput(
             `url: ${apiUrl}`,
             'autoStart: false',
             '',
-            `CAMOFOX_ACCESS_KEY=${apiKey}`,
-            `CAMOFOX_API_KEY=${apiKey}`,
+            'CAMOFOX_ACCESS_KEY=<copy-from-rotate-api-key>',
+            'CAMOFOX_API_KEY=<copy-from-rotate-api-key>',
           ].join('\n'),
           null,
         ),

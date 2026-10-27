@@ -1,7 +1,16 @@
 ---
 name: camofox-login-handoff
 description: Use when a Camofox task needs a logged-in session and the user must sign in with a password, MFA, or CAPTCHA. Covers the Interactive Login and noVNC hand-off, one stable userId, cookie import, login checks, and profile reset.
-metadata: {"hermes": {"tags": ["browser", "camofox", "login", "vnc", "session"], "related_skills": ["camofox-stealth-browsing", "camofox-bot-challenges"]}, "openclaw": {"emoji": "🔑"}}
+metadata:
+  {
+    'hermes':
+      {
+        'tags': ['browser', 'camofox', 'login', 'vnc', 'session'],
+        'related_skills':
+          ['camofox-stealth-browsing', 'camofox-bot-challenges'],
+      },
+    'openclaw': { 'emoji': '🔑' },
+  }
 ---
 
 # Camofox login hand-off
@@ -17,15 +26,15 @@ The user signs in. You never see the password. Camofox saves the session in a pr
 
 ## Tool names
 
-| Action | MCP tool | Hermes native tool | REST route |
-|---|---|---|---|
-| Open the login page | `camofox_create_tab` | `browser_navigate` | `POST /tabs` |
-| Check the page | `camofox_snapshot` | `browser_snapshot` | `GET /tabs/:tabId/snapshot` |
-| Check the identity and noVNC state | `camofox_status` | none | `GET /health` |
-| Keep the session alive | `camofox_wait` | none | `POST /tabs/:tabId/wait` |
-| Save the profile now | `camofox_close_session` | none | `DELETE /sessions/:userId` |
-| Import cookies | `camofox_import_cookies` | `browser_import_cookies` | `POST /sessions/:userId/cookies` |
-| Delete the profile of one `userId` | none | none | `DELETE /sessions/:userId/storage_state` |
+| Action                             | MCP tool                 | Hermes native tool       | REST route                               |
+| ---------------------------------- | ------------------------ | ------------------------ | ---------------------------------------- |
+| Open the login page                | `camofox_create_tab`     | `browser_navigate`       | `POST /tabs`                             |
+| Check the page                     | `camofox_snapshot`       | `browser_snapshot`       | `GET /tabs/:tabId/snapshot`              |
+| Check the identity and noVNC state | `camofox_status`         | none                     | `GET /health`                            |
+| Keep the session alive             | `camofox_wait`           | none                     | `POST /tabs/:tabId/wait`                 |
+| Save the profile now               | `camofox_close_session`  | none                     | `DELETE /sessions/:userId`               |
+| Import cookies                     | `camofox_import_cookies` | `browser_import_cookies` | `POST /sessions/:userId/cookies`         |
+| Delete the profile of one `userId` | none                     | none                     | `DELETE /sessions/:userId/storage_state` |
 
 REST calls other than the last two need `userId` in the body or the query. All REST calls need `Authorization: Bearer <key>`.
 
@@ -34,7 +43,7 @@ REST calls other than the last two need `userId` in the body or the query. All R
 Interactive Login is off by default. The user turns it on in StartOS.
 
 1. Choose the `userId`. Use a name for the account. Example: `work-github`. Tell the user the name.
-2. Ask the user to run the `Enable Interactive Login` action of the Camofox Browser service. The action shows the noVNC URL and a password. The service restarts and open tabs close. Do this before you open tabs.
+2. Ask the user to run the `Enable Interactive Login` action of the Camofox Browser service. The masked form proposes a VNC password. The user must copy it before submitting. The service restarts, open tabs close, and the completed action shows the noVNC URL but never returns the password. Do this before you open tabs.
 3. Open the login page with your tool. Use the chosen `userId`. The page opens in the browser that the user will see.
 4. Ask the user to open the noVNC URL in a web browser and enter the password. The user then sees the Camoufox window and your tab.
 5. Tell the user what to do. Example: "Sign in to GitHub in the open tab. Complete the MFA step. Tell me when you see your dashboard."

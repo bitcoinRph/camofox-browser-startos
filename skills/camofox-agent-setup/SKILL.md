@@ -1,22 +1,33 @@
 ---
 name: camofox-agent-setup
 description: Use when connecting an AI agent to the Camofox Browser service on StartOS, or when a connection fails. Gives setup for Claude Code, Codex, Hermes Agent, OpenClaw, and raw REST. Also covers URLs, the API key, TLS trust, and troubleshooting.
-metadata: {"hermes": {"tags": ["browser", "camofox", "setup", "mcp", "startos"], "related_skills": ["camofox-stealth-browsing", "camofox-login-handoff"]}, "openclaw": {"emoji": "🔌"}}
+metadata:
+  {
+    'hermes':
+      {
+        'tags': ['browser', 'camofox', 'setup', 'mcp', 'startos'],
+        'related_skills': ['camofox-stealth-browsing', 'camofox-login-handoff'],
+      },
+    'openclaw': { 'emoji': '🔌' },
+  }
 ---
 
 # Camofox agent setup
 
 The Camofox Browser service on StartOS has one API key. The key works on every route. Each client sends it as `Authorization: Bearer <KEY>`.
 
-## Get the URLs and the key
+## Set the key and get the URLs
 
-Ask the user to run the `Connection Info` action of the Camofox Browser service. The action shows:
+Ask the user to run `Regenerate API Key` first. The masked form proposes a key. The user must copy it before submitting because the action result never returns the key. If the user loses the copy, run `Regenerate API Key` again and update every client.
+
+Then ask the user to run `Connection Info`. The action shows:
 
 - the REST API URL or URLs (port 9377),
 - the MCP URL or URLs (port 9378, path `/mcp`),
-- the API key,
-- the noVNC URL and password, only while Interactive Login is on,
-- copyable setup text for each client below.
+- the noVNC URL, only while Interactive Login is on,
+- copyable credential-free setup text for each client below.
+
+The setup text contains a placeholder. The user replaces it locally with the copied key.
 
 Do not ask the user to paste the key into the chat. Ask the user to put the key in an environment variable or a `.env` file. The examples use `CAMOFOX_API_KEY`.
 
@@ -24,11 +35,11 @@ Never write the key in a file that goes into version control.
 
 ## Choose an address
 
-| Client location | Address to use |
-|---|---|
+| Client location                      | Address to use                                                                                                                                         |
+| ------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | A service on the same StartOS server | The bridge address. Usually `http://10.0.3.1:9377` for REST and `http://10.0.3.1:9378/mcp` for MCP. The port can differ. Read it in `Connection Info`. |
-| A device on the home network | A LAN address from `Connection Info`. |
-| A device elsewhere | A Tor address or a clearnet domain from `Connection Info`, only if the user enabled it for that interface. |
+| A device on the home network         | A LAN address from `Connection Info`.                                                                                                                  |
+| A device elsewhere                   | A Tor address or a clearnet domain from `Connection Info`, only if the user enabled it for that interface.                                             |
 
 The user decides which addresses exist. Use only the addresses that `Connection Info` shows.
 
@@ -90,7 +101,7 @@ mcp_servers:
   camofox:
     url: <MCP_URL>
     headers:
-      Authorization: "Bearer ${CAMOFOX_API_KEY}"
+      Authorization: 'Bearer ${CAMOFOX_API_KEY}'
 ```
 
 Put `CAMOFOX_API_KEY` in the Hermes `.env`. If the variable is not set, Hermes refuses to connect.
@@ -128,13 +139,13 @@ The REST API documents each route at `/openapi.json`.
 
 ## Tool names
 
-| Task | MCP tool | Hermes native tool |
-|---|---|---|
-| Open a tab | `camofox_create_tab` | `browser_navigate` |
-| Read the page | `camofox_snapshot` | `browser_snapshot` |
-| Click or type | `camofox_click`, `camofox_type` | `browser_click`, `browser_type` |
-| Run JavaScript | `camofox_evaluate` | `browser_console` |
-| Import cookies | `camofox_import_cookies` | `browser_import_cookies` |
+| Task           | MCP tool                        | Hermes native tool              |
+| -------------- | ------------------------------- | ------------------------------- |
+| Open a tab     | `camofox_create_tab`            | `browser_navigate`              |
+| Read the page  | `camofox_snapshot`              | `browser_snapshot`              |
+| Click or type  | `camofox_click`, `camofox_type` | `browser_click`, `browser_type` |
+| Run JavaScript | `camofox_evaluate`              | `browser_console`               |
+| Import cookies | `camofox_import_cookies`        | `browser_import_cookies`        |
 
 For the full table and the REST routes, read `camofox-stealth-browsing`.
 
@@ -157,22 +168,22 @@ A bridge address or an `http` LAN address does not need a certificate.
 
 ## Troubleshooting
 
-| Symptom | Cause | Fix |
-|---|---|---|
-| `401 Unauthorized` on a REST route | The key is missing or wrong. | Send `Authorization: Bearer <KEY>`. Copy the key again from `Connection Info`. |
-| `401` from the MCP URL | The key is missing or wrong. | Set the header or `bearer_token_env_var`. Check that the environment variable is set. |
-| `403 Forbidden` on cookie import | The key does not match. | Use the current key. The key changes after `Regenerate API Key`. |
-| All calls fail after a change of key | A client still uses the old key. | Update every client. |
-| `404 Tab not found` | The tab closed, expired, or was recycled. | Open a new tab. Take a new snapshot. |
-| `410` with `retryable: true` | The page crashed or the browser restarted. | Open a new tab. |
-| `503` with `retryable: true` | The tab did not respond, or the session expired. | Retry. If it fails again, open a new tab. |
-| `429` on tab open | Tab limit reached and no tab could close. | Close tabs. Raise the limits in `Browser Settings`. |
-| `422 strict mode violation` | A CSS selector matched many elements. | Take a snapshot. Use a ref. |
-| `409` on extract | The tab has no refs. | Take a snapshot first. |
-| TLS error on `https://*.local` | The client does not trust the StartOS root CA. | Read the TLS section above. |
-| Connection refused or timeout | The service is stopped, or the URL or port is wrong. | Start the service. Copy the URL from `Connection Info`. Check that the MCP URL ends with `/mcp`. |
-| MCP client shows no tools | The URL or the header is wrong. | Check the URL and the key. Restart the client. |
-| Hermes shows no `browser_*` tools | The `camofox` toolset is off, or the session is old. | Run `hermes tools enable camofox`. Start a new session. Check `CAMOFOX_URL`. |
-| Hermes MCP server fails to connect | `CAMOFOX_API_KEY` is not set in the profile `.env`. | Set it. Hermes refuses a literal `${CAMOFOX_API_KEY}`. |
-| Login lost after a task | The `userId` changed. | Use one stable `userId`. Read `camofox-login-handoff`. |
-| Page shows a challenge | Bot protection. | Read `camofox-bot-challenges`. |
+| Symptom                              | Cause                                                | Fix                                                                                                                                                     |
+| ------------------------------------ | ---------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `401 Unauthorized` on a REST route   | The key is missing or wrong.                         | Send the current key as a Bearer token. If the key is lost, run `Regenerate API Key`, copy the proposed key before submitting, and update every client. |
+| `401` from the MCP URL               | The key is missing or wrong.                         | Set the header or `bearer_token_env_var`. Check that the environment variable is set.                                                                   |
+| `403 Forbidden` on cookie import     | The key does not match.                              | Use the current key. The key changes after `Regenerate API Key`.                                                                                        |
+| All calls fail after a change of key | A client still uses the old key.                     | Update every client.                                                                                                                                    |
+| `404 Tab not found`                  | The tab closed, expired, or was recycled.            | Open a new tab. Take a new snapshot.                                                                                                                    |
+| `410` with `retryable: true`         | The page crashed or the browser restarted.           | Open a new tab.                                                                                                                                         |
+| `503` with `retryable: true`         | The tab did not respond, or the session expired.     | Retry. If it fails again, open a new tab.                                                                                                               |
+| `429` on tab open                    | Tab limit reached and no tab could close.            | Close tabs. Raise the limits in `Browser Settings`.                                                                                                     |
+| `422 strict mode violation`          | A CSS selector matched many elements.                | Take a snapshot. Use a ref.                                                                                                                             |
+| `409` on extract                     | The tab has no refs.                                 | Take a snapshot first.                                                                                                                                  |
+| TLS error on `https://*.local`       | The client does not trust the StartOS root CA.       | Read the TLS section above.                                                                                                                             |
+| Connection refused or timeout        | The service is stopped, or the URL or port is wrong. | Start the service. Copy the URL from `Connection Info`. Check that the MCP URL ends with `/mcp`.                                                        |
+| MCP client shows no tools            | The URL or the header is wrong.                      | Check the URL and the key. Restart the client.                                                                                                          |
+| Hermes shows no `browser_*` tools    | The `camofox` toolset is off, or the session is old. | Run `hermes tools enable camofox`. Start a new session. Check `CAMOFOX_URL`.                                                                            |
+| Hermes MCP server fails to connect   | `CAMOFOX_API_KEY` is not set in the profile `.env`.  | Set it. Hermes refuses a literal `${CAMOFOX_API_KEY}`.                                                                                                  |
+| Login lost after a task              | The `userId` changed.                                | Use one stable `userId`. Read `camofox-login-handoff`.                                                                                                  |
+| Page shows a challenge               | Bot protection.                                      | Read `camofox-bot-challenges`.                                                                                                                          |

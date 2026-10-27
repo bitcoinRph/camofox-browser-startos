@@ -1,18 +1,18 @@
 import { IMPOSSIBLE, VersionInfo } from '@start9labs/start-sdk'
 
 export const current = VersionInfo.of({
-  version: '1.18.1:0',
+  version: '1.18.1:1',
   releaseNotes: {
     en_US:
-      'Initial release of Camofox Browser 1.18.1 for StartOS. It adds a REST API, an MCP server with skills, a proxy setting, and Interactive Login through noVNC. Full notes: https://github.com/jo-inc/camofox-browser/releases/tag/v1.18.1',
+      'Security update: API keys and VNC passwords are entered in masked action forms and are no longer returned in action results. Connection snippets now use placeholders. Full upstream notes: https://github.com/jo-inc/camofox-browser/releases/tag/v1.18.1',
     es_ES:
-      'Primera versión de Camofox Browser 1.18.1 para StartOS. Incluye una API REST, un servidor MCP con skills, un ajuste de proxy y el inicio de sesión interactivo mediante noVNC. Notas completas: https://github.com/jo-inc/camofox-browser/releases/tag/v1.18.1',
+      'Actualización de seguridad: las claves de API y contraseñas VNC se introducen en formularios enmascarados y ya no se devuelven en los resultados de las acciones. Los fragmentos de conexión usan marcadores. Notas completas: https://github.com/jo-inc/camofox-browser/releases/tag/v1.18.1',
     de_DE:
-      'Erstveröffentlichung von Camofox Browser 1.18.1 für StartOS. Enthalten sind eine REST-API, ein MCP-Server mit Skills, eine Proxy-Einstellung und die interaktive Anmeldung über noVNC. Vollständige Hinweise: https://github.com/jo-inc/camofox-browser/releases/tag/v1.18.1',
+      'Sicherheitsupdate: API-Schlüssel und VNC-Passwörter werden in maskierten Aktionsformularen eingegeben und nicht mehr in Aktionsergebnissen zurückgegeben. Verbindungs-Snippets verwenden Platzhalter. Vollständige Hinweise: https://github.com/jo-inc/camofox-browser/releases/tag/v1.18.1',
     pl_PL:
-      'Pierwsze wydanie Camofox Browser 1.18.1 dla StartOS. Zawiera API REST, serwer MCP z umiejętnościami, ustawienie proxy i logowanie interaktywne przez noVNC. Pełne informacje: https://github.com/jo-inc/camofox-browser/releases/tag/v1.18.1',
+      'Aktualizacja bezpieczeństwa: klucze API i hasła VNC są wpisywane w maskowanych formularzach akcji i nie są już zwracane w wynikach. Fragmenty połączeń używają symboli zastępczych. Pełne informacje: https://github.com/jo-inc/camofox-browser/releases/tag/v1.18.1',
     fr_FR:
-      'Version initiale de Camofox Browser 1.18.1 pour StartOS. Elle ajoute une API REST, un serveur MCP avec skills, un réglage de proxy et la connexion interactive via noVNC. Notes complètes : https://github.com/jo-inc/camofox-browser/releases/tag/v1.18.1',
+      'Mise à jour de sécurité : les clés API et mots de passe VNC sont saisis dans des formulaires masqués et ne sont plus renvoyés dans les résultats des actions. Les extraits de connexion utilisent des espaces réservés. Notes complètes : https://github.com/jo-inc/camofox-browser/releases/tag/v1.18.1',
   },
   migrations: {
     up: async ({ effects }) => {},
