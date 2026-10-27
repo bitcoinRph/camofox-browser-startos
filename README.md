@@ -301,7 +301,7 @@ Limitations:
 
 ```yaml
 package_id: 'camofox-browser'
-image: ghcr.io/jo-inc/camofox-browser
+image: ghcr.io/bitcoinrph/camofox-browser
 architectures: [x86_64, aarch64]
 subcontainers: [camofox-sub]
 volumes:

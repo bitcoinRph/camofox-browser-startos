@@ -1,6 +1,6 @@
 # Updating the upstream version
 
-The upstream is the container image `ghcr.io/jo-inc/camofox-browser`. The `Dockerfile` in the repository root pins it by tag and by index digest. The manifest builds the root `Dockerfile` (`dockerBuild`), so the manifest holds no image tag. The package has one upstream source.
+The runtime is the container image pinned in the repository-root `Dockerfile`. Releases normally use `ghcr.io/jo-inc/camofox-browser`; a reviewed StartOS patch lane may temporarily use `ghcr.io/bitcoinrph/camofox-browser`. The `Dockerfile` pins the selected image by tag and index digest. The manifest builds that file (`dockerBuild`), so the manifest holds no image tag.
 
 ## Determining the upstream version
 
