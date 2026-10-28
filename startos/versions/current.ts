@@ -1,21 +1,20 @@
 import { VersionInfo } from '@start9labs/start-sdk'
 
 export const current = VersionInfo.of({
-  version: '1.18.1:2',
+  version: '1.18.1:3',
   releaseNotes: {
     en_US:
-      'P1 runtime repair: return correct REST and MCP errors, handle direct-download navigation, restore legacy frameset snapshots, verify Camoufox beta.30 assets, and expose independent tab and MCP idle timers. Defaults remain unchanged.',
+      'Wrapper-only release: consolidate the reviewed browser source and sanitized offline benchmark in this repository. The pinned runtime image is unchanged. Additional browser-source changes are not yet in that image. No persistent data changes.',
     es_ES:
-      'Reparación P1: corrige errores REST y MCP, gestiona descargas por navegación directa, restaura instantáneas de frameset, verifica Camoufox beta.30 y separa los tiempos de inactividad de pestañas y MCP. Los valores predeterminados no cambian.',
+      'Versión solo del paquete: consolida el código revisado del navegador y el banco de pruebas sin conexión y saneado. La imagen de ejecución fijada no cambia. Los cambios adicionales del navegador aún no están en esa imagen. No hay cambios de datos persistentes.',
     de_DE:
-      'P1-Laufzeitreparatur: korrekte REST- und MCP-Fehler, direkte Download-Navigation, wiederhergestellte Frameset-Snapshots, geprüfte Camoufox-beta.30-Dateien sowie getrennte Tab- und MCP-Leerlaufzeiten. Standardwerte bleiben unverändert.',
+      'Reine Paketversion: geprüfter Browser-Quellcode und bereinigter Offline-Benchmark sind jetzt in diesem Repository zusammengeführt. Das festgelegte Laufzeit-Image bleibt unverändert. Zusätzliche Browser-Änderungen sind noch nicht darin enthalten. Persistente Daten bleiben unverändert.',
     pl_PL:
-      'Naprawa P1: poprawne błędy REST i MCP, obsługa pobierania przy bezpośredniej nawigacji, przywrócone migawki frameset, weryfikacja Camoufox beta.30 oraz osobne limity bezczynności kart i MCP. Wartości domyślne pozostają bez zmian.',
+      'Wydanie wyłącznie opakowania: łączy sprawdzone źródła przeglądarki i oczyszczony test offline w tym repozytorium. Przypięty obraz uruchomieniowy pozostaje bez zmian. Dodatkowe zmiany źródłowe przeglądarki nie są jeszcze w tym obrazie. Dane trwałe pozostają bez zmian.',
     fr_FR:
-      'Correction P1 : erreurs REST et MCP correctes, navigation de téléchargement direct, instantanés frameset rétablis, fichiers Camoufox beta.30 vérifiés et délais distincts pour les onglets et MCP. Les valeurs par défaut restent inchangées.',
+      'Version du paquet uniquement : le code source du navigateur vérifié et le banc de test hors ligne assaini sont regroupés dans ce dépôt. L’image d’exécution épinglée reste inchangée. Les modifications supplémentaires du navigateur ne sont pas encore dans cette image. Aucune donnée persistante ne change.',
   },
-  // Optional additive settings only. Never rewrite profiles, credentials or settings.
-  // The previous wrapper ignores unknown fields, so rollback needs no deletion.
+  // Repository-only release. Never rewrite profiles, credentials, or settings.
   migrations: {
     up: async () => {},
     down: async () => {},

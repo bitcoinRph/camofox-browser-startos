@@ -17,6 +17,8 @@ The browser source is included for auditability and future image builds; it is
 not copied into the StartOS package build context. The benchmark does not run
 against live sites and does not deploy its Worker fixture. See
 [`docs/SOURCES.md`](docs/SOURCES.md) for exact import provenance and exclusions.
+Changes added to `browser/` after the recorded runtime snapshot are not in the
+current runtime image. A future image release must build and verify those changes.
 
 Camofox reduces elementary automation signals but does not promise universal
 bot-protection, CAPTCHA, managed-challenge, access-control, or rate-limit bypass.
