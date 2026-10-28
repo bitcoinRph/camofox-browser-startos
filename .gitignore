@@ -1,4 +1,7 @@
 *.s9pk
+.env
+.env.*
+!.env.example
 startos/*.js
 node_modules/
 .DS_Store

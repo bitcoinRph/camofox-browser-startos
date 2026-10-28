@@ -1,0 +1,71 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:offline-benchmark:calibration",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "additionalProperties": false,
+    "properties": {
+      "schema_version": {
+        "const": "1.1"
+      },
+      "pair_id": {
+        "type": "string",
+        "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,63}$"
+      },
+      "target_id": {
+        "type": "string",
+        "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,63}$"
+      },
+      "side": {
+        "enum": [
+          "left",
+          "right"
+        ]
+      },
+      "control_sha256": {
+        "type": "string",
+        "pattern": "^[a-f0-9]{64}$"
+      },
+      "masked_side": {"enum": ["x", "y"]},
+      "pair_order": {"type": "integer", "enum": [0, 1]},
+      "block": {"type": "integer", "minimum": 0, "maximum": 3},
+      "label": {
+        "enum": [
+          "usable",
+          "challenge",
+          "captcha",
+          "block",
+          "error",
+          "timeout",
+          "incomplete"
+        ]
+      },
+      "elapsed_ms": {
+        "type": "number",
+        "minimum": 0,
+        "maximum": 20000
+      },
+      "mode": {
+        "enum": [
+          "synthetic",
+          "local-fixture-replay",
+          "local-observation"
+        ]
+      }
+    },
+    "required": [
+      "schema_version",
+      "pair_id",
+      "target_id",
+      "side",
+      "masked_side",
+      "pair_order",
+      "block",
+      "control_sha256",
+      "label",
+      "elapsed_ms",
+      "mode"
+    ]
+  }
+}

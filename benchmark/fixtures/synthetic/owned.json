@@ -1,0 +1,842 @@
+[
+  {
+    "evidence_id": "block0",
+    "observation": {
+      "frame_state": "none",
+      "http_status": 403,
+      "text": "Access denied",
+      "title": "Fixture article",
+      "tool_error": "none",
+      "truncated": false,
+      "usable_marker": false
+    },
+    "schema_version": "1.0",
+    "snapshot_sha256": "f4d9551798291aac855cf64764981c9b72ee536f21520cc908432d7bc58b1091",
+    "target_id": "block0"
+  },
+  {
+    "evidence_id": "block1",
+    "observation": {
+      "frame_state": "none",
+      "http_status": 403,
+      "text": "Access denied",
+      "title": "Fixture article",
+      "tool_error": "none",
+      "truncated": false,
+      "usable_marker": false
+    },
+    "schema_version": "1.0",
+    "snapshot_sha256": "f4d9551798291aac855cf64764981c9b72ee536f21520cc908432d7bc58b1091",
+    "target_id": "block1"
+  },
+  {
+    "evidence_id": "block2",
+    "observation": {
+      "frame_state": "none",
+      "http_status": 403,
+      "text": "Access denied",
+      "title": "Fixture article",
+      "tool_error": "none",
+      "truncated": false,
+      "usable_marker": false
+    },
+    "schema_version": "1.0",
+    "snapshot_sha256": "f4d9551798291aac855cf64764981c9b72ee536f21520cc908432d7bc58b1091",
+    "target_id": "block2"
+  },
+  {
+    "evidence_id": "block3",
+    "observation": {
+      "frame_state": "none",
+      "http_status": 403,
+      "text": "Access denied",
+      "title": "Fixture article",
+      "tool_error": "none",
+      "truncated": false,
+      "usable_marker": false
+    },
+    "schema_version": "1.0",
+    "snapshot_sha256": "f4d9551798291aac855cf64764981c9b72ee536f21520cc908432d7bc58b1091",
+    "target_id": "block3"
+  },
+  {
+    "evidence_id": "block4",
+    "observation": {
+      "frame_state": "none",
+      "http_status": 403,
+      "text": "Access denied",
+      "title": "Fixture article",
+      "tool_error": "none",
+      "truncated": false,
+      "usable_marker": false
+    },
+    "schema_version": "1.0",
+    "snapshot_sha256": "f4d9551798291aac855cf64764981c9b72ee536f21520cc908432d7bc58b1091",
+    "target_id": "block4"
+  },
+  {
+    "evidence_id": "block5",
+    "observation": {
+      "frame_state": "none",
+      "http_status": 403,
+      "text": "Access denied",
+      "title": "Fixture article",
+      "tool_error": "none",
+      "truncated": false,
+      "usable_marker": false
+    },
+    "schema_version": "1.0",
+    "snapshot_sha256": "f4d9551798291aac855cf64764981c9b72ee536f21520cc908432d7bc58b1091",
+    "target_id": "block5"
+  },
+  {
+    "evidence_id": "block6",
+    "observation": {
+      "frame_state": "none",
+      "http_status": 403,
+      "text": "Access denied",
+      "title": "Fixture article",
+      "tool_error": "none",
+      "truncated": false,
+      "usable_marker": false
+    },
+    "schema_version": "1.0",
+    "snapshot_sha256": "f4d9551798291aac855cf64764981c9b72ee536f21520cc908432d7bc58b1091",
+    "target_id": "block6"
+  },
+  {
+    "evidence_id": "block7",
+    "observation": {
+      "frame_state": "none",
+      "http_status": 403,
+      "text": "Access denied",
+      "title": "Fixture article",
+      "tool_error": "none",
+      "truncated": false,
+      "usable_marker": false
+    },
+    "schema_version": "1.0",
+    "snapshot_sha256": "f4d9551798291aac855cf64764981c9b72ee536f21520cc908432d7bc58b1091",
+    "target_id": "block7"
+  },
+  {
+    "evidence_id": "captcha0",
+    "observation": {
+      "frame_state": "none",
+      "http_status": 200,
+      "text": "Complete the CAPTCHA to continue",
+      "title": "Fixture article",
+      "tool_error": "none",
+      "truncated": false,
+      "usable_marker": false
+    },
+    "schema_version": "1.0",
+    "snapshot_sha256": "e22bbd5925a8264bea2dc040144314acc166202e126a1f87d2829afbcd12c28c",
+    "target_id": "captcha0"
+  },
+  {
+    "evidence_id": "captcha1",
+    "observation": {
+      "frame_state": "none",
+      "http_status": 200,
+      "text": "Complete the CAPTCHA to continue",
+      "title": "Fixture article",
+      "tool_error": "none",
+      "truncated": false,
+      "usable_marker": false
+    },
+    "schema_version": "1.0",
+    "snapshot_sha256": "e22bbd5925a8264bea2dc040144314acc166202e126a1f87d2829afbcd12c28c",
+    "target_id": "captcha1"
+  },
+  {
+    "evidence_id": "captcha2",
+    "observation": {
+      "frame_state": "none",
+      "http_status": 200,
+      "text": "Complete the CAPTCHA to continue",
+      "title": "Fixture article",
+      "tool_error": "none",
+      "truncated": false,
+      "usable_marker": false
+    },
+    "schema_version": "1.0",
+    "snapshot_sha256": "e22bbd5925a8264bea2dc040144314acc166202e126a1f87d2829afbcd12c28c",
+    "target_id": "captcha2"
+  },
+  {
+    "evidence_id": "captcha3",
+    "observation": {
+      "frame_state": "none",
+      "http_status": 200,
+      "text": "Complete the CAPTCHA to continue",
+      "title": "Fixture article",
+      "tool_error": "none",
+      "truncated": false,
+      "usable_marker": false
+    },
+    "schema_version": "1.0",
+    "snapshot_sha256": "e22bbd5925a8264bea2dc040144314acc166202e126a1f87d2829afbcd12c28c",
+    "target_id": "captcha3"
+  },
+  {
+    "evidence_id": "captcha4",
+    "observation": {
+      "frame_state": "none",
+      "http_status": 200,
+      "text": "Complete the CAPTCHA to continue",
+      "title": "Fixture article",
+      "tool_error": "none",
+      "truncated": false,
+      "usable_marker": false
+    },
+    "schema_version": "1.0",
+    "snapshot_sha256": "e22bbd5925a8264bea2dc040144314acc166202e126a1f87d2829afbcd12c28c",
+    "target_id": "captcha4"
+  },
+  {
+    "evidence_id": "captcha5",
+    "observation": {
+      "frame_state": "none",
+      "http_status": 200,
+      "text": "Complete the CAPTCHA to continue",
+      "title": "Fixture article",
+      "tool_error": "none",
+      "truncated": false,
+      "usable_marker": false
+    },
+    "schema_version": "1.0",
+    "snapshot_sha256": "e22bbd5925a8264bea2dc040144314acc166202e126a1f87d2829afbcd12c28c",
+    "target_id": "captcha5"
+  },
+  {
+    "evidence_id": "captcha6",
+    "observation": {
+      "frame_state": "none",
+      "http_status": 200,
+      "text": "Complete the CAPTCHA to continue",
+      "title": "Fixture article",
+      "tool_error": "none",
+      "truncated": false,
+      "usable_marker": false
+    },
+    "schema_version": "1.0",
+    "snapshot_sha256": "e22bbd5925a8264bea2dc040144314acc166202e126a1f87d2829afbcd12c28c",
+    "target_id": "captcha6"
+  },
+  {
+    "evidence_id": "captcha7",
+    "observation": {
+      "frame_state": "none",
+      "http_status": 200,
+      "text": "Complete the CAPTCHA to continue",
+      "title": "Fixture article",
+      "tool_error": "none",
+      "truncated": false,
+      "usable_marker": false
+    },
+    "schema_version": "1.0",
+    "snapshot_sha256": "e22bbd5925a8264bea2dc040144314acc166202e126a1f87d2829afbcd12c28c",
+    "target_id": "captcha7"
+  },
+  {
+    "evidence_id": "challenge0",
+    "observation": {
+      "frame_state": "none",
+      "http_status": 503,
+      "text": "Checking your browser",
+      "title": "Just a moment...",
+      "tool_error": "none",
+      "truncated": false,
+      "usable_marker": false
+    },
+    "schema_version": "1.0",
+    "snapshot_sha256": "2affb90491f7a958e2d7470ec76df338e0531681920a95789c6853c39ef3ebff",
+    "target_id": "challenge0"
+  },
+  {
+    "evidence_id": "challenge1",
+    "observation": {
+      "frame_state": "none",
+      "http_status": 503,
+      "text": "Checking your browser",
+      "title": "Just a moment...",
+      "tool_error": "none",
+      "truncated": false,
+      "usable_marker": false
+    },
+    "schema_version": "1.0",
+    "snapshot_sha256": "2affb90491f7a958e2d7470ec76df338e0531681920a95789c6853c39ef3ebff",
+    "target_id": "challenge1"
+  },
+  {
+    "evidence_id": "challenge2",
+    "observation": {
+      "frame_state": "none",
+      "http_status": 503,
+      "text": "Checking your browser",
+      "title": "Just a moment...",
+      "tool_error": "none",
+      "truncated": false,
+      "usable_marker": false
+    },
+    "schema_version": "1.0",
+    "snapshot_sha256": "2affb90491f7a958e2d7470ec76df338e0531681920a95789c6853c39ef3ebff",
+    "target_id": "challenge2"
+  },
+  {
+    "evidence_id": "challenge3",
+    "observation": {
+      "frame_state": "none",
+      "http_status": 503,
+      "text": "Checking your browser",
+      "title": "Just a moment...",
+      "tool_error": "none",
+      "truncated": false,
+      "usable_marker": false
+    },
+    "schema_version": "1.0",
+    "snapshot_sha256": "2affb90491f7a958e2d7470ec76df338e0531681920a95789c6853c39ef3ebff",
+    "target_id": "challenge3"
+  },
+  {
+    "evidence_id": "challenge4",
+    "observation": {
+      "frame_state": "none",
+      "http_status": 503,
+      "text": "Checking your browser",
+      "title": "Just a moment...",
+      "tool_error": "none",
+      "truncated": false,
+      "usable_marker": false
+    },
+    "schema_version": "1.0",
+    "snapshot_sha256": "2affb90491f7a958e2d7470ec76df338e0531681920a95789c6853c39ef3ebff",
+    "target_id": "challenge4"
+  },
+  {
+    "evidence_id": "challenge5",
+    "observation": {
+      "frame_state": "none",
+      "http_status": 503,
+      "text": "Checking your browser",
+      "title": "Just a moment...",
+      "tool_error": "none",
+      "truncated": false,
+      "usable_marker": false
+    },
+    "schema_version": "1.0",
+    "snapshot_sha256": "2affb90491f7a958e2d7470ec76df338e0531681920a95789c6853c39ef3ebff",
+    "target_id": "challenge5"
+  },
+  {
+    "evidence_id": "challenge6",
+    "observation": {
+      "frame_state": "none",
+      "http_status": 503,
+      "text": "Checking your browser",
+      "title": "Just a moment...",
+      "tool_error": "none",
+      "truncated": false,
+      "usable_marker": false
+    },
+    "schema_version": "1.0",
+    "snapshot_sha256": "2affb90491f7a958e2d7470ec76df338e0531681920a95789c6853c39ef3ebff",
+    "target_id": "challenge6"
+  },
+  {
+    "evidence_id": "challenge7",
+    "observation": {
+      "frame_state": "none",
+      "http_status": 503,
+      "text": "Checking your browser",
+      "title": "Just a moment...",
+      "tool_error": "none",
+      "truncated": false,
+      "usable_marker": false
+    },
+    "schema_version": "1.0",
+    "snapshot_sha256": "2affb90491f7a958e2d7470ec76df338e0531681920a95789c6853c39ef3ebff",
+    "target_id": "challenge7"
+  },
+  {
+    "evidence_id": "error0",
+    "observation": {
+      "frame_state": "none",
+      "http_status": 500,
+      "text": "Fixture server error",
+      "title": "Fixture article",
+      "tool_error": "none",
+      "truncated": false,
+      "usable_marker": false
+    },
+    "schema_version": "1.0",
+    "snapshot_sha256": "74720e237a12089790eafcc22fd4b05c81f2bba91bbd881b86518d2647846172",
+    "target_id": "error0"
+  },
+  {
+    "evidence_id": "error1",
+    "observation": {
+      "frame_state": "none",
+      "http_status": 500,
+      "text": "Fixture server error",
+      "title": "Fixture article",
+      "tool_error": "none",
+      "truncated": false,
+      "usable_marker": false
+    },
+    "schema_version": "1.0",
+    "snapshot_sha256": "74720e237a12089790eafcc22fd4b05c81f2bba91bbd881b86518d2647846172",
+    "target_id": "error1"
+  },
+  {
+    "evidence_id": "error2",
+    "observation": {
+      "frame_state": "none",
+      "http_status": 500,
+      "text": "Fixture server error",
+      "title": "Fixture article",
+      "tool_error": "none",
+      "truncated": false,
+      "usable_marker": false
+    },
+    "schema_version": "1.0",
+    "snapshot_sha256": "74720e237a12089790eafcc22fd4b05c81f2bba91bbd881b86518d2647846172",
+    "target_id": "error2"
+  },
+  {
+    "evidence_id": "error3",
+    "observation": {
+      "frame_state": "none",
+      "http_status": 500,
+      "text": "Fixture server error",
+      "title": "Fixture article",
+      "tool_error": "none",
+      "truncated": false,
+      "usable_marker": false
+    },
+    "schema_version": "1.0",
+    "snapshot_sha256": "74720e237a12089790eafcc22fd4b05c81f2bba91bbd881b86518d2647846172",
+    "target_id": "error3"
+  },
+  {
+    "evidence_id": "error4",
+    "observation": {
+      "frame_state": "none",
+      "http_status": 500,
+      "text": "Fixture server error",
+      "title": "Fixture article",
+      "tool_error": "none",
+      "truncated": false,
+      "usable_marker": false
+    },
+    "schema_version": "1.0",
+    "snapshot_sha256": "74720e237a12089790eafcc22fd4b05c81f2bba91bbd881b86518d2647846172",
+    "target_id": "error4"
+  },
+  {
+    "evidence_id": "error5",
+    "observation": {
+      "frame_state": "none",
+      "http_status": 500,
+      "text": "Fixture server error",
+      "title": "Fixture article",
+      "tool_error": "none",
+      "truncated": false,
+      "usable_marker": false
+    },
+    "schema_version": "1.0",
+    "snapshot_sha256": "74720e237a12089790eafcc22fd4b05c81f2bba91bbd881b86518d2647846172",
+    "target_id": "error5"
+  },
+  {
+    "evidence_id": "error6",
+    "observation": {
+      "frame_state": "none",
+      "http_status": 500,
+      "text": "Fixture server error",
+      "title": "Fixture article",
+      "tool_error": "none",
+      "truncated": false,
+      "usable_marker": false
+    },
+    "schema_version": "1.0",
+    "snapshot_sha256": "74720e237a12089790eafcc22fd4b05c81f2bba91bbd881b86518d2647846172",
+    "target_id": "error6"
+  },
+  {
+    "evidence_id": "error7",
+    "observation": {
+      "frame_state": "none",
+      "http_status": 500,
+      "text": "Fixture server error",
+      "title": "Fixture article",
+      "tool_error": "none",
+      "truncated": false,
+      "usable_marker": false
+    },
+    "schema_version": "1.0",
+    "snapshot_sha256": "74720e237a12089790eafcc22fd4b05c81f2bba91bbd881b86518d2647846172",
+    "target_id": "error7"
+  },
+  {
+    "evidence_id": "incomplete0",
+    "observation": {
+      "frame_state": "none",
+      "http_status": 200,
+      "text": "fixture-only,never-real-data",
+      "title": "",
+      "tool_error": "none",
+      "truncated": false,
+      "usable_marker": false
+    },
+    "schema_version": "1.0",
+    "snapshot_sha256": "bf33840679b3140f7f0552d0c4657a0e78853333cfece9469e1cb2852b5b8ee9",
+    "target_id": "incomplete0"
+  },
+  {
+    "evidence_id": "incomplete1",
+    "observation": {
+      "frame_state": "none",
+      "http_status": 200,
+      "text": "fixture-only,never-real-data",
+      "title": "",
+      "tool_error": "none",
+      "truncated": false,
+      "usable_marker": false
+    },
+    "schema_version": "1.0",
+    "snapshot_sha256": "bf33840679b3140f7f0552d0c4657a0e78853333cfece9469e1cb2852b5b8ee9",
+    "target_id": "incomplete1"
+  },
+  {
+    "evidence_id": "incomplete2",
+    "observation": {
+      "frame_state": "none",
+      "http_status": 200,
+      "text": "fixture-only,never-real-data",
+      "title": "",
+      "tool_error": "none",
+      "truncated": false,
+      "usable_marker": false
+    },
+    "schema_version": "1.0",
+    "snapshot_sha256": "bf33840679b3140f7f0552d0c4657a0e78853333cfece9469e1cb2852b5b8ee9",
+    "target_id": "incomplete2"
+  },
+  {
+    "evidence_id": "incomplete3",
+    "observation": {
+      "frame_state": "none",
+      "http_status": 200,
+      "text": "fixture-only,never-real-data",
+      "title": "",
+      "tool_error": "none",
+      "truncated": false,
+      "usable_marker": false
+    },
+    "schema_version": "1.0",
+    "snapshot_sha256": "bf33840679b3140f7f0552d0c4657a0e78853333cfece9469e1cb2852b5b8ee9",
+    "target_id": "incomplete3"
+  },
+  {
+    "evidence_id": "incomplete4",
+    "observation": {
+      "frame_state": "none",
+      "http_status": 200,
+      "text": "fixture-only,never-real-data",
+      "title": "",
+      "tool_error": "none",
+      "truncated": false,
+      "usable_marker": false
+    },
+    "schema_version": "1.0",
+    "snapshot_sha256": "bf33840679b3140f7f0552d0c4657a0e78853333cfece9469e1cb2852b5b8ee9",
+    "target_id": "incomplete4"
+  },
+  {
+    "evidence_id": "incomplete5",
+    "observation": {
+      "frame_state": "none",
+      "http_status": 200,
+      "text": "fixture-only,never-real-data",
+      "title": "",
+      "tool_error": "none",
+      "truncated": false,
+      "usable_marker": false
+    },
+    "schema_version": "1.0",
+    "snapshot_sha256": "bf33840679b3140f7f0552d0c4657a0e78853333cfece9469e1cb2852b5b8ee9",
+    "target_id": "incomplete5"
+  },
+  {
+    "evidence_id": "incomplete6",
+    "observation": {
+      "frame_state": "none",
+      "http_status": 200,
+      "text": "fixture-only,never-real-data",
+      "title": "",
+      "tool_error": "none",
+      "truncated": false,
+      "usable_marker": false
+    },
+    "schema_version": "1.0",
+    "snapshot_sha256": "bf33840679b3140f7f0552d0c4657a0e78853333cfece9469e1cb2852b5b8ee9",
+    "target_id": "incomplete6"
+  },
+  {
+    "evidence_id": "incomplete7",
+    "observation": {
+      "frame_state": "none",
+      "http_status": 200,
+      "text": "fixture-only,never-real-data",
+      "title": "",
+      "tool_error": "none",
+      "truncated": false,
+      "usable_marker": false
+    },
+    "schema_version": "1.0",
+    "snapshot_sha256": "bf33840679b3140f7f0552d0c4657a0e78853333cfece9469e1cb2852b5b8ee9",
+    "target_id": "incomplete7"
+  },
+  {
+    "evidence_id": "timeout0",
+    "observation": {
+      "frame_state": "none",
+      "http_status": null,
+      "text": "",
+      "title": "",
+      "tool_error": "timeout",
+      "truncated": false,
+      "usable_marker": false
+    },
+    "schema_version": "1.0",
+    "snapshot_sha256": "6b05ed48a174cbadb288370e9392c2ea3fcd14b2c9711b550a82c1c1649e87e6",
+    "target_id": "timeout0"
+  },
+  {
+    "evidence_id": "timeout1",
+    "observation": {
+      "frame_state": "none",
+      "http_status": null,
+      "text": "",
+      "title": "",
+      "tool_error": "timeout",
+      "truncated": false,
+      "usable_marker": false
+    },
+    "schema_version": "1.0",
+    "snapshot_sha256": "6b05ed48a174cbadb288370e9392c2ea3fcd14b2c9711b550a82c1c1649e87e6",
+    "target_id": "timeout1"
+  },
+  {
+    "evidence_id": "timeout2",
+    "observation": {
+      "frame_state": "none",
+      "http_status": null,
+      "text": "",
+      "title": "",
+      "tool_error": "timeout",
+      "truncated": false,
+      "usable_marker": false
+    },
+    "schema_version": "1.0",
+    "snapshot_sha256": "6b05ed48a174cbadb288370e9392c2ea3fcd14b2c9711b550a82c1c1649e87e6",
+    "target_id": "timeout2"
+  },
+  {
+    "evidence_id": "timeout3",
+    "observation": {
+      "frame_state": "none",
+      "http_status": null,
+      "text": "",
+      "title": "",
+      "tool_error": "timeout",
+      "truncated": false,
+      "usable_marker": false
+    },
+    "schema_version": "1.0",
+    "snapshot_sha256": "6b05ed48a174cbadb288370e9392c2ea3fcd14b2c9711b550a82c1c1649e87e6",
+    "target_id": "timeout3"
+  },
+  {
+    "evidence_id": "timeout4",
+    "observation": {
+      "frame_state": "none",
+      "http_status": null,
+      "text": "",
+      "title": "",
+      "tool_error": "timeout",
+      "truncated": false,
+      "usable_marker": false
+    },
+    "schema_version": "1.0",
+    "snapshot_sha256": "6b05ed48a174cbadb288370e9392c2ea3fcd14b2c9711b550a82c1c1649e87e6",
+    "target_id": "timeout4"
+  },
+  {
+    "evidence_id": "timeout5",
+    "observation": {
+      "frame_state": "none",
+      "http_status": null,
+      "text": "",
+      "title": "",
+      "tool_error": "timeout",
+      "truncated": false,
+      "usable_marker": false
+    },
+    "schema_version": "1.0",
+    "snapshot_sha256": "6b05ed48a174cbadb288370e9392c2ea3fcd14b2c9711b550a82c1c1649e87e6",
+    "target_id": "timeout5"
+  },
+  {
+    "evidence_id": "timeout6",
+    "observation": {
+      "frame_state": "none",
+      "http_status": null,
+      "text": "",
+      "title": "",
+      "tool_error": "timeout",
+      "truncated": false,
+      "usable_marker": false
+    },
+    "schema_version": "1.0",
+    "snapshot_sha256": "6b05ed48a174cbadb288370e9392c2ea3fcd14b2c9711b550a82c1c1649e87e6",
+    "target_id": "timeout6"
+  },
+  {
+    "evidence_id": "timeout7",
+    "observation": {
+      "frame_state": "none",
+      "http_status": null,
+      "text": "",
+      "title": "",
+      "tool_error": "timeout",
+      "truncated": false,
+      "usable_marker": false
+    },
+    "schema_version": "1.0",
+    "snapshot_sha256": "6b05ed48a174cbadb288370e9392c2ea3fcd14b2c9711b550a82c1c1649e87e6",
+    "target_id": "timeout7"
+  },
+  {
+    "evidence_id": "usable0",
+    "observation": {
+      "frame_state": "none",
+      "http_status": 200,
+      "text": "A useful owned article with enough content to inspect and extract a stable fact. The fixture code is ORCHARD-42. Upload dummy fixture only",
+      "title": "Fixture article",
+      "tool_error": "none",
+      "truncated": false,
+      "usable_marker": true
+    },
+    "schema_version": "1.0",
+    "snapshot_sha256": "968c2546cfd7f8424b09fff0fa3fe3114c523543e5fc618413a905081107631b",
+    "target_id": "usable0"
+  },
+  {
+    "evidence_id": "usable1",
+    "observation": {
+      "frame_state": "none",
+      "http_status": 200,
+      "text": "A useful owned article with enough content to inspect and extract a stable fact. The fixture code is ORCHARD-42. Upload dummy fixture only",
+      "title": "Fixture article",
+      "tool_error": "none",
+      "truncated": false,
+      "usable_marker": true
+    },
+    "schema_version": "1.0",
+    "snapshot_sha256": "968c2546cfd7f8424b09fff0fa3fe3114c523543e5fc618413a905081107631b",
+    "target_id": "usable1"
+  },
+  {
+    "evidence_id": "usable2",
+    "observation": {
+      "frame_state": "none",
+      "http_status": 200,
+      "text": "A useful owned article with enough content to inspect and extract a stable fact. The fixture code is ORCHARD-42. Upload dummy fixture only",
+      "title": "Fixture article",
+      "tool_error": "none",
+      "truncated": false,
+      "usable_marker": true
+    },
+    "schema_version": "1.0",
+    "snapshot_sha256": "968c2546cfd7f8424b09fff0fa3fe3114c523543e5fc618413a905081107631b",
+    "target_id": "usable2"
+  },
+  {
+    "evidence_id": "usable3",
+    "observation": {
+      "frame_state": "none",
+      "http_status": 200,
+      "text": "A useful owned article with enough content to inspect and extract a stable fact. The fixture code is ORCHARD-42. Upload dummy fixture only",
+      "title": "Fixture article",
+      "tool_error": "none",
+      "truncated": false,
+      "usable_marker": true
+    },
+    "schema_version": "1.0",
+    "snapshot_sha256": "968c2546cfd7f8424b09fff0fa3fe3114c523543e5fc618413a905081107631b",
+    "target_id": "usable3"
+  },
+  {
+    "evidence_id": "usable4",
+    "observation": {
+      "frame_state": "none",
+      "http_status": 200,
+      "text": "A useful owned article with enough content to inspect and extract a stable fact. The fixture code is ORCHARD-42. Upload dummy fixture only",
+      "title": "Fixture article",
+      "tool_error": "none",
+      "truncated": false,
+      "usable_marker": true
+    },
+    "schema_version": "1.0",
+    "snapshot_sha256": "968c2546cfd7f8424b09fff0fa3fe3114c523543e5fc618413a905081107631b",
+    "target_id": "usable4"
+  },
+  {
+    "evidence_id": "usable5",
+    "observation": {
+      "frame_state": "none",
+      "http_status": 200,
+      "text": "A useful owned article with enough content to inspect and extract a stable fact. The fixture code is ORCHARD-42. Upload dummy fixture only",
+      "title": "Fixture article",
+      "tool_error": "none",
+      "truncated": false,
+      "usable_marker": true
+    },
+    "schema_version": "1.0",
+    "snapshot_sha256": "968c2546cfd7f8424b09fff0fa3fe3114c523543e5fc618413a905081107631b",
+    "target_id": "usable5"
+  },
+  {
+    "evidence_id": "usable6",
+    "observation": {
+      "frame_state": "none",
+      "http_status": 200,
+      "text": "A useful owned article with enough content to inspect and extract a stable fact. The fixture code is ORCHARD-42. Upload dummy fixture only",
+      "title": "Fixture article",
+      "tool_error": "none",
+      "truncated": false,
+      "usable_marker": true
+    },
+    "schema_version": "1.0",
+    "snapshot_sha256": "968c2546cfd7f8424b09fff0fa3fe3114c523543e5fc618413a905081107631b",
+    "target_id": "usable6"
+  },
+  {
+    "evidence_id": "usable7",
+    "observation": {
+      "frame_state": "none",
+      "http_status": 200,
+      "text": "A useful owned article with enough content to inspect and extract a stable fact. The fixture code is ORCHARD-42. Upload dummy fixture only",
+      "title": "Fixture article",
+      "tool_error": "none",
+      "truncated": false,
+      "usable_marker": true
+    },
+    "schema_version": "1.0",
+    "snapshot_sha256": "968c2546cfd7f8424b09fff0fa3fe3114c523543e5fc618413a905081107631b",
+    "target_id": "usable7"
+  }
+]

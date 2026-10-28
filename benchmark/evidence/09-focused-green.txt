@@ -1,0 +1,15 @@
+test_bad_binary_bindings_refuse_without_output_or_directory (test_review_gaps.BinaryFreezeTests.test_bad_binary_bindings_refuse_without_output_or_directory) ... ok
+test_concrete_metadata_alone_cannot_authorize_local_observation_freeze (test_review_gaps.BinaryFreezeTests.test_concrete_metadata_alone_cannot_authorize_local_observation_freeze) ... ok
+test_matching_binary_bytes_for_all_six_arms_allow_only_offline_freeze (test_review_gaps.BinaryFreezeTests.test_matching_binary_bytes_for_all_six_arms_allow_only_offline_freeze) ... ok
+test_expected_mode_is_a_required_explicit_contract (test_review_gaps.CalibrationContractTests.test_expected_mode_is_a_required_explicit_contract) ... ok
+test_changed_analysis_output_has_new_version_in_api_and_cli (test_review_gaps.PacketCLIReviewTests.test_changed_analysis_output_has_new_version_in_api_and_cli) ... ok
+test_changed_visit_schema_and_emitter_have_new_versions (test_review_gaps.PacketCLIReviewTests.test_changed_visit_schema_and_emitter_have_new_versions) ... ok
+test_coordinated_aa_substitutions_refuse_at_cli_with_empty_stdout (test_review_gaps.PacketCLIReviewTests.test_coordinated_aa_substitutions_refuse_at_cli_with_empty_stdout) ... ok
+test_coordinated_analysis_mutations_refuse_at_cli_with_empty_stdout (test_review_gaps.PacketCLIReviewTests.test_coordinated_analysis_mutations_refuse_at_cli_with_empty_stdout) ... ok
+test_concrete_versions_are_required_in_every_arm (test_review_gaps.ReadinessTests.test_concrete_versions_are_required_in_every_arm) ... ok
+test_placeholder_tokens_anywhere_and_invalid_binary_hash_fail_closed (test_review_gaps.ReadinessTests.test_placeholder_tokens_anywhere_and_invalid_binary_hash_fail_closed) ... ok
+
+----------------------------------------------------------------------
+Ran 10 tests in 77.520s
+
+OK

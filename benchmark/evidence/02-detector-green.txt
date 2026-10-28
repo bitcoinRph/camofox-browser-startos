@@ -1,0 +1,8 @@
+test_strict_schema_roundtrip_and_local_target_policy (test_contracts.ContractTests.test_strict_schema_roundtrip_and_local_target_policy) ... ok
+test_deterministic_outcomes_and_precedence (test_detector.DetectorTests.test_deterministic_outcomes_and_precedence) ... ok
+test_heldout_human_validation_refuses_leakage_and_disagreement (test_detector.DetectorTests.test_heldout_human_validation_refuses_leakage_and_disagreement) ... ok
+
+----------------------------------------------------------------------
+Ran 3 tests in 1.863s
+
+OK

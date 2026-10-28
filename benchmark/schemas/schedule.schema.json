@@ -1,0 +1,64 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:offline-benchmark:schedule",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "additionalProperties": false,
+    "properties": {
+      "schema_version": {
+        "const": "1.0"
+      },
+      "visit_id": {
+        "type": "string",
+        "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,63}$"
+      },
+      "target_id": {
+        "type": "string",
+        "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,63}$"
+      },
+      "arm": {
+        "enum": [
+          "A",
+          "B",
+          "C",
+          "D",
+          "A2",
+          "C2"
+        ]
+      },
+      "block": {
+        "type": "integer",
+        "minimum": 0
+      },
+      "position": {
+        "type": "integer",
+        "minimum": 0
+      },
+      "order_index": {
+        "type": "integer",
+        "minimum": 0
+      },
+      "phase": {
+        "enum": [
+          "primary",
+          "sensitivity"
+        ]
+      },
+      "timeout_ms": {
+        "const": 10000
+      }
+    },
+    "required": [
+      "schema_version",
+      "visit_id",
+      "target_id",
+      "arm",
+      "block",
+      "position",
+      "order_index",
+      "phase",
+      "timeout_ms"
+    ]
+  }
+}

@@ -1,0 +1,6 @@
+{
+  "manifest_path": "fixtures/synthetic-v2/manifest.json",
+  "manifest_sha256": "7685e29f86ba0fe46ce32efb0b4334f0a75f658dd6daf838f9372884d6233a8b",
+  "bundle_path": "fixtures/synthetic-v2/bundle.json",
+  "bundle_sha256": "853bcdb105aaf1a2384844ff518ac8304053c7ec31750cc43d9024b2bd75a365"
+}

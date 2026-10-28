@@ -1,0 +1,27 @@
+{
+  "schema_version": "1.0",
+  "arm_id": "A",
+  "engine": "chromium-reference",
+  "interface": "same-normalized-snapshot-contract",
+  "engine_version": "UNRESOLVED-NOT-EXECUTABLE",
+  "tool_version": "UNRESOLVED-NOT-EXECUTABLE",
+  "binary_sha256": null,
+  "user_agent": "UNRESOLVED-PIN-BEFORE-REAL-RUN",
+  "viewport": {
+    "width": 1280,
+    "height": 800
+  },
+  "locale": "en-US",
+  "timezone": "UTC",
+  "proxy": null,
+  "headless": true,
+  "fresh_context_per_visit": true,
+  "persistent_profile": false,
+  "timeout_ms": 10000,
+  "snapshot_max_chars": 20000,
+  "snapshot_max_nodes": 5000,
+  "retries": 0,
+  "challenge_solving": false,
+  "production_ready": false,
+  "phase": "primary"
+}

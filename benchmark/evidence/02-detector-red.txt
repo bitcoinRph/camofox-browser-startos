@@ -1,0 +1,26 @@
+test_strict_schema_roundtrip_and_local_target_policy (test_contracts.ContractTests.test_strict_schema_roundtrip_and_local_target_policy) ... ok
+test_deterministic_outcomes_and_precedence (test_detector.DetectorTests.test_deterministic_outcomes_and_precedence) ... FAIL
+test_heldout_human_validation_refuses_leakage_and_disagreement (test_detector.DetectorTests.test_heldout_human_validation_refuses_leakage_and_disagreement) ... FAIL
+
+======================================================================
+FAIL: test_deterministic_outcomes_and_precedence (test_detector.DetectorTests.test_deterministic_outcomes_and_precedence)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<repo>/benchmark/tests/test_detector.py", line 13, in test_deterministic_outcomes_and_precedence
+    self.assertIsNotNone(importlib.util.find_spec('bench.detector'), 'missing deterministic detector')
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: unexpectedly None : missing deterministic detector
+
+======================================================================
+FAIL: test_heldout_human_validation_refuses_leakage_and_disagreement (test_detector.DetectorTests.test_heldout_human_validation_refuses_leakage_and_disagreement)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<repo>/benchmark/tests/test_detector.py", line 39, in test_heldout_human_validation_refuses_leakage_and_disagreement
+    self.assertIsNotNone(importlib.util.find_spec('bench.validation'), 'missing heldout human-label validation')
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: unexpectedly None : missing heldout human-label validation
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.384s
+
+FAILED (failures=2)

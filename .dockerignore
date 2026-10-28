@@ -1,7 +1,15 @@
 .git
 .gitmodules
+.github
+.forgejo
 node_modules
 javascript
 ncc-cache
 docker-images
 *.s9pk
+browser
+benchmark
+docs
+tests
+startos
+assets

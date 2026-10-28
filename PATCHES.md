@@ -3,8 +3,8 @@
 ## Scope and release state
 
 - Wrapper baseline: `3e5a5c33b4c4663cac0afa78e5272f10eae13b7e`.
-- Prepared wrapper revision: `1.18.1:2`. This is not yet an installed release.
-- Patched source: `bitcoinRph/camofox-browser-patched`, commit `ea40b5168a1a652ca097ae36ec0c934bca04d004`, based on upstream `v1.18.1` (`39c82094013480b373df6600d44c7f036f58356e`).
+- Installed and accepted wrapper revision: `1.18.1:2`.
+- Runtime-image source snapshot: commit `ea40b5168a1a652ca097ae36ec0c934bca04d004`, based on upstream `v1.18.1` (`39c82094013480b373df6600d44c7f036f58356e`). The `browser/` tree starts from that snapshot and contains additional consolidation-only telemetry and metadata changes not present in the published image.
 - Runtime image: `ghcr.io/bitcoinrph/camofox-browser:1.18.1-startos.1`.
 - Immutable index digest: `sha256:e545da36937765eaf2480e07e81aeaf97c13589d7531ea77152b723319b0daaf`.
 - Image manifests: linux/amd64 `sha256:ff235b2cd9264603c54152b9ed18e25a0496ec860fd9af5a49f2cc171b290824`; linux/arm64 `sha256:d9fc7feed9faae07108f919e2f34cbe4956b549ddcda155f3fc3293e3bf564fc`.
@@ -44,13 +44,13 @@ Each record must state ownership, affected files, reason, tests, upstream dispos
 
 Before an authorized release, retain the last known-good `.s9pk` and a backup of both volumes. A rollback to `1.18.1:1` requires no settings deletion or profile conversion. New settings survive for a later re-upgrade. Open sessions and tabs are volatile and close during a package restart.
 
-## Upstream-image patch lane — verified image, package proof pending
+## Upstream-image patch lane — verified image and package
 
 The image lane satisfied its pre-package gates:
 
-1. Exact fork source and patch history are recorded above and reviewed in draft PR `bitcoinRph/camofox-browser-patched#1`.
+1. The reviewed browser snapshot is retained under `browser/`; exact provenance is recorded in `docs/SOURCES.md`.
 2. Hosted GTK/Xvfb unit, E2E, plugin, MCP, and real-browser smoke tests passed in run `40592434682`.
 3. A public amd64/arm64 image was published in run `40593375805`, with the immutable index and architecture digests recorded above.
-4. This wrapper change pins that exact index and retains reversible `1.18.1:2` migrations.
-
-Still required before calling the release complete: build the `.s9pk`, inspect its manifest and commitment, retain the `1.18.1:1` rollback artifact, sideload `1.18.1:2`, and rerun private-interface, credential-leak, REST, MCP, concurrency, restart, and runtime-regression probes.
+4. The wrapper pins that exact index and retains reversible `1.18.1:2` migrations.
+5. Build run `40596886984` passed for x86_64 and aarch64. The accepted x86_64 artifact has SHA-256 `613f590d02ca444a68157881427bbf3b0e01fde71987f26c89c8cac0d7cae4d0`.
+6. The installed package passed 34/34 post-install checks, including authentication, repaired navigation contracts, eight-tab bounded concurrency, MCP invalid-parameter handling, noVNC-disabled state, and restart readiness in 9.423 seconds.

@@ -37,7 +37,14 @@ test('P1 pins the reviewed patched image by immutable index digest', async () =>
 test('P1 manifest and release notes identify the patched runtime honestly', async () => {
   const manifest = await read('startos/manifest/index.ts');
   const version = await read('startos/versions/current.ts');
-  assert.match(manifest, /upstreamRepo: 'https:\/\/github\.com\/bitcoinRph\/camofox-browser-patched'/);
+  assert.match(manifest, /upstreamRepo: 'https:\/\/github\.com\/bitcoinRph\/camofox-browser-startos\/tree\/master\/browser'/);
   assert.match(version, /handle direct-download navigation/);
   assert.doesNotMatch(version, /upstream image are unchanged|No browser-engine fixes/);
+});
+
+test('StartOS Docker context excludes source and benchmark subtrees', async () => {
+  const ignored = new Set((await read('.dockerignore')).split(/\r?\n/).filter(Boolean));
+  for (const path of ['browser', 'benchmark', 'tests', 'docs', 'startos']) {
+    assert.ok(ignored.has(path), `${path} must not enter the runtime build context`);
+  }
 });

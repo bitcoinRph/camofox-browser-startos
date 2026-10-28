@@ -1,0 +1,185 @@
+{
+  "results": {
+    "/block": {
+      "elapsed_ms": 1.1171009973622859,
+      "evidence_sha256": "f4d9551798291aac855cf64764981c9b72ee536f21520cc908432d7bc58b1091",
+      "label": "block",
+      "mode": "local-http-probe-not-browser",
+      "observation": {
+        "frame_state": "none",
+        "http_status": 403,
+        "text": "Access denied",
+        "title": "Fixture article",
+        "tool_error": "none",
+        "truncated": false,
+        "usable_marker": false
+      }
+    },
+    "/captcha": {
+      "elapsed_ms": 1.2757020303979516,
+      "evidence_sha256": "e22bbd5925a8264bea2dc040144314acc166202e126a1f87d2829afbcd12c28c",
+      "label": "captcha",
+      "mode": "local-http-probe-not-browser",
+      "observation": {
+        "frame_state": "none",
+        "http_status": 200,
+        "text": "Complete the CAPTCHA to continue",
+        "title": "Fixture article",
+        "tool_error": "none",
+        "truncated": false,
+        "usable_marker": false
+      }
+    },
+    "/challenge": {
+      "elapsed_ms": 1.2498840223997831,
+      "evidence_sha256": "2affb90491f7a958e2d7470ec76df338e0531681920a95789c6853c39ef3ebff",
+      "label": "challenge",
+      "mode": "local-http-probe-not-browser",
+      "observation": {
+        "frame_state": "none",
+        "http_status": 503,
+        "text": "Checking your browser",
+        "title": "Just a moment...",
+        "tool_error": "none",
+        "truncated": false,
+        "usable_marker": false
+      }
+    },
+    "/download": {
+      "elapsed_ms": 1.329229969996959,
+      "evidence_sha256": "bf33840679b3140f7f0552d0c4657a0e78853333cfece9469e1cb2852b5b8ee9",
+      "label": "incomplete",
+      "mode": "local-http-probe-not-browser",
+      "observation": {
+        "frame_state": "none",
+        "http_status": 200,
+        "text": "fixture-only,never-real-data",
+        "title": "",
+        "tool_error": "none",
+        "truncated": false,
+        "usable_marker": false
+      }
+    },
+    "/error": {
+      "elapsed_ms": 1.1431489838287234,
+      "evidence_sha256": "74720e237a12089790eafcc22fd4b05c81f2bba91bbd881b86518d2647846172",
+      "label": "error",
+      "mode": "local-http-probe-not-browser",
+      "observation": {
+        "frame_state": "none",
+        "http_status": 500,
+        "text": "Fixture server error",
+        "title": "Fixture article",
+        "tool_error": "none",
+        "truncated": false,
+        "usable_marker": false
+      }
+    },
+    "/frameset": {
+      "elapsed_ms": 1.4770730049349368,
+      "evidence_sha256": "8af76dbe9b2ed60d106b56b1dad3edfe43485fae23038c4d97cc031297ba3725",
+      "label": "incomplete",
+      "mode": "local-http-probe-not-browser",
+      "observation": {
+        "frame_state": "frameset",
+        "http_status": 200,
+        "text": "",
+        "title": "Owned frames",
+        "tool_error": "none",
+        "truncated": false,
+        "usable_marker": false
+      }
+    },
+    "/iframe": {
+      "elapsed_ms": 1.7355700256302953,
+      "evidence_sha256": "3a252d55d152dcd6d037db0c9a6c238bfcb9ebbaf97b7aca5d121ee7330b7544",
+      "label": "incomplete",
+      "mode": "local-http-probe-not-browser",
+      "observation": {
+        "frame_state": "iframe",
+        "http_status": 200,
+        "text": "",
+        "title": "Fixture article",
+        "tool_error": "none",
+        "truncated": false,
+        "usable_marker": false
+      }
+    },
+    "/large-dom": {
+      "elapsed_ms": 111.39899998670444,
+      "evidence_sha256": "fed0d38251e39f64c98bb2e3d94c74cb335dc2572b7527d61f8ad04fb2c2fb6a",
+      "label": "incomplete",
+      "mode": "local-http-probe-not-browser",
+      "observation": {
+        "frame_state": "none",
+        "http_status": 200,
+        "text": "A useful owned article with enough content to inspect and extract a stable fact. The fixture code is ORCHARD-42. large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node large owned DOM node",
+        "title": "Fixture article",
+        "tool_error": "none",
+        "truncated": true,
+        "usable_marker": true
+      }
+    },
+    "/popup": {
+      "elapsed_ms": 1.5226290561258793,
+      "evidence_sha256": "a4ee3274abdd0e04d398f42a250183df1b66326faaf070c76db686bf89e4994f",
+      "label": "usable",
+      "mode": "local-http-probe-not-browser",
+      "observation": {
+        "frame_state": "none",
+        "http_status": 200,
+        "text": "A useful owned article with enough content to inspect and extract a stable fact. The fixture code is ORCHARD-42. Open owned popup",
+        "title": "Fixture article",
+        "tool_error": "none",
+        "truncated": false,
+        "usable_marker": true
+      }
+    },
+    "/timeout": {
+      "elapsed_ms": 50.6764940219,
+      "evidence_sha256": "6b05ed48a174cbadb288370e9392c2ea3fcd14b2c9711b550a82c1c1649e87e6",
+      "label": "timeout",
+      "mode": "local-http-probe-not-browser",
+      "observation": {
+        "frame_state": "none",
+        "http_status": null,
+        "text": "",
+        "title": "",
+        "tool_error": "timeout",
+        "truncated": false,
+        "usable_marker": false
+      }
+    },
+    "/upload": {
+      "elapsed_ms": 1.7572020296938717,
+      "evidence_sha256": "968c2546cfd7f8424b09fff0fa3fe3114c523543e5fc618413a905081107631b",
+      "label": "usable",
+      "mode": "local-http-probe-not-browser",
+      "observation": {
+        "frame_state": "none",
+        "http_status": 200,
+        "text": "A useful owned article with enough content to inspect and extract a stable fact. The fixture code is ORCHARD-42. Upload dummy fixture only",
+        "title": "Fixture article",
+        "tool_error": "none",
+        "truncated": false,
+        "usable_marker": true
+      }
+    },
+    "/usable": {
+      "elapsed_ms": 2.4694130406714976,
+      "evidence_sha256": "8c28644ff0514b4b107a86a1ccdf24bda8cafd20ed158a762ba7551abd28f60e",
+      "label": "usable",
+      "mode": "local-http-probe-not-browser",
+      "observation": {
+        "frame_state": "none",
+        "http_status": 200,
+        "text": "A useful owned article with enough content to inspect and extract a stable fact. The fixture code is ORCHARD-42.",
+        "title": "Fixture article",
+        "tool_error": "none",
+        "truncated": false,
+        "usable_marker": true
+      }
+    }
+  },
+  "scope": "actual-loopback-HTTP-not-browser"
+}

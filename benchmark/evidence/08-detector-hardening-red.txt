@@ -1,0 +1,58 @@
+test_binary_agreement_below_95_percent_blocks_validation (test_detector.DetectorTests.test_binary_agreement_below_95_percent_blocks_validation) ... FAIL
+test_challenge_captcha_or_block_can_never_be_false_usable (test_detector.DetectorTests.test_challenge_captcha_or_block_can_never_be_false_usable) ...
+  test_challenge_captcha_or_block_can_never_be_false_usable (test_detector.DetectorTests.test_challenge_captcha_or_block_can_never_be_false_usable) (truth='challenge') ... FAIL
+  test_challenge_captcha_or_block_can_never_be_false_usable (test_detector.DetectorTests.test_challenge_captcha_or_block_can_never_be_false_usable) (truth='captcha') ... FAIL
+  test_challenge_captcha_or_block_can_never_be_false_usable (test_detector.DetectorTests.test_challenge_captcha_or_block_can_never_be_false_usable) (truth='block') ... FAIL
+test_deterministic_outcomes_and_precedence (test_detector.DetectorTests.test_deterministic_outcomes_and_precedence) ... ok
+test_heldout_human_validation_refuses_leakage_and_disagreement (test_detector.DetectorTests.test_heldout_human_validation_refuses_leakage_and_disagreement) ... ok
+test_heldout_requires_at_least_sixty_snapshots (test_detector.DetectorTests.test_heldout_requires_at_least_sixty_snapshots) ... FAIL
+
+======================================================================
+FAIL: test_binary_agreement_below_95_percent_blocks_validation (test_detector.DetectorTests.test_binary_agreement_below_95_percent_blocks_validation)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<repo>/benchmark/tests/test_detector.py", line 52, in test_binary_agreement_below_95_percent_blocks_validation
+    self.assertFalse(validate_detector(owned, labels)['gate_pass'])
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: True is not false
+
+======================================================================
+FAIL: test_challenge_captcha_or_block_can_never_be_false_usable (test_detector.DetectorTests.test_challenge_captcha_or_block_can_never_be_false_usable) (truth='challenge')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<repo>/benchmark/tests/test_detector.py", line 60, in test_challenge_captcha_or_block_can_never_be_false_usable
+    self.assertFalse(validate_detector(owned, labels)['gate_pass'])
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: True is not false
+
+======================================================================
+FAIL: test_challenge_captcha_or_block_can_never_be_false_usable (test_detector.DetectorTests.test_challenge_captcha_or_block_can_never_be_false_usable) (truth='captcha')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<repo>/benchmark/tests/test_detector.py", line 60, in test_challenge_captcha_or_block_can_never_be_false_usable
+    self.assertFalse(validate_detector(owned, labels)['gate_pass'])
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: True is not false
+
+======================================================================
+FAIL: test_challenge_captcha_or_block_can_never_be_false_usable (test_detector.DetectorTests.test_challenge_captcha_or_block_can_never_be_false_usable) (truth='block')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<repo>/benchmark/tests/test_detector.py", line 60, in test_challenge_captcha_or_block_can_never_be_false_usable
+    self.assertFalse(validate_detector(owned, labels)['gate_pass'])
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: True is not false
+
+======================================================================
+FAIL: test_heldout_requires_at_least_sixty_snapshots (test_detector.DetectorTests.test_heldout_requires_at_least_sixty_snapshots)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<repo>/benchmark/tests/test_detector.py", line 43, in test_heldout_requires_at_least_sixty_snapshots
+    with self.assertRaisesRegex(ValueError, '60'):
+         ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+----------------------------------------------------------------------
+Ran 5 tests in 4.817s
+
+FAILED (failures=5)

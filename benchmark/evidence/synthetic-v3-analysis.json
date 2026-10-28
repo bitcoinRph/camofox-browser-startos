@@ -1,0 +1,334 @@
+{
+  "aa_calibration": {
+    "difference": 0,
+    "gate_pass": true,
+    "median_relative_latency_difference": 0.0,
+    "pairs": 48,
+    "real_calibration": false,
+    "target_count": 12
+  },
+  "arms": {
+    "A": {
+      "missing": 0,
+      "observed": 48,
+      "outcomes": {
+        "block": 4,
+        "captcha": 4,
+        "challenge": 4,
+        "error": 4,
+        "incomplete": 16,
+        "timeout": 4,
+        "usable": 12
+      },
+      "penalized_elapsed_ms": 7525,
+      "scheduled": 48,
+      "success_only_elapsed_ms_descriptive": 100,
+      "usable_rate": 0.25
+    },
+    "B": {
+      "missing": 0,
+      "observed": 48,
+      "outcomes": {
+        "block": 4,
+        "captcha": 4,
+        "challenge": 4,
+        "error": 4,
+        "incomplete": 16,
+        "timeout": 4,
+        "usable": 12
+      },
+      "penalized_elapsed_ms": 7525,
+      "scheduled": 48,
+      "success_only_elapsed_ms_descriptive": 100,
+      "usable_rate": 0.25
+    },
+    "C": {
+      "missing": 0,
+      "observed": 48,
+      "outcomes": {
+        "block": 4,
+        "captcha": 4,
+        "challenge": 4,
+        "error": 4,
+        "incomplete": 16,
+        "timeout": 4,
+        "usable": 12
+      },
+      "penalized_elapsed_ms": 7525,
+      "scheduled": 48,
+      "success_only_elapsed_ms_descriptive": 100,
+      "usable_rate": 0.25
+    },
+    "D": {
+      "missing": 0,
+      "observed": 48,
+      "outcomes": {
+        "block": 4,
+        "captcha": 4,
+        "challenge": 4,
+        "error": 4,
+        "incomplete": 16,
+        "timeout": 4,
+        "usable": 12
+      },
+      "penalized_elapsed_ms": 7525,
+      "scheduled": 48,
+      "success_only_elapsed_ms_descriptive": 100,
+      "usable_rate": 0.25
+    }
+  },
+  "bundle_sha256": "7a0aa6174878c369de659e29bdc1fcff77a62861ad618c6e1b9c32a08f2eebac",
+  "detector_validation": {
+    "agreement": 1.0,
+    "binary_agreement": 1.0,
+    "confusion": {
+      "block": {
+        "block": 9,
+        "captcha": 0,
+        "challenge": 0,
+        "error": 0,
+        "incomplete": 0,
+        "timeout": 0,
+        "usable": 0
+      },
+      "captcha": {
+        "block": 0,
+        "captcha": 9,
+        "challenge": 0,
+        "error": 0,
+        "incomplete": 0,
+        "timeout": 0,
+        "usable": 0
+      },
+      "challenge": {
+        "block": 0,
+        "captcha": 0,
+        "challenge": 9,
+        "error": 0,
+        "incomplete": 0,
+        "timeout": 0,
+        "usable": 0
+      },
+      "error": {
+        "block": 0,
+        "captcha": 0,
+        "challenge": 0,
+        "error": 9,
+        "incomplete": 0,
+        "timeout": 0,
+        "usable": 0
+      },
+      "incomplete": {
+        "block": 0,
+        "captcha": 0,
+        "challenge": 0,
+        "error": 0,
+        "incomplete": 9,
+        "timeout": 0,
+        "usable": 0
+      },
+      "timeout": {
+        "block": 0,
+        "captcha": 0,
+        "challenge": 0,
+        "error": 0,
+        "incomplete": 0,
+        "timeout": 9,
+        "usable": 0
+      },
+      "usable": {
+        "block": 0,
+        "captcha": 0,
+        "challenge": 0,
+        "error": 0,
+        "incomplete": 0,
+        "timeout": 0,
+        "usable": 9
+      }
+    },
+    "false_usable_challenges_or_blocks": 0,
+    "gate_pass": true,
+    "human_validated": false,
+    "n": 63,
+    "recall": {
+      "block": 1.0,
+      "captcha": 1.0,
+      "challenge": 1.0,
+      "error": 1.0,
+      "incomplete": 1.0,
+      "timeout": 1.0,
+      "usable": 1.0
+    },
+    "targets": 63
+  },
+  "exploratory_contrasts_unadjusted": {
+    "B-A": {
+      "penalized_latency": {
+        "ci95": [
+          0,
+          0
+        ],
+        "difference": 0,
+        "target_differences": {
+          "block": 0,
+          "captcha": 0,
+          "challenge": 0,
+          "download": 0,
+          "error": 0,
+          "frameset": 0,
+          "iframe": 0,
+          "large-dom": 0,
+          "popup": 0,
+          "timeout": 0,
+          "upload": 0,
+          "usable": 0
+        }
+      },
+      "usable": {
+        "ci95": [
+          0,
+          0
+        ],
+        "difference": 0,
+        "target_differences": {
+          "block": 0,
+          "captcha": 0,
+          "challenge": 0,
+          "download": 0,
+          "error": 0,
+          "frameset": 0,
+          "iframe": 0,
+          "large-dom": 0,
+          "popup": 0,
+          "timeout": 0,
+          "upload": 0,
+          "usable": 0
+        }
+      }
+    },
+    "C-A": {
+      "penalized_latency": {
+        "ci95": [
+          0,
+          0
+        ],
+        "difference": 0,
+        "target_differences": {
+          "block": 0,
+          "captcha": 0,
+          "challenge": 0,
+          "download": 0,
+          "error": 0,
+          "frameset": 0,
+          "iframe": 0,
+          "large-dom": 0,
+          "popup": 0,
+          "timeout": 0,
+          "upload": 0,
+          "usable": 0
+        }
+      },
+      "usable": {
+        "ci95": [
+          0,
+          0
+        ],
+        "difference": 0,
+        "target_differences": {
+          "block": 0,
+          "captcha": 0,
+          "challenge": 0,
+          "download": 0,
+          "error": 0,
+          "frameset": 0,
+          "iframe": 0,
+          "large-dom": 0,
+          "popup": 0,
+          "timeout": 0,
+          "upload": 0,
+          "usable": 0
+        }
+      }
+    },
+    "D-A": {
+      "penalized_latency": {
+        "ci95": [
+          0,
+          0
+        ],
+        "difference": 0,
+        "target_differences": {
+          "block": 0,
+          "captcha": 0,
+          "challenge": 0,
+          "download": 0,
+          "error": 0,
+          "frameset": 0,
+          "iframe": 0,
+          "large-dom": 0,
+          "popup": 0,
+          "timeout": 0,
+          "upload": 0,
+          "usable": 0
+        }
+      },
+      "usable": {
+        "ci95": [
+          0,
+          0
+        ],
+        "difference": 0,
+        "target_differences": {
+          "block": 0,
+          "captcha": 0,
+          "challenge": 0,
+          "download": 0,
+          "error": 0,
+          "frameset": 0,
+          "iframe": 0,
+          "large-dom": 0,
+          "popup": 0,
+          "timeout": 0,
+          "upload": 0,
+          "usable": 0
+        }
+      }
+    }
+  },
+  "limitations": [
+    "Screening-level; target-cluster percentile intervals are unstable at small N.",
+    "Repeated visits are not independent targets.",
+    "Owned fixtures cannot establish internet anti-bot performance.",
+    "No browser binary or adapter was exercised by synthetic mode; no winner or deployment recommendation."
+  ],
+  "live_readiness": false,
+  "manifest_sha256": "35de7ded68731276ecd6ea982a57667916ac28446d96c44eae983fe19319bc5e",
+  "phase": "primary",
+  "primary_contrast": {
+    "ci95": [
+      0,
+      0
+    ],
+    "difference": 0,
+    "name": "C-A",
+    "target_differences": {
+      "block": 0,
+      "captcha": 0,
+      "challenge": 0,
+      "download": 0,
+      "error": 0,
+      "frameset": 0,
+      "iframe": 0,
+      "large-dom": 0,
+      "popup": 0,
+      "timeout": 0,
+      "upload": 0,
+      "usable": 0
+    }
+  },
+  "scheduled_visits": 192,
+  "schema_version": "1.1",
+  "sensitivity_contrast": null,
+  "status": "SYNTHETIC-ONLY-NO-BROWSER-INFERENCE",
+  "target_count": 12
+}

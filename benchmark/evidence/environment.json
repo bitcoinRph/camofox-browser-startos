@@ -1,0 +1,16 @@
+{
+  "canonical_test_command": "python -m unittest discover -s tests -p 'test_*.py' -v",
+  "jsonschema": "4.26.0",
+  "machine": "x86_64",
+  "platform": "Linux",
+  "python": "3.14.9",
+  "tests_sha256": {
+    "tests/test_analysis.py": "c54671908fa4b82fc915c0ef491476296a4960f2305b17e77d86a5dedb415306",
+    "tests/test_contracts.py": "6240107388b9c57ccad2550e53d1ae28b06c046801966662041dea9233a2a4d4",
+    "tests/test_design.py": "7f4b6035ea97a4a88ac6bf82d7cf6833cd095887f5c7d3886f46df3f27b1ae8c",
+    "tests/test_detector.py": "2c21943b2fcc338ce8f40ee81fcb0809d4681f6e089a7adb26e4a5b264fe7d63",
+    "tests/test_evidence.py": "57b9d92629b43c223ec07890807ac211fee18bc0f0445ecf853d174b79b0f2e9",
+    "tests/test_fixture.py": "063dc65b66bef3fab0d826639881673ef3b7497fe677c3520d823826bf0c2cab",
+    "tests/test_workflow.py": "201889986302f38280f2c1cdf0b01319c9bdb8737f548ce9fe6617de8d63b2d7"
+  }
+}

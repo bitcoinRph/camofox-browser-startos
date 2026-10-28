@@ -1,0 +1,43 @@
+test_analysis_refuses_hash_schema_schedule_label_and_gate_mutations (test_analysis.AnalysisTests.test_analysis_refuses_hash_schema_schedule_label_and_gate_mutations) ... FAIL
+test_cluster_bootstrap_uses_targets_not_individual_visits (test_analysis.AnalysisTests.test_cluster_bootstrap_uses_targets_not_individual_visits) ... FAIL
+test_offline_demo_cli_and_target_cluster_analysis_keep_failures (test_analysis.AnalysisTests.test_offline_demo_cli_and_target_cluster_analysis_keep_failures) ... FAIL
+test_strict_schema_roundtrip_and_local_target_policy (test_contracts.ContractTests.test_strict_schema_roundtrip_and_local_target_policy) ... ok
+test_aa_calibration_requires_identical_controls_and_complete_pairs (test_design.DesignTests.test_aa_calibration_requires_identical_controls_and_complete_pairs) ... ok
+test_blocked_williams_schedule_is_reproducible_and_balanced (test_design.DesignTests.test_blocked_williams_schedule_is_reproducible_and_balanced) ... ok
+test_deterministic_outcomes_and_precedence (test_detector.DetectorTests.test_deterministic_outcomes_and_precedence) ... ok
+test_heldout_human_validation_refuses_leakage_and_disagreement (test_detector.DetectorTests.test_heldout_human_validation_refuses_leakage_and_disagreement) ... ok
+test_hash_index_refuses_tampering_unsafe_paths_and_symlinks (test_evidence.EvidenceTests.test_hash_index_refuses_tampering_unsafe_paths_and_symlinks) ... ok
+test_sanitization_scanning_and_explicit_retention (test_evidence.EvidenceTests.test_sanitization_scanning_and_explicit_retention) ... ok
+test_owned_routes_are_local_bounded_and_do_not_store_uploads (test_fixture.FixtureTests.test_owned_routes_are_local_bounded_and_do_not_store_uploads) ... ok
+
+======================================================================
+FAIL: test_analysis_refuses_hash_schema_schedule_label_and_gate_mutations (test_analysis.AnalysisTests.test_analysis_refuses_hash_schema_schedule_label_and_gate_mutations)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<repo>/benchmark/tests/test_analysis.py", line 56, in test_analysis_refuses_hash_schema_schedule_label_and_gate_mutations
+    self.assertIsNotNone(importlib.util.find_spec('bench.analysis'), 'missing fail-closed analysis entrypoint')
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: unexpectedly None : missing fail-closed analysis entrypoint
+
+======================================================================
+FAIL: test_cluster_bootstrap_uses_targets_not_individual_visits (test_analysis.AnalysisTests.test_cluster_bootstrap_uses_targets_not_individual_visits)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<repo>/benchmark/tests/test_analysis.py", line 104, in test_cluster_bootstrap_uses_targets_not_individual_visits
+    self.assertIsNotNone(importlib.util.find_spec('bench.analysis'), 'missing target-cluster interval calculation')
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: unexpectedly None : missing target-cluster interval calculation
+
+======================================================================
+FAIL: test_offline_demo_cli_and_target_cluster_analysis_keep_failures (test_analysis.AnalysisTests.test_offline_demo_cli_and_target_cluster_analysis_keep_failures)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<repo>/benchmark/tests/test_analysis.py", line 15, in test_offline_demo_cli_and_target_cluster_analysis_keep_failures
+    self.assertIsNotNone(importlib.util.find_spec('bench.demo'), 'missing reproducible explicitly synthetic evidence packet')
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: unexpectedly None : missing reproducible explicitly synthetic evidence packet
+
+----------------------------------------------------------------------
+Ran 11 tests in 2.702s
+
+FAILED (failures=3)

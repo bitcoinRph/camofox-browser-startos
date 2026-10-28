@@ -1,0 +1,67 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:offline-benchmark:bundle",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "1.0"
+    },
+    "manifest_sha256": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "visits_path": {
+      "type": "string",
+      "minLength": 1
+    },
+    "labels_path": {
+      "type": "string",
+      "minLength": 1
+    },
+    "owned_path": {
+      "type": "string",
+      "minLength": 1
+    },
+    "manual_path": {
+      "type": "string",
+      "minLength": 1
+    },
+    "calibration_path": {
+      "type": "string",
+      "minLength": 1
+    },
+    "files": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "path": {
+            "type": "string",
+            "minLength": 1
+          },
+          "sha256": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$"
+          }
+        },
+        "required": [
+          "path",
+          "sha256"
+        ]
+      },
+      "minItems": 5
+    }
+  },
+  "required": [
+    "schema_version",
+    "manifest_sha256",
+    "visits_path",
+    "labels_path",
+    "owned_path",
+    "manual_path",
+    "calibration_path",
+    "files"
+  ]
+}

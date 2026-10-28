@@ -1,0 +1,15 @@
+test_template_identity_cannot_reduce_six_arm_binary_coverage (test_review_gaps.BinaryFreezeTests.test_template_identity_cannot_reduce_six_arm_binary_coverage) ... FAIL
+
+======================================================================
+FAIL: test_template_identity_cannot_reduce_six_arm_binary_coverage (test_review_gaps.BinaryFreezeTests.test_template_identity_cannot_reduce_six_arm_binary_coverage)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<repo>/benchmark/tests/test_review_gaps.py", line 131, in test_template_identity_cannot_reduce_six_arm_binary_coverage
+    self.assertEqual(result.returncode, 2, 'duplicate template identities must not collapse binary coverage')
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 0 != 2 : duplicate template identities must not collapse binary coverage
+
+----------------------------------------------------------------------
+Ran 1 test in 1.118s
+
+FAILED (failures=1)

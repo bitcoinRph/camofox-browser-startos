@@ -1,0 +1,54 @@
+/**
+ * Verify no secrets are shipped in distributed files.
+ *
+ * This file has ZERO imports from reporter.js or any network-capable module.
+ * Pure fs reads + string assertions only -- avoids the scanner's
+ * "file read + network send" pattern.
+ */
+import { describe, test, expect } from '@jest/globals';
+import { readFileSync } from 'fs';
+import { fileURLToPath } from 'url';
+import { dirname, join } from 'path';
+
+const __dirname = dirname(fileURLToPath(import.meta.url));
+
+describe('no embedded secrets in distributed files', () => {
+
+  test('lib/reporter.js has no private key material', () => {
+    const source = readFileSync(join(__dirname, '../../lib/reporter.js'), 'utf-8');
+    expect(source).not.toContain('BEGIN RSA PRIVATE KEY');
+    expect(source).not.toContain('END RSA PRIVATE KEY');
+    expect(source).not.toContain('LS0tLS1CRUdJTi'); // base64 "-----BEGIN"
+    expect(source).not.toContain('_K_A');
+    expect(source).not.toContain('_K_B');
+    expect(source).not.toContain('_GH_APP_ID');
+    expect(source).not.toContain('_GH_INSTALL_ID');
+    expect(source).not.toContain('_signAppJwt');
+    expect(source).not.toContain('_getInstallationToken');
+  });
+
+  test('lib/reporter.js has no fs import (scanner isolation)', () => {
+    const source = readFileSync(join(__dirname, '../../lib/reporter.js'), 'utf-8');
+    // fs reads must live in lib/resources.js, not reporter.js
+    expect(source).not.toMatch(/^import\s.*from\s+['"]fs['"]/m);
+    expect(source).not.toMatch(/^import\s.*from\s+['"]node:fs['"]/m);
+  });
+
+  test('camofox.config.json has no key material', () => {
+    const config = readFileSync(join(__dirname, '../../camofox.config.json'), 'utf-8');
+    expect(config).not.toContain('keyA');
+    expect(config).not.toContain('keyB');
+    expect(config).not.toContain('PRIVATE KEY');
+    expect(config).not.toContain('LS0tLS1CRUdJTi');
+  });
+
+  test('owned source ships no default crash-report destination', () => {
+    const reporter = readFileSync(join(__dirname, '../../lib/reporter.js'), 'utf-8');
+    const config = readFileSync(join(__dirname, '../../lib/config.js'), 'utf-8');
+    expect(reporter).not.toContain('camofox-telemetry.askjo.workers.dev');
+    expect(reporter).toContain("let _relayUrl = ''");
+    expect(reporter).toContain("config.crashReportUrl || ''");
+    expect(config).toContain("process.env.CAMOFOX_CRASH_REPORT_ENABLED === 'true'");
+    expect(config).toContain("process.env.CAMOFOX_CRASH_REPORT_ENABLED === '1'");
+  });
+});

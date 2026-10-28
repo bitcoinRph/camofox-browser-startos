@@ -1,0 +1,31 @@
+{
+  "calibration_path": "fixtures/synthetic/calibration.json",
+  "files": [
+    {
+      "path": "fixtures/synthetic/calibration.json",
+      "sha256": "b4516defa39b4eca675b734f28730c0df775c67c2e5058959c32d7b2d90eaf04"
+    },
+    {
+      "path": "fixtures/synthetic/labels.json",
+      "sha256": "59d573a964e13589875e96ee799dee57397580165f34596b312042ab2f770523"
+    },
+    {
+      "path": "fixtures/synthetic/manual.json",
+      "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+    },
+    {
+      "path": "fixtures/synthetic/owned.json",
+      "sha256": "524ab2a33ae6ef6cae558060373d4872d34bd95b772599b8338e62627016a4bb"
+    },
+    {
+      "path": "fixtures/synthetic/visits.json",
+      "sha256": "e3c62ddcca0a611132e7bdee37596230304baab8ddefacbbe8cae706aebfed48"
+    }
+  ],
+  "labels_path": "fixtures/synthetic/labels.json",
+  "manifest_sha256": "14dc14d6fbdbd0df7dc8c86c3544e941f70ada6223fcbe7f679ee1385c9875bf",
+  "manual_path": "fixtures/synthetic/manual.json",
+  "owned_path": "fixtures/synthetic/owned.json",
+  "schema_version": "1.0",
+  "visits_path": "fixtures/synthetic/visits.json"
+}
