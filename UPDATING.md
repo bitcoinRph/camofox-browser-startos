@@ -27,11 +27,11 @@ docker buildx imagetools inspect ghcr.io/jo-inc/camofox-browser:<tag>
 
 Copy the top-level `Digest` line. The `Manifests` list below it must show `linux/amd64` and `linux/arm64`. If the tag lacks one of them, do not bump. The manifest builds both architectures.
 
-## Wrapper P1 preparation
+## Wrapper 1.18.1:3 consolidation preparation
 
-Read `PATCHES.md` before any image change. Revision `1.18.1:2` contains wrapper-only gateway and timeout changes. The Docker digest remains unchanged. It does not include upstream engine fixes.
+Read `PATCHES.md` before any image change. Revision `1.18.1:3` is a wrapper-only repository-consolidation release. The Docker tag and digest remain unchanged. Additional browser-source changes now present in this repository are not yet in that runtime image.
 
-Preserve `startos/versions/previous.ts` and its version-graph entry. The prepared revision supports no-write upgrade and downgrade to `1.18.1:1`. Additive timeout settings do not require store migration. The older wrapper ignores them and restores its previous timeout defaults.
+Preserve `startos/versions/v1_18_1_2.ts`, `startos/versions/previous.ts`, and both version-graph entries. The prepared revision supports a no-write upgrade and downgrade between `1.18.1:2` and `1.18.1:3`. Only StartOS data-version metadata changes through the SDK; profiles, credentials, and settings are not rewritten.
 
 Run `npm test` and `npm run check` before packaging. See `tests/README.md` for dependencies. Builds, image publication, installation, and live probes require separate approval.
 

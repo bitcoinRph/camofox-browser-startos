@@ -4,6 +4,7 @@
 
 - Wrapper baseline: `3e5a5c33b4c4663cac0afa78e5272f10eae13b7e`.
 - Installed and accepted wrapper revision: `1.18.1:2`.
+- Prepared consolidation wrapper revision: `1.18.1:3`.
 - Runtime-image source snapshot: commit `ea40b5168a1a652ca097ae36ec0c934bca04d004`, based on upstream `v1.18.1` (`39c82094013480b373df6600d44c7f036f58356e`). The `browser/` tree starts from that snapshot and contains additional consolidation-only telemetry and metadata changes not present in the published image.
 - Runtime image: `ghcr.io/bitcoinrph/camofox-browser:1.18.1-startos.1`.
 - Immutable index digest: `sha256:e545da36937765eaf2480e07e81aeaf97c13589d7531ea77152b723319b0daaf`.
@@ -40,9 +41,11 @@ Each record must state ownership, affected files, reason, tests, upstream dispos
 
 ## Migration and rollback preparation
 
-`startos/versions/previous.ts` preserves `1.18.1:1`. The version graph includes it. The `1.18.1:2` up/down functions do not write profiles, credentials, or settings. Only StartOS data-version metadata changes through the SDK. Tests exercise actual SDK upgrade and downgrade paths.
+`startos/versions/v1_18_1_2.ts` preserves `1.18.1:2`, and `startos/versions/previous.ts` preserves `1.18.1:1`. The version graph includes both entries. The `1.18.1:3` up/down functions do not write profiles, credentials, or settings. Only StartOS data-version metadata changes through the SDK. Tests exercise the exact `1.18.1:2` to `1.18.1:3` upgrade and downgrade paths.
 
-Before an authorized release, retain the last known-good `.s9pk` and a backup of both volumes. A rollback to `1.18.1:1` requires no settings deletion or profile conversion. New settings survive for a later re-upgrade. Open sessions and tabs are volatile and close during a package restart.
+The `1.18.1:3` package keeps `ghcr.io/bitcoinrph/camofox-browser:1.18.1-startos.1` pinned at index digest `sha256:e545da36937765eaf2480e07e81aeaf97c13589d7531ea77152b723319b0daaf`. The additional telemetry-default and repository-consolidation changes in `browser/` are not yet in that runtime image.
+
+Before an authorized release, retain the last known-good `.s9pk` and a backup of both volumes. A rollback from `1.18.1:3` to `1.18.1:2` requires no settings deletion or profile conversion. Open sessions and tabs are volatile and close during a package restart.
 
 ## Upstream-image patch lane — verified image and package
 

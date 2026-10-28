@@ -9,14 +9,14 @@ assets are not carried into the public repository.
 
 - Location: repository root
 - Source repository: `bitcoinRph/camofox-browser-startos`
-- Consolidation base: `aeb6acdbdaad5714ab03598f7572e761380b9fc9` (`master`)
+- Consolidation commit: `c41bc92367083058345c03404472d498e9116674` (`master`)
 - Runtime image: `ghcr.io/bitcoinrph/camofox-browser:1.18.1-startos.1`
 - OCI index digest: `sha256:e545da36937765eaf2480e07e81aeaf97c13589d7531ea77152b723319b0daaf`
 
-The repository reorganization does not alter the already installed StartOS
-package. The installed package remains version `1.18.1:2`. Because repository
-metadata is changing, any new package build must use a new wrapper revision rather
-than republishing different bytes as `1.18.1:2`.
+The repository reorganization does not alter the runtime image or persistent
+package data. The installed and accepted package remains version `1.18.1:2`.
+The consolidation release uses wrapper revision `1.18.1:3`; it does not
+republish different package bytes as `1.18.1:2`.
 
 ## Browser source
 
