@@ -1,0 +1,63 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:offline-benchmark:labels",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "additionalProperties": false,
+    "properties": {
+      "schema_version": {
+        "const": "1.0"
+      },
+      "evidence_id": {
+        "type": "string",
+        "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,63}$"
+      },
+      "target_id": {
+        "type": "string",
+        "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,63}$"
+      },
+      "split": {
+        "enum": [
+          "development",
+          "heldout"
+        ]
+      },
+      "rater": {
+        "type": "string",
+        "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,63}$"
+      },
+      "label": {
+        "enum": [
+          "usable",
+          "challenge",
+          "captcha",
+          "block",
+          "error",
+          "timeout",
+          "incomplete"
+        ]
+      },
+      "source": {
+        "enum": [
+          "synthetic",
+          "human"
+        ]
+      },
+      "snapshot_sha256": {
+        "type": "string",
+        "pattern": "^[a-f0-9]{64}$"
+      }
+    },
+    "required": [
+      "schema_version",
+      "evidence_id",
+      "target_id",
+      "split",
+      "rater",
+      "label",
+      "source",
+      "snapshot_sha256"
+    ]
+  }
+}

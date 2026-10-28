@@ -4,14 +4,22 @@
 
 # Camofox Browser on StartOS
 
-> Everything not listed in this document should behave the same as upstream
-> Camofox Browser. If a feature, setting, or behavior is not mentioned here,
-> the upstream documentation is accurate and fully applicable — see the
-> Documentation section of `instructions.md` for links.
+[Camofox Browser](https://github.com/jo-inc/camofox-browser) is a REST server for AI agents. It drives Camoufox, a Firefox fork with configurable fingerprint controls. Agents read pages as accessibility snapshots and act on element refs.
 
-[Camofox Browser](https://github.com/jo-inc/camofox-browser) is a REST server for AI agents. It drives Camoufox, a Firefox fork with built-in fingerprint spoofing. Agents read pages as accessibility snapshots and act on element refs.
+This repository owns three reviewed components:
 
-This package wraps the pinned upstream image without a code change. It adds an MCP gateway that serves the same browser over HTTP, and a library of agent skills.
+- the StartOS package and MCP gateway at the repository root;
+- the maintained browser source snapshot in [`browser/`](browser/);
+- the offline benchmark harness and synthetic fixtures in [`benchmark/`](benchmark/).
+
+The StartOS package uses the pinned corrected image identified in `Dockerfile`.
+The browser source is included for auditability and future image builds; it is
+not copied into the StartOS package build context. The benchmark does not run
+against live sites and does not deploy its Worker fixture. See
+[`docs/SOURCES.md`](docs/SOURCES.md) for exact import provenance and exclusions.
+
+Camofox reduces elementary automation signals but does not promise universal
+bot-protection, CAPTCHA, managed-challenge, access-control, or rate-limit bypass.
 
 ---
 
@@ -34,11 +42,14 @@ This package wraps the pinned upstream image without a code change. It adds an M
 
 ## Image and Container Runtime
 
-The package builds one image on top of the upstream image. The upstream image is pinned by tag and index digest in `Dockerfile`. The package adds two folders and changes nothing else in the image.
+The package builds one image on top of the corrected Camofox runtime image. The
+runtime image is pinned by tag and OCI index digest in `Dockerfile`. The package
+adds the gateway and agent skills; the `browser/` and `benchmark/` trees are
+excluded from this build context.
 
 | What          | Value                                                                                     |
 | ------------- | ----------------------------------------------------------------------------------------- |
-| Image source  | Upstream image plus `COPY gateway/ /app/gateway/` and `COPY skills/ /opt/camofox/skills/` |
+| Image source  | Pinned corrected image plus `COPY gateway/ /app/gateway/` and `COPY skills/ /opt/camofox/skills/` |
 | Architectures | x86_64, aarch64                                                                           |
 | Entrypoint    | Custom. The daemons below replace the upstream `CMD`.                                     |
 | User          | root, as in the upstream image                                                            |
@@ -120,7 +131,7 @@ The preferred external port of each interface equals its internal port. Services
 
 Authentication:
 
-- One API key protects the REST API and the MCP server. Clients send `Authorization: Bearer <key>`.
+- One API key protects the REST API and the MCP server. Clients send `Authorization: Bearer <api-key>`.
 - `GET /health` on the REST API and `GET /healthz` on the MCP server need no key.
 - The noVNC page is protected by the VNC password only. The API key does not open it. The password has 8 characters, because VNC authentication cuts longer passwords. Anyone who can reach the noVNC address and knows the password can see and control the browser.
 - The raw VNC port stays on the loopback address inside the container. The package does not expose it.
@@ -286,7 +297,7 @@ The P1 gateway no longer converts schema-invalid argument values. String numbers
 
 Limitations:
 
-1. This P1 wrapper revision has no live verification. Local boundary tests do not verify browser-engine fixes.
+1. Version `1.18.1:2` passed the live acceptance recorded in `PATCHES.md`. That acceptance verifies the listed runtime contracts; it does not prove universal anti-bot resistance or authorize bypassing site controls.
 2. The StartOS packages for Hermes Agent and OpenClaw do not set up this service yet. The user must add the URL and key to the agent by hand.
 3. The community plugin `hermes-camofox-human-auth` does not work with this package. It sends no authorization header.
 4. Browser-session, tab, and MCP timers are independent. noVNC does not refresh them. Read Timeout Scopes before a long login.

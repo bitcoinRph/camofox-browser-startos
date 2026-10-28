@@ -1,0 +1,65 @@
+{
+  "analysis_bytes": 7229,
+  "analysis_bytes_sha256": "eaa8e394cde770590045976cd470230a283032e288052f867d69c353f060f4b2",
+  "analysis_output_schema_version": "1.1",
+  "api_cli_bytes_equal": true,
+  "calibration_schema_versions": [
+    "1.1"
+  ],
+  "live_readiness": false,
+  "manifest_schema_version": "1.1",
+  "no_browser_exercised": true,
+  "payload_counts": {
+    "calibration_path": 96,
+    "labels_path": 126,
+    "manual_path": 0,
+    "owned_path": 63,
+    "visits_path": 192
+  },
+  "pins": {
+    "bundle_path": "fixtures/synthetic-v3/bundle.json",
+    "bundle_sha256": "7a0aa6174878c369de659e29bdc1fcff77a62861ad618c6e1b9c32a08f2eebac",
+    "manifest_path": "fixtures/synthetic-v3/manifest.json",
+    "manifest_sha256": "35de7ded68731276ecd6ea982a57667916ac28446d96c44eae983fe19319bc5e"
+  },
+  "repeat_cli_bytes_equal": true,
+  "schedule_schema_versions": [
+    "1.0"
+  ],
+  "scheduled_visits": 192,
+  "status": "SYNTHETIC-ONLY-NO-BROWSER-INFERENCE",
+  "target_count": 12,
+  "unchanged_historical_and_template_sha256": {
+    "evidence/synthetic-analysis-cli.json": "c351661e09781ffeaa9ee5a130bd5dba9803b87f1724f3025f1d7380bd0cb042",
+    "evidence/synthetic-analysis.json": "c351661e09781ffeaa9ee5a130bd5dba9803b87f1724f3025f1d7380bd0cb042",
+    "evidence/synthetic-v2-analysis-cli.json": "d706a0d3ce5d5e424a16f42ce779cb2827a54311ece6fc5ddc487c195777ec26",
+    "evidence/synthetic-v2-analysis.json": "d706a0d3ce5d5e424a16f42ce779cb2827a54311ece6fc5ddc487c195777ec26",
+    "fixtures/synthetic-v2/bundle.json": "853bcdb105aaf1a2384844ff518ac8304053c7ec31750cc43d9024b2bd75a365",
+    "fixtures/synthetic-v2/calibration.json": "0271fe8c7af2450d356cf49ac6140e349184041034c9f6e5d8d7ce4b8021531d",
+    "fixtures/synthetic-v2/labels.json": "eb2ae92a2bec5d3a052e4902fae66d3196a9a19c40ebc73f4ba1f7e2be804fef",
+    "fixtures/synthetic-v2/manifest.json": "7685e29f86ba0fe46ce32efb0b4334f0a75f658dd6daf838f9372884d6233a8b",
+    "fixtures/synthetic-v2/manual.json": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+    "fixtures/synthetic-v2/owned.json": "7c3722aac9b1bac991b0186a1ee2ace2fba35b6eb7e8b6e5cffea19c4db3a4ca",
+    "fixtures/synthetic-v2/pins.json": "55a6f97a29d625ea02cf5a4d9440bbe4285913a821bf3bcaa800c8520c222a86",
+    "fixtures/synthetic-v2/schedule.json": "f918f12fcc33e0ded95523605c1a6a8a1f639e0923ea61f9918b441fcb2e2a35",
+    "fixtures/synthetic-v2/targets.json": "7b1c8bea16b5d752631db79d90bb6c03aee6428eb16d62ea228b65a222ab869e",
+    "fixtures/synthetic-v2/visits.json": "e3c62ddcca0a611132e7bdee37596230304baab8ddefacbbe8cae706aebfed48",
+    "fixtures/synthetic/bundle.json": "2761c24fc1a4f4d18d89719f539d0efa368e70c5a764aeb83bf7c003ea19c955",
+    "fixtures/synthetic/calibration.json": "b4516defa39b4eca675b734f28730c0df775c67c2e5058959c32d7b2d90eaf04",
+    "fixtures/synthetic/labels.json": "59d573a964e13589875e96ee799dee57397580165f34596b312042ab2f770523",
+    "fixtures/synthetic/manifest.json": "14dc14d6fbdbd0df7dc8c86c3544e941f70ada6223fcbe7f679ee1385c9875bf",
+    "fixtures/synthetic/manual.json": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+    "fixtures/synthetic/owned.json": "524ab2a33ae6ef6cae558060373d4872d34bd95b772599b8338e62627016a4bb",
+    "fixtures/synthetic/pins.json": "95394c816f33e3c36bbd27b93e9ee63dcce8b7aab25d1795badcb930b9bc6b11",
+    "fixtures/synthetic/schedule.json": "f918f12fcc33e0ded95523605c1a6a8a1f639e0923ea61f9918b441fcb2e2a35",
+    "fixtures/synthetic/targets.json": "7b1c8bea16b5d752631db79d90bb6c03aee6428eb16d62ea228b65a222ab869e",
+    "fixtures/synthetic/visits.json": "e3c62ddcca0a611132e7bdee37596230304baab8ddefacbbe8cae706aebfed48",
+    "templates/arms/A.json": "7da89ea4bb10be9daaafde07a482782d650c91b1f817cd9f7b1b6f0706f2ca47",
+    "templates/arms/A2.json": "d731d2ed97ae676d6972fefd980553b9cf75c3c1be63b7c99f07735c72c7e002",
+    "templates/arms/B.json": "3a531d5434984c4b660bbf257a6a6779e6f813cf5d4487c4888e3716b2b0b3d3",
+    "templates/arms/C.json": "19223c0643bcfce147ea66a282db6332eba91a30416f779587bff4f8120f3615",
+    "templates/arms/C2.json": "2862e6b785b33fa60421c7c440daca32c9a87a2aee8253b9ee1278afb823057a",
+    "templates/arms/D.json": "ac7ba7185e55859ff1fd4057b3a688ff3aa3203361f69f9101fdca475d5c72d0"
+  },
+  "visits_schema_version": "1.1"
+}

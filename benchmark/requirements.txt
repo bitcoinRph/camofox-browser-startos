@@ -1,0 +1,3 @@
+# Direct dependency pinned to the locally exercised version.
+# Full CPython 3.14.9 runtime closure: requirements.lock (no downloads required).
+jsonschema==4.26.0

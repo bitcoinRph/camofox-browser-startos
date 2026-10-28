@@ -1,0 +1,33 @@
+test_changed_analysis_output_has_new_version_in_api_and_cli (test_review_gaps.PacketCLIReviewTests.test_changed_analysis_output_has_new_version_in_api_and_cli) ... FAIL
+test_changed_visit_schema_and_emitter_have_new_versions (test_review_gaps.PacketCLIReviewTests.test_changed_visit_schema_and_emitter_have_new_versions) ... FAIL
+
+======================================================================
+FAIL: test_changed_analysis_output_has_new_version_in_api_and_cli (test_review_gaps.PacketCLIReviewTests.test_changed_analysis_output_has_new_version_in_api_and_cli)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<repo>/benchmark/tests/test_review_gaps.py", line 206, in test_changed_analysis_output_has_new_version_in_api_and_cli
+    self.assertEqual(analyze(ROOT, **self.pins)['schema_version'], '1.1')
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: '1.0' != '1.1'
+- 1.0
+?   ^
++ 1.1
+?   ^
+
+
+======================================================================
+FAIL: test_changed_visit_schema_and_emitter_have_new_versions (test_review_gaps.PacketCLIReviewTests.test_changed_visit_schema_and_emitter_have_new_versions)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<repo>/benchmark/tests/test_review_gaps.py", line 197, in test_changed_visit_schema_and_emitter_have_new_versions
+    self.assertEqual({row['schema_version'] for row in visits}, {'1.1'})
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: Items in the first set but not the second:
+'1.0'
+Items in the second set but not the first:
+'1.1'
+
+----------------------------------------------------------------------
+Ran 2 tests in 13.307s
+
+FAILED (failures=2)

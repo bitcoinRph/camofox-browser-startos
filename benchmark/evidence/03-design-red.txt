@@ -1,0 +1,28 @@
+test_strict_schema_roundtrip_and_local_target_policy (test_contracts.ContractTests.test_strict_schema_roundtrip_and_local_target_policy) ... ok
+test_aa_calibration_requires_identical_controls_and_complete_pairs (test_design.DesignTests.test_aa_calibration_requires_identical_controls_and_complete_pairs) ... FAIL
+test_blocked_williams_schedule_is_reproducible_and_balanced (test_design.DesignTests.test_blocked_williams_schedule_is_reproducible_and_balanced) ... FAIL
+test_deterministic_outcomes_and_precedence (test_detector.DetectorTests.test_deterministic_outcomes_and_precedence) ... ok
+test_heldout_human_validation_refuses_leakage_and_disagreement (test_detector.DetectorTests.test_heldout_human_validation_refuses_leakage_and_disagreement) ... ok
+
+======================================================================
+FAIL: test_aa_calibration_requires_identical_controls_and_complete_pairs (test_design.DesignTests.test_aa_calibration_requires_identical_controls_and_complete_pairs)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<repo>/benchmark/tests/test_design.py", line 37, in test_aa_calibration_requires_identical_controls_and_complete_pairs
+    self.assertIsNotNone(importlib.util.find_spec('bench.calibration'), 'missing A/A calibration tooling')
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: unexpectedly None : missing A/A calibration tooling
+
+======================================================================
+FAIL: test_blocked_williams_schedule_is_reproducible_and_balanced (test_design.DesignTests.test_blocked_williams_schedule_is_reproducible_and_balanced)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<repo>/benchmark/tests/test_design.py", line 9, in test_blocked_williams_schedule_is_reproducible_and_balanced
+    self.assertIsNotNone(importlib.util.find_spec('bench.schedule'), 'missing counterbalanced schedule generator')
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: unexpectedly None : missing counterbalanced schedule generator
+
+----------------------------------------------------------------------
+Ran 5 tests in 1.872s
+
+FAILED (failures=2)

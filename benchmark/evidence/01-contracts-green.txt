@@ -1,0 +1,6 @@
+test_strict_schema_roundtrip_and_local_target_policy (test_contracts.ContractTests.test_strict_schema_roundtrip_and_local_target_policy) ... ok
+
+----------------------------------------------------------------------
+Ran 1 test in 0.429s
+
+OK

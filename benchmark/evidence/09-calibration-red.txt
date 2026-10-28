@@ -1,0 +1,15 @@
+test_expected_mode_is_a_required_explicit_contract (test_review_gaps.CalibrationContractTests.test_expected_mode_is_a_required_explicit_contract) ... FAIL
+
+======================================================================
+FAIL: test_expected_mode_is_a_required_explicit_contract (test_review_gaps.CalibrationContractTests.test_expected_mode_is_a_required_explicit_contract)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<repo>/benchmark/tests/test_review_gaps.py", line 70, in test_expected_mode_is_a_required_explicit_contract
+    with self.assertRaises(TypeError):
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+AssertionError: TypeError not raised
+
+----------------------------------------------------------------------
+Ran 1 test in 0.022s
+
+FAILED (failures=1)

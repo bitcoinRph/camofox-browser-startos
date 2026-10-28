@@ -1,0 +1,15 @@
+test_strict_schema_roundtrip_and_local_target_policy (test_contracts.ContractTests.test_strict_schema_roundtrip_and_local_target_policy) ... FAIL
+
+======================================================================
+FAIL: test_strict_schema_roundtrip_and_local_target_policy (test_contracts.ContractTests.test_strict_schema_roundtrip_and_local_target_policy)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<repo>/benchmark/tests/test_contracts.py", line 12, in test_strict_schema_roundtrip_and_local_target_policy
+    self.assertIsNotNone(importlib.util.find_spec('bench'), 'missing strict offline contract implementation')
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: unexpectedly None : missing strict offline contract implementation
+
+----------------------------------------------------------------------
+Ran 1 test in 0.001s
+
+FAILED (failures=1)

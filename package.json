@@ -9,5 +9,9 @@
   },
   "overrides": {
     "@start9labs/start-sdk": "$@start9labs/start-sdk"
+  },
+  "devDependencies": {
+    "@modelcontextprotocol/sdk": "^1.30.0",
+    "express": "^5.2.1"
   }
 }

@@ -1,0 +1,138 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:offline-benchmark:arms",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "1.0"
+    },
+    "arm_id": {
+      "enum": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "A2",
+        "C2"
+      ]
+    },
+    "engine": {
+      "type": "string",
+      "minLength": 1
+    },
+    "interface": {
+      "type": "string",
+      "minLength": 1
+    },
+    "engine_version": {
+      "type": "string",
+      "minLength": 1
+    },
+    "tool_version": {
+      "type": "string",
+      "minLength": 1
+    },
+    "binary_sha256": {
+      "anyOf": [
+        {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "user_agent": {
+      "type": "string",
+      "minLength": 1
+    },
+    "viewport": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "width": {
+          "type": "integer",
+          "minimum": 320
+        },
+        "height": {
+          "type": "integer",
+          "minimum": 200
+        }
+      },
+      "required": [
+        "width",
+        "height"
+      ]
+    },
+    "locale": {
+      "type": "string",
+      "minLength": 1
+    },
+    "timezone": {
+      "type": "string",
+      "minLength": 1
+    },
+    "proxy": {
+      "const": null
+    },
+    "headless": {
+      "type": "boolean"
+    },
+    "fresh_context_per_visit": {
+      "const": true
+    },
+    "persistent_profile": {
+      "const": false
+    },
+    "timeout_ms": {
+      "const": 10000
+    },
+    "snapshot_max_chars": {
+      "const": 20000
+    },
+    "snapshot_max_nodes": {
+      "const": 5000
+    },
+    "retries": {
+      "const": 0
+    },
+    "challenge_solving": {
+      "const": false
+    },
+    "production_ready": {
+      "const": false
+    },
+    "phase": {
+      "enum": [
+        "primary",
+        "sensitivity"
+      ]
+    }
+  },
+  "required": [
+    "schema_version",
+    "arm_id",
+    "engine",
+    "interface",
+    "engine_version",
+    "tool_version",
+    "binary_sha256",
+    "user_agent",
+    "viewport",
+    "locale",
+    "timezone",
+    "proxy",
+    "headless",
+    "fresh_context_per_visit",
+    "persistent_profile",
+    "timeout_ms",
+    "snapshot_max_chars",
+    "snapshot_max_nodes",
+    "retries",
+    "challenge_solving",
+    "production_ready",
+    "phase"
+  ]
+}

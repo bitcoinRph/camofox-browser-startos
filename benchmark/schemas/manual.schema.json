@@ -1,0 +1,49 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:offline-benchmark:manual",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "additionalProperties": false,
+    "properties": {
+      "schema_version": {
+        "const": "1.0"
+      },
+      "visit_id": {
+        "type": "string",
+        "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,63}$"
+      },
+      "action": {
+        "enum": [
+          "none",
+          "inspect-only",
+          "abort"
+        ]
+      },
+      "reason": {
+        "enum": [
+          "scheduled",
+          "safety-stop",
+          "unexpected-login",
+          "unexpected-network",
+          "operator-error"
+        ]
+      },
+      "operator_id": {
+        "type": "string",
+        "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,63}$"
+      },
+      "changed_outcome": {
+        "const": false
+      }
+    },
+    "required": [
+      "schema_version",
+      "visit_id",
+      "action",
+      "reason",
+      "operator_id",
+      "changed_outcome"
+    ]
+  }
+}

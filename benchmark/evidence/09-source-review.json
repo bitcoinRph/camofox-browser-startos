@@ -1,0 +1,52 @@
+{
+  "model": "claude-opus-4-6",
+  "packet_sha256": "4b8e37c511bcb1b5882fae83bb67e2dd52f38b8667cf02802674162c7a286861",
+  "reviewed_files_sha256": {
+    "DEVIATIONS.md": "9db09593c8099fdead0bfd1dd782d66ba11924a6327d36626f5c6b0918a87f45",
+    "PROTOCOL.md": "d3b69e884a785c8bd69c4696098056f09972caaf50308e817104526be35adc90",
+    "README.md": "7553dc2e1975463112361ad494d73d3a8f4a4c2e99fedc1490a7e69ff005f7a1",
+    "bench/analysis.py": "7d532db2a6567bc112748b3426a984fe05619269e02db522184d568c4cbbb055",
+    "bench/calibration.py": "3ad9451908f3fa4eda883412de3df7e5eab8652ed7b7fdc75b1cc730575ee8c0",
+    "bench/contracts.py": "7de118f9c70c3d41063709e3b62cbbd4db57921eefa6716edd01713e362d2213",
+    "bench/demo.py": "c01cc233c5edb48137e0bb270026fd01209987d2e20596788654e73880e16aea",
+    "bench/freeze.py": "a4ecfff8193c92b5eb8765dc1857d86d34631106ee5df8b032d21a4937d5706d",
+    "docs/ANALYSIS.md": "c6749ce3ab26f79663559304f21a7d065954418037732da184ac4c230e63bb2f",
+    "evidence/09-final-tests.txt": "d7dceb8401e570800526320ccbff7c45c6810ee016eb29ac9739f05e32acb320",
+    "schemas/arms.schema.json": "82fef7c8e124dc19b56a5740e92c90e1f5b57007cf94b690231fb5dcaa757d83",
+    "schemas/visits.schema.json": "d0a87b10aff2c43f342acaad85a3acf8ea23266a42b0c5df8aed849622555a9e",
+    "templates/arms/A.json": "7da89ea4bb10be9daaafde07a482782d650c91b1f817cd9f7b1b6f0706f2ca47",
+    "templates/arms/C2.json": "2862e6b785b33fa60421c7c440daca32c9a87a2aee8253b9ee1278afb823057a",
+    "tests/test_design.py": "0888461637b975f4114f1c1ca8d2607ebe31008c9cfa924ec91c600a9638e730",
+    "tests/test_hardening.py": "5745a82ccdb440a9988cfa9f37dec24e568053ad10d49af9d48cededa70febe2",
+    "tests/test_review_gaps.py": "e20bc1c849ef465ed6a6d41c3f98e116a78782175a2da06f8c273cc41151c754"
+  },
+  "scope": "Independent source/text review, no browser or collection approval. Repository tool review timed out; exact source packet fallback completed.",
+  "session_id": "1bc0fbb5-4400-40ad-928c-9763aa4ee6e3",
+  "subagent_count": 0,
+  "terminal_reason": "completed",
+  "verdict": {
+    "passed": true,
+    "spec_axis": {
+      "gaps": [],
+      "passed": true
+    },
+    "standards_axis": {
+      "logic_errors": [],
+      "passed": true,
+      "quality_issues": [
+        "demo.py builds held-out cases via a dict comprehension keyed on label; if future routes share a detector label, one observation silently shadows another\u2014currently safe only because the 12-route set happens to produce exactly 7 distinct labels",
+        "cluster_contrast default samples=5000 diverges from the manifest-embedded bootstrap_samples=2000 used by analyze(); the parameter is always overridden at the call site so the default is dead but potentially confusing",
+        "verify_arm_binaries walks every path.parents element for symlinks, which on deep trees touches the filesystem root; harmless but unnecessarily broad for the stated offline-trusted scope"
+      ],
+      "security_concerns": []
+    },
+    "suggestions": [
+      "Consider making the held-out case builder in demo.py explicitly assert the expected number of distinct labels rather than relying on implicit dict-key dedup",
+      "Add a brief inline comment in cluster_contrast explaining why the function default (5000) differs from the manifest default (2000) to prevent future confusion",
+      "The CalibrationContractTests subtest for expected_mode='local-observation' and expected_mode='local-fixture-replay' rely on the mode mismatch with rows (all 'synthetic') rather than exercising the actual real-observation path; a complementary subtest with rows whose mode matches but expected_mode is bogus would strengthen coverage",
+      "README quick-start references CPython 3.14.9\u2014consider verifying .python-version file content matches to prevent silent divergence"
+    ],
+    "summary": "All six review axes are satisfied. Positive concrete engine/tool version enforcement with recursive placeholder rejection is implemented in contracts.require_resolved_arms and exercised across all six arms by freeze, analysis and three dedicated test classes. The optional binary path/hash mechanism in freeze.verify_arm_binaries is required for local-observation, executes before output directory creation, rejects symlinks and mismatches, and is tested via BinaryFreezeTests (four CLI regression cases). Checked-in templates (A.json, C2.json, etc.) retain UNRESOLVED/null values and are explicitly replay-only. PacketCLIReviewTests supplies checked-in actual CLI regressions for five coordinated analysis mutations and seven uniform A/A substitutions, all re-pinned via repin(), asserting exit 2 and empty stdout. Visits schema and analysis output both advance to 1.1 consistently across schema, emitter and test assertions. calibrate() declares expected_mode as a mandatory keyword-only parameter with no default; both the analysis caller and the test suite exercise and verify this contract. No external acquisition, new statistical decisions or collection approval is introduced. No concrete bugs, security concerns or logic errors were found in the reviewed source. The planned v3 synthetic packet has not been generated yet, which is consistent with the stated source-first workflow and is not a defect."
+  },
+  "web_requests": 0
+}

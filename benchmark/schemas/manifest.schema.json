@@ -1,0 +1,162 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:offline-benchmark:manifest",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "1.1"
+    },
+    "study_id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,63}$"
+    },
+    "status": {
+      "const": "offline-foundation-not-live-approved"
+    },
+    "screening_level": {
+      "const": true
+    },
+    "mode": {
+      "enum": [
+        "synthetic",
+        "local-fixture-replay",
+        "local-observation"
+      ]
+    },
+    "seed": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "blocks": {
+      "type": "integer",
+      "minimum": 4,
+      "maximum": 100
+    },
+    "phase": {
+      "enum": [
+        "primary",
+        "sensitivity"
+      ]
+    },
+    "arms": {
+      "type": "array",
+      "items": {
+        "enum": [
+          "A",
+          "B",
+          "C",
+          "D",
+          "A2",
+          "C2"
+        ]
+      },
+      "uniqueItems": true,
+      "minItems": 2
+    },
+    "targets_path": {
+      "type": "string",
+      "minLength": 1
+    },
+    "schedule_path": {
+      "type": "string",
+      "minLength": 1
+    },
+    "files": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "path": {
+            "type": "string",
+            "minLength": 1
+          },
+          "sha256": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$"
+          }
+        },
+        "required": [
+          "path",
+          "sha256"
+        ]
+      },
+      "minItems": 1
+    },
+    "analysis": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "baseline": {
+          "enum": [
+            "A",
+            "B",
+            "C",
+            "D",
+            "A2",
+            "C2"
+          ]
+        },
+        "bootstrap_seed": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "bootstrap_samples": {
+          "type": "integer",
+          "minimum": 1000,
+          "maximum": 100000
+        },
+        "alpha": {
+          "const": 0.05
+        },
+        "timeout_ms": {
+          "const": 10000
+        },
+        "cluster": {
+          "const": "target_id"
+        },
+        "minimum_targets": {
+          "type": "integer",
+          "minimum": 12
+        },
+        "planned_primary_contrast": {
+          "const": "C-A"
+        },
+        "aa_max_abs_difference": {
+          "const": 0.1
+        },
+        "detector_min_agreement": {
+          "const": 0.95
+        }
+      },
+      "required": [
+        "baseline",
+        "bootstrap_seed",
+        "bootstrap_samples",
+        "alpha",
+        "timeout_ms",
+        "cluster",
+        "minimum_targets",
+        "planned_primary_contrast",
+        "aa_max_abs_difference",
+        "detector_min_agreement"
+      ]
+    }
+  },
+  "required": [
+    "schema_version",
+    "study_id",
+    "status",
+    "screening_level",
+    "mode",
+    "seed",
+    "blocks",
+    "phase",
+    "arms",
+    "targets_path",
+    "schedule_path",
+    "files",
+    "analysis"
+  ]
+}

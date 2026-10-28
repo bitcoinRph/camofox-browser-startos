@@ -1,0 +1,12 @@
+{
+  "name": "camofox-botlab-worker-fixture",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Offline-tested, fail-closed Cloudflare botlab fixture; no deployment scripts",
+  "engines": { "node": ">=26" },
+  "scripts": {
+    "test": "node --permission --allow-fs-read=. --test-isolation=none --test test/*.test.mjs",
+    "check": "node --check src/index.mjs"
+  }
+}

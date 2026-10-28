@@ -1,0 +1,32 @@
+{
+  "base_commit": "fda843ad0226d0fe132b1b3b9b9e05a1d295bba1",
+  "browser_exercised": false,
+  "external_collection": false,
+  "pins": {
+    "bundle_path": "fixtures/synthetic-v3/bundle.json",
+    "bundle_sha256": "7a0aa6174878c369de659e29bdc1fcff77a62861ad618c6e1b9c32a08f2eebac",
+    "manifest_path": "fixtures/synthetic-v3/manifest.json",
+    "manifest_sha256": "35de7ded68731276ecd6ea982a57667916ac28446d96c44eae983fe19319bc5e"
+  },
+  "platform": "Linux-7.2.9+deb13-amd64-x86_64-with-glibc2.41",
+  "python": "3.14.9 (main, Oct 21 2026, 17:48:02) [Clang 23.1.3 ]",
+  "runtime_packages": {
+    "attrs": "26.1.0",
+    "jsonschema": "4.26.0",
+    "jsonschema-specifications": "2025.9.1",
+    "referencing": "0.37.0",
+    "rpds-py": "2026.6.3"
+  },
+  "test_command": "python -m unittest discover -s tests -p 'test_*.py' -v",
+  "test_files_sha256": {
+    "tests/test_analysis.py": "c54671908fa4b82fc915c0ef491476296a4960f2305b17e77d86a5dedb415306",
+    "tests/test_contracts.py": "6240107388b9c57ccad2550e53d1ae28b06c046801966662041dea9233a2a4d4",
+    "tests/test_design.py": "0888461637b975f4114f1c1ca8d2607ebe31008c9cfa924ec91c600a9638e730",
+    "tests/test_detector.py": "cf1bd18097ba3be28c2390798022125a5c3d164a16a6aa7780b8ab277bd3d9a5",
+    "tests/test_evidence.py": "57b9d92629b43c223ec07890807ac211fee18bc0f0445ecf853d174b79b0f2e9",
+    "tests/test_fixture.py": "063dc65b66bef3fab0d826639881673ef3b7497fe677c3520d823826bf0c2cab",
+    "tests/test_hardening.py": "5745a82ccdb440a9988cfa9f37dec24e568053ad10d49af9d48cededa70febe2",
+    "tests/test_review_gaps.py": "e20bc1c849ef465ed6a6d41c3f98e116a78782175a2da06f8c273cc41151c754",
+    "tests/test_workflow.py": "a7c597505f640feb6970dee79227c1483d013ba2079d99e6934a1a40d64a0720"
+  }
+}

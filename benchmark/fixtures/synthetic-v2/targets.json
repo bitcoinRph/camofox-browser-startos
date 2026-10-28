@@ -1,0 +1,98 @@
+[
+  {
+    "kind": "owned",
+    "permission": "local-fixture",
+    "primary": true,
+    "schema_version": "1.0",
+    "target_id": "usable",
+    "url": "http://127.0.0.1:8765/usable"
+  },
+  {
+    "kind": "owned",
+    "permission": "local-fixture",
+    "primary": true,
+    "schema_version": "1.0",
+    "target_id": "challenge",
+    "url": "http://127.0.0.1:8765/challenge"
+  },
+  {
+    "kind": "owned",
+    "permission": "local-fixture",
+    "primary": true,
+    "schema_version": "1.0",
+    "target_id": "captcha",
+    "url": "http://127.0.0.1:8765/captcha"
+  },
+  {
+    "kind": "owned",
+    "permission": "local-fixture",
+    "primary": true,
+    "schema_version": "1.0",
+    "target_id": "block",
+    "url": "http://127.0.0.1:8765/block"
+  },
+  {
+    "kind": "owned",
+    "permission": "local-fixture",
+    "primary": true,
+    "schema_version": "1.0",
+    "target_id": "error",
+    "url": "http://127.0.0.1:8765/error"
+  },
+  {
+    "kind": "owned",
+    "permission": "local-fixture",
+    "primary": true,
+    "schema_version": "1.0",
+    "target_id": "large-dom",
+    "url": "http://127.0.0.1:8765/large-dom"
+  },
+  {
+    "kind": "owned",
+    "permission": "local-fixture",
+    "primary": true,
+    "schema_version": "1.0",
+    "target_id": "iframe",
+    "url": "http://127.0.0.1:8765/iframe"
+  },
+  {
+    "kind": "owned",
+    "permission": "local-fixture",
+    "primary": true,
+    "schema_version": "1.0",
+    "target_id": "frameset",
+    "url": "http://127.0.0.1:8765/frameset"
+  },
+  {
+    "kind": "owned",
+    "permission": "local-fixture",
+    "primary": true,
+    "schema_version": "1.0",
+    "target_id": "download",
+    "url": "http://127.0.0.1:8765/download"
+  },
+  {
+    "kind": "owned",
+    "permission": "local-fixture",
+    "primary": true,
+    "schema_version": "1.0",
+    "target_id": "popup",
+    "url": "http://127.0.0.1:8765/popup"
+  },
+  {
+    "kind": "owned",
+    "permission": "local-fixture",
+    "primary": true,
+    "schema_version": "1.0",
+    "target_id": "upload",
+    "url": "http://127.0.0.1:8765/upload"
+  },
+  {
+    "kind": "owned",
+    "permission": "local-fixture",
+    "primary": true,
+    "schema_version": "1.0",
+    "target_id": "timeout",
+    "url": "http://127.0.0.1:8765/timeout"
+  }
+]

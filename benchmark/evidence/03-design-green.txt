@@ -1,0 +1,10 @@
+test_strict_schema_roundtrip_and_local_target_policy (test_contracts.ContractTests.test_strict_schema_roundtrip_and_local_target_policy) ... ok
+test_aa_calibration_requires_identical_controls_and_complete_pairs (test_design.DesignTests.test_aa_calibration_requires_identical_controls_and_complete_pairs) ... ok
+test_blocked_williams_schedule_is_reproducible_and_balanced (test_design.DesignTests.test_blocked_williams_schedule_is_reproducible_and_balanced) ... ok
+test_deterministic_outcomes_and_precedence (test_detector.DetectorTests.test_deterministic_outcomes_and_precedence) ... ok
+test_heldout_human_validation_refuses_leakage_and_disagreement (test_detector.DetectorTests.test_heldout_human_validation_refuses_leakage_and_disagreement) ... ok
+
+----------------------------------------------------------------------
+Ran 5 tests in 1.948s
+
+OK

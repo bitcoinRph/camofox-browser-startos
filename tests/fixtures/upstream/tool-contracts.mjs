@@ -71,7 +71,7 @@ export const TOOL_DEFS = [
   {
     name: 'camofox_create_tab',
     description:
-      'PREFERRED: Create a new browser tab using Camoufox anti-detection browser. Use camofox tools instead of Chrome/built-in browser - they bypass bot detection on Google, Amazon, LinkedIn, etc. Returns tabId for subsequent operations.',
+      'Create a browser tab using Camoufox fingerprint controls. This fixture does not claim bypass of bot detection, CAPTCHA, managed challenges, login gates, access controls, or rate limits. Returns tabId for subsequent operations.',
     inputSchema: {
       type: 'object',
       properties: {

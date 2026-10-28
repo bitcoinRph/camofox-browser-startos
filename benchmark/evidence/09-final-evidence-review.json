@@ -1,0 +1,41 @@
+{
+  "model": "claude-opus-4-6",
+  "packet_sha256": "d17d9b6a3992e7038b5ed4c6c6beb51a31be01a9f3e8da7cb959530269dbbf70",
+  "reviewed_evidence_sha256": {
+    "evidence/09-environment.json": "b364d3799315365e8b17c19a2cd0c05c29b2ee7de015e91451515565390103b7",
+    "evidence/09-replay-checks.json": "0b46654a21ce5821b7d4578b6607d1bf40c9e0b7c1645b32a1b5170260b9bfb4",
+    "evidence/README.md": "171d27720a85f31155e71c3a68ce45bdc864c9006b9a00909d03faac4f68a34a",
+    "evidence/synthetic-v3-analysis-cli.json": "eaa8e394cde770590045976cd470230a283032e288052f867d69c353f060f4b2",
+    "fixtures/synthetic-v3/bundle.json": "7a0aa6174878c369de659e29bdc1fcff77a62861ad618c6e1b9c32a08f2eebac",
+    "fixtures/synthetic-v3/manifest.json": "35de7ded68731276ecd6ea982a57667916ac28446d96c44eae983fe19319bc5e",
+    "fixtures/synthetic-v3/pins.json": "380241cfc82e49a0757ac8e71dc4e4e6a72fc60dd680f1ebc503b07731c9c30d"
+  },
+  "scope": "Final-findings/evidence-text review, not independent execution or hashing certification; source review recorded separately. No collection approval.",
+  "session_id": "1bc0fbb5-4400-40ad-928c-9763aa4ee6e3",
+  "subagent_count": 0,
+  "terminal_reason": "completed",
+  "verdict": {
+    "passed": true,
+    "spec_axis": {
+      "gaps": [],
+      "passed": true
+    },
+    "standards_axis": {
+      "logic_errors": [],
+      "passed": true,
+      "quality_issues": [
+        "The v3 bundle reuses identical calibration, labels, owned and manual SHA-256 hashes as the v2 bundle (expected for unchanged synthetic generators but worth noting for future auditors)",
+        "evidence/09-replay-checks.json records unchanged_historical_and_template_sha256 for both v1 and v2 packets but does not include the v3 packet's own payload hashes in that section, relying on the separate pins block instead",
+        "The analysis output's detector_validation.targets count is 63 (one per evidence_id) rather than the 12 actual target clusters; the field name is accurate per validation.py but could confuse readers expecting the benchmark target count"
+      ],
+      "security_concerns": []
+    },
+    "suggestions": [
+      "Consider adding a v3-specific payload-hash cross-check section to 09-replay-checks.json that lists each of the five bundle payload file SHA-256 values alongside the bundle's declared hashes, making independent byte-level verification easier for future reviewers",
+      "The evidence/README.md still references 08-hardening-tests.txt as 'current canonical full suite, 28 tests' in the v1.1 section; clarify that wording to 'canonical at that revision' to avoid confusion with the actual current 39-test suite",
+      "Record the exact bench.demo invocation and working directory used to generate fixtures/synthetic-v3/ in the environment evidence, so a future reviewer can distinguish a demo --output run from a freeze --mode run without inspecting code"
+    ],
+    "summary": "Generated v3 artifacts are consistent with reviewed source contracts. Manifest schema_version 1.1, study_id offline-screening-v3, visits schema_version 1.1, analysis output schema_version 1.1, schedule schema_version 1.0, bundle schema_version 1.0\u2014all match the documented version-bump plan. The manifest pins 41 frozen files covering protocols, code, schemas, six arm templates, targets, schedule, and dependency/toolchain files; all source SHA-256 values in the manifest match the previously reviewed file hashes. Bundle binds exactly five distinct payload paths separate from manifest inventory. Replay checks confirm API/CLI byte equality, repeat-CLI determinism, 192 visits across 12 targets and 4 arms, 96 A/A rows, 63 held-out snapshots, 126 labels, zero C-A difference, SYNTHETIC-ONLY-NO-BROWSER-INFERENCE status, live_readiness false, and human_validated/real_calibration both false. Older v1/v2 packets and pins are preserved unchanged. Templates retain UNRESOLVED values. No external acquisition, browser execution or new statistical decision is present. The planned v3 packet absence noted in the prior source review is now resolved by these checked-in artifacts. No requirement gaps, security concerns or logic errors were found."
+  },
+  "web_requests": 0
+}
