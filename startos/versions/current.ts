@@ -4,15 +4,15 @@ export const current = VersionInfo.of({
   version: '1.18.1:2',
   releaseNotes: {
     en_US:
-      'Wrapper P1: classify malformed MCP requests, return typed tool protocol errors, and expose independent tab and MCP idle timers. Defaults and upstream image are unchanged. No browser-engine fixes are included.',
+      'P1 runtime repair: return correct REST and MCP errors, handle direct-download navigation, restore legacy frameset snapshots, verify Camoufox beta.30 assets, and expose independent tab and MCP idle timers. Defaults remain unchanged.',
     es_ES:
-      'Wrapper P1: clasifica solicitudes MCP incorrectas, devuelve errores de protocolo tipados y expone temporizadores independientes de pestañas y MCP. Valores predeterminados e imagen sin cambios. Sin correcciones del motor.',
+      'Reparación P1: corrige errores REST y MCP, gestiona descargas por navegación directa, restaura instantáneas de frameset, verifica Camoufox beta.30 y separa los tiempos de inactividad de pestañas y MCP. Los valores predeterminados no cambian.',
     de_DE:
-      'Wrapper P1: klassifiziert fehlerhafte MCP-Anfragen, liefert typisierte Protokollfehler und bietet getrennte Tab- und MCP-Leerlaufzeiten. Standardwerte und Upstream-Image bleiben unverändert. Keine Browser-Engine-Korrekturen.',
+      'P1-Laufzeitreparatur: korrekte REST- und MCP-Fehler, direkte Download-Navigation, wiederhergestellte Frameset-Snapshots, geprüfte Camoufox-beta.30-Dateien sowie getrennte Tab- und MCP-Leerlaufzeiten. Standardwerte bleiben unverändert.',
     pl_PL:
-      'Wrapper P1: klasyfikuje błędne żądania MCP, zwraca typowane błędy protokołu i udostępnia niezależne limity bezczynności kart i MCP. Domyślne wartości i obraz bez zmian. Bez poprawek silnika przeglądarki.',
+      'Naprawa P1: poprawne błędy REST i MCP, obsługa pobierania przy bezpośredniej nawigacji, przywrócone migawki frameset, weryfikacja Camoufox beta.30 oraz osobne limity bezczynności kart i MCP. Wartości domyślne pozostają bez zmian.',
     fr_FR:
-      'Wrapper P1 : classe les requêtes MCP incorrectes, renvoie des erreurs de protocole typées et expose des délais distincts pour les onglets et MCP. Valeurs par défaut et image inchangées. Aucun correctif du moteur.',
+      'Correction P1 : erreurs REST et MCP correctes, navigation de téléchargement direct, instantanés frameset rétablis, fichiers Camoufox beta.30 vérifiés et délais distincts pour les onglets et MCP. Les valeurs par défaut restent inchangées.',
   },
   // Optional additive settings only. Never rewrite profiles, credentials or settings.
   // The previous wrapper ignores unknown fields, so rollback needs no deletion.

@@ -30,6 +30,14 @@ test('P1 can roll back data metadata to the previous wrapper revision without da
   assert.equal(version, '1.18.1:1');
 });
 
-test('P1 leaves the upstream Docker image pin unchanged', async () => {
-  assert.equal((await read('Dockerfile')).split('\n')[0], 'FROM ghcr.io/jo-inc/camofox-browser:1.18.1@sha256:cff2c1432b609bde9c9d0b91e5b924dae0799d3c7bc9d468c0bc949325beaf2a');
+test('P1 pins the reviewed patched image by immutable index digest', async () => {
+  assert.equal((await read('Dockerfile')).split('\n')[0], 'FROM ghcr.io/bitcoinrph/camofox-browser:1.18.1-startos.1@sha256:e545da36937765eaf2480e07e81aeaf97c13589d7531ea77152b723319b0daaf');
+});
+
+test('P1 manifest and release notes identify the patched runtime honestly', async () => {
+  const manifest = await read('startos/manifest/index.ts');
+  const version = await read('startos/versions/current.ts');
+  assert.match(manifest, /upstreamRepo: 'https:\/\/github\.com\/bitcoinRph\/camofox-browser-patched'/);
+  assert.match(version, /handle direct-download navigation/);
+  assert.doesNotMatch(version, /upstream image are unchanged|No browser-engine fixes/);
 });
